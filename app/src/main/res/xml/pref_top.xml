@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:key="pref_static_field_key_1"
+        android:selectable="false"
+        android:persistent="false"
+        android:title="战舰少女Viewer设置"/>
+
+</PreferenceScreen>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:key="copyright"
+        android:selectable="true"
+        android:persistent="false"
+        android:summary="@string/pref_copyright"/>
+
+    <Preference
+        android:summary="战舰少女Viewer论坛发布页面"
+        android:key="bbs">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="http://bbs.p7game.com/forum.php?mod=viewthread&#38;tid=13210"/>
+    </Preference>
+
+    <Preference
+        android:summary="战舰少女Viewer网站发布页面\n（English Ver.)"
+        android:key="crafterme">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="http://www.crafter.me/zjsnviewer/"/>
+    </Preference>
+
+</PreferenceScreen>

@@ -1,0 +1,55 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:key="on"
+        android:title="@string/pref_title_on"
+        android:summary="@string/pref_summary_on"
+        android:defaultValue="true" />
+
+    <EditTextPreference
+        android:key="username"
+        android:title="@string/pref_title_account"
+        android:defaultValue="@string/pref_default_account"
+        android:selectAllOnFocus="true"
+        android:inputType="text"
+        android:singleLine="true"
+        android:maxLines="1" />
+
+    <EditTextPreference
+        android:key="password"
+        android:title="@string/pref_title_password"
+        android:selectAllOnFocus="true"
+        android:summary="********"
+        android:inputType="textPassword"/>
+
+    <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
+         dismiss it. -->
+    <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
+    <ListPreference
+        android:key="server"
+        android:title="@string/pref_title_server_name"
+        android:defaultValue="0"
+        android:entries="@array/pref_choice_server_name"
+        android:entryValues="@array/pref_choice_server_values"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null" />
+
+    <ListPreference
+        android:key="platform"
+        android:title="@string/pref_title_platform"
+        android:defaultValue="1"
+        android:entries="@array/pref_choice_platform_titles"
+        android:entryValues="@array/pref_choice_platform_values"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null" />
+
+    <ListPreference
+        android:key="language"
+        android:title="@string/pref_title_language"
+        android:defaultValue="1"
+        android:entries="@array/pref_choice_language_titles"
+        android:entryValues="@array/pref_choice_language_values"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null" />
+
+</PreferenceScreen>

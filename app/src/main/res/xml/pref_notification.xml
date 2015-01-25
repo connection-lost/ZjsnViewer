@@ -1,0 +1,37 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:key="notification_general"
+        android:title="@string/pref_title_notify_general"
+        android:summary="@string/pref_summary_notify_general"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:dependency="notification_general"
+        android:key="notification_travel"
+        android:title="@string/pref_title_notify_travel"
+        android:summary="@string/pref_summary_notify_travel"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:dependency="notification_general"
+        android:key="notification_repair"
+        android:title="@string/pref_title_notify_repair"
+        android:summary="@string/pref_summary_notify_repair"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:dependency="notification_general"
+        android:key="notification_build"
+        android:title="@string/pref_title_notify_build"
+        android:summary="@string/pref_summary_notify_build"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:dependency="notification_general"
+        android:key="notification_make"
+        android:title="@string/pref_title_notify_make"
+        android:summary="@string/pref_summary_notify_make"
+        android:defaultValue="true" />
+
+</PreferenceScreen>

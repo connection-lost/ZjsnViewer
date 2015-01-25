@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ZjsnViewer</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="repair_widget_name">ZjsnViewer - 修理</string>
+    <string name="travel_widget_name">ZjsnViewer - 远征</string>
+    <string name="build_widget_name">ZjsnViewer - 建造</string>
+    <string name="make_widget_name">ZjsnViewer - 开发</string>
+    <string name="none">none</string>
+    <string name="shipowner">提督の名前</string>
+    <string name="loading">Loading...</string>
+
+    <string name="title_activity_settings_info">SettingsInfo</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
