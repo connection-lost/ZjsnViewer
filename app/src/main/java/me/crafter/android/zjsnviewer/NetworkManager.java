@@ -117,6 +117,7 @@ public class NetworkManager {
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(15000);
             connection.setRequestProperty("cookie", loginCookie);
+            
 
             in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             //String inputLine;
