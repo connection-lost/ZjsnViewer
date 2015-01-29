@@ -156,7 +156,7 @@ public class NetworkManager {
                 if (o.getInt("locked") == 1){
                     DockInfo.dockBuildTime[i] = -1;
                 } else if (o.has("endTime")){
-                    DockInfo.dockBuildTime[i] = o.getInt("endTime"); 
+                    DockInfo.dockBuildTime[i] = o.getInt("endTime");
                 } else {
                     DockInfo.dockBuildTime[i] = 0;
                 }
