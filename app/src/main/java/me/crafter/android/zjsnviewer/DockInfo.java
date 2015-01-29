@@ -139,7 +139,7 @@ public class DockInfo {
         int[][] thisStatus = getStatusInt();
         boolean should = false;
         if (lastStatus == null){
-            
+
 //            for (int x = 0; x < 4; x++){
 //                for (int y = 0; y < 4; y++){
 //                    if (thisStatus[x][y] == 0) should = true;
