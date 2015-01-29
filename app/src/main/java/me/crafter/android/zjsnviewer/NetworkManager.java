@@ -158,7 +158,7 @@ public class NetworkManager {
                 } else if (o.has("endTime")){
                     DockInfo.dockBuildTime[i] = o.getInt("endTime");
                 } else {
-                    DockInfo.dockBuildTime[i] = -1;
+                    DockInfo.dockBuildTime[i] = 0;
                 }
                 o = repairDockVo.getJSONObject(i);
                 if (o.getInt("locked") == 1){
@@ -166,7 +166,7 @@ public class NetworkManager {
                 } else if (o.has("endTime")){
                     DockInfo.dockRepairTime[i] = o.getInt("endTime");
                 } else {
-                    DockInfo.dockRepairTime[i] = -1;
+                    DockInfo.dockRepairTime[i] = 0;
                 }
                 o = equipmentDockVo.getJSONObject(i);
                 if (o.getInt("locked") == 1){
@@ -174,7 +174,7 @@ public class NetworkManager {
                 } else if (o.has("endTime")){
                     DockInfo.dockMakeTime[i] = o.getInt("endTime");
                 } else {
-                    DockInfo.dockMakeTime[i] = -1;
+                    DockInfo.dockMakeTime[i] = 0;
                 }
             }
             Log.i("NetworkManager", "Update successful");

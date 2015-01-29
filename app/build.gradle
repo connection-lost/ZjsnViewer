@@ -8,8 +8,8 @@ android {
         applicationId "me.crafter.android.zjsnviewer"
         minSdkVersion 16
         targetSdkVersion 21
-        versionCode 11
-        versionName "b1.4"
+        versionCode 12
+        versionName "b1.5"
     }
     buildTypes {
         release {
