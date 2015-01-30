@@ -54,6 +54,7 @@ public class NetworkManager {
 
         try {
             // STEP 1 PASSPORT LOGIN
+
             URL url = new URL(url_passport+username+"/"+password);
             URLConnection connection = url.openConnection();
             connection.setConnectTimeout(15000);
@@ -74,7 +75,6 @@ public class NetworkManager {
             List<String> cookies = connection.getHeaderFields().get("Set-Cookie");
             String loginCookie = "";
             for (String cookie : cookies){
-                //Log.i("COOKIE!", cookie);
                 loginCookie = cookie;
             }
 
@@ -82,7 +82,6 @@ public class NetworkManager {
 
             JSONObject obj = new JSONObject(response.toString());
             int uid = obj.getInt("userId");
-            //Log.i("NetworkManager", "UID get " + uid);
 
             // STEP 2 UID SERVER LOGIN
 
@@ -91,12 +90,9 @@ public class NetworkManager {
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(15000);
             connection.setRequestProperty("cookie", loginCookie);
-            //connection.connect();
             cookies = connection.getHeaderFields().get("Set-Cookie");
-            //Log.i("UpdateDockInfo()", url.toString());
             loginCookie = "";
             for (String cookie : cookies){
-                //Log.i("COOKIE!", cookie);
                 loginCookie = cookie;
             }
 
@@ -108,7 +104,6 @@ public class NetworkManager {
                 response.append(inputLine);
             }
             in.close();
-            //Log.i("NetworkManager", response.toString());
 
             // STEP 3 GET USER DATA
 
@@ -117,7 +112,6 @@ public class NetworkManager {
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(15000);
             connection.setRequestProperty("cookie", loginCookie);
-            
 
             in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             //String inputLine;
@@ -141,9 +135,7 @@ public class NetworkManager {
 
 
             JSONObject pveExploreVo = data.getJSONObject("pveExploreVo");
-            //Log.i("NetworkManager", pveExploreVo.toString());
             JSONArray levels = pveExploreVo.getJSONArray("levels");
-            //Log.i("NetworkManager", levels.toString());
             for (int i = 0; i < levels.length(); i++){
                 JSONObject level = levels.getJSONObject(i);
                 DockInfo.dockTravelTime[level.getInt("fleetId")-1] = level.getInt("endTime");
@@ -198,10 +190,6 @@ public class NetworkManager {
         }
 
 
-    }
-
-    public static String encrypt(String s){
-        return s;
     }
 
 }
