@@ -14,12 +14,14 @@
         <item>胡德</item>
         <item>萨拉托加</item>
         <item>俾斯麦</item>
+        <item>声望</item>
     </string-array>
     <string-array name="pref_choice_server_values">
         <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
+        <item>4</item>
     </string-array>
 
     <!-- Example settings for Data & Sync -->
@@ -100,7 +102,7 @@
     <string name="pref_summary_notify_make">Constriction Notifications (Equipment)</string>
 
     <string name="pref_header_about">关于 About</string>
-    <string name="pref_copyright">战舰少女Viewer b1.5 by 提督の機霸\n©2014&#8211;2015 crafter.me</string>
+    <string name="pref_copyright">战舰少女Viewer b1.6 by 提督の機霸\n©2014&#8211;2015 crafter.me</string>
 
     <string name="pref_summary_on">Master Switch</string>
 
