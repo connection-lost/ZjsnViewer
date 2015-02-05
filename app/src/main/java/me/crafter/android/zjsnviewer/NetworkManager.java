@@ -20,7 +20,8 @@ public class NetworkManager {
     public static String url_init = "api/initData&t=233&e=1ed5c25c8fcab96f9f4b3adbefd90ecc";
     public static String url_passport = "http://login.alpha.p7game.com/index/passportLogin/";//+username/password
     public static String url_login = "index/login/";//+uid
-    public static String[] url_server = {"http://zj.alpha.p7game.com/","http://s2.zj.p7game.com/","http://s3.zj.p7game.com/","http://s4.zj.p7game.com/","http://s5.zj.p7game.com/"};
+    public static String[] url_server = {"http://zj.alpha.p7game.com/","http://s2.zj.p7game.com/",
+            "http://s3.zj.p7game.com/","http://s4.zj.p7game.com/","http://s5.zj.p7game.com/"};
 
 
     public static void updateDockInfo(Context context){

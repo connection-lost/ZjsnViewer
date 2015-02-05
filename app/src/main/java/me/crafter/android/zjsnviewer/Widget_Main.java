@@ -7,7 +7,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.RemoteViews;
 
 
@@ -56,8 +55,8 @@ public class Widget_Main extends AppWidgetProvider {
         //views.setTextViewText(R.id.textView, "Last Update: " + sdf.format(new Date()));
         views.setTextViewText(R.id.textView2, Storage.str_tiduName);
         views.setTextViewText(R.id.textView, "Level: " + DockInfo.level + " (" + DockInfo.exp + "/" + DockInfo.nextExp + ")");
-        if (DockInfo.level.equals("100")){
-            views.setTextViewText(R.id.textView, "Level: 100 (MAX)");
+        if (DockInfo.level.equals("150")){
+            views.setTextViewText(R.id.textView, "Level: 150 (MAX)");
         }
 
         appWidgetManager.updateAppWidget(new ComponentName(context, Widget_Main.class), views);
