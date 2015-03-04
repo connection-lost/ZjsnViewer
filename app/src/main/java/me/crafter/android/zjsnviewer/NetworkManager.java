@@ -180,6 +180,11 @@ public class NetworkManager {
             DockInfo.updateInterval += 45;
             DockInfo.updateInterval = Math.min(DockInfo.updateInterval, 1200);
 
+//            if (WeatherGuard.yes){
+//                DockInfo.updateInterval = Math.min(DockInfo.updateInterval, 320);
+//                WeatherGuard.dash(data, server, loginCookie);
+//            }
+
         } catch (Exception ex) {
             Log.e("UpdateDockInfo()", "ERR1");
             ex.printStackTrace();
