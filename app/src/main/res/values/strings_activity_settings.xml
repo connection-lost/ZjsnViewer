@@ -26,7 +26,6 @@
         <item>5</item>
     </string-array>
 
-    <!-- Example settings for Data & Sync -->
     <string name="pref_header_data_sync">更新设定 Sync Settings</string>
 
     <string name="pref_title_refresh">挂件刷新时间 Widget Refresh Interval</string>
@@ -47,24 +46,6 @@
         <item>60</item>
         <item>120</item>
         <item>300</item>
-    </string-array>
-
-    <string name="pref_title_platform">平台 Platform （暂时仅限官方）</string>
-    <string-array name="pref_choice_platform_titles">
-        <item>官方</item>
-        <item>百度（不可用）</item>
-        <item>小米（不可用）</item>
-        <item>当乐（不可用）</item>
-        <item>花生壳（不可用）</item>
-        <item>广电局（不可用）</item>
-    </string-array>
-    <string-array name="pref_choice_platform_values">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
     </string-array>
 
     <string name="pref_title_language">显示形式 Style 表示設定</string>
@@ -104,7 +85,7 @@
     <string name="pref_summary_notify_make">Constriction Notifications (Equipment)</string>
 
     <string name="pref_header_about">关于 About</string>
-    <string name="pref_copyright">战舰少女Viewer b1.6 by 提督の機霸\n©2014&#8211;2015 crafter.me</string>
+    <string name="pref_copyright">战舰少女Viewer b1.7 by 提督の機霸\n©2014&#8211;2015 crafter.me</string>
 
     <string name="pref_summary_on">Master Switch</string>
 
