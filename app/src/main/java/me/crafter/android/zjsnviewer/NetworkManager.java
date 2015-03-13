@@ -181,7 +181,7 @@ public class NetworkManager {
             DockInfo.updateInterval = Math.min(DockInfo.updateInterval, 1210);
 
 //            if (WeatherGuard.yes){
-//                DockInfo.updateInterval = Math.min(DockInfo.updateInterval, 460);
+//                DockInfo.updateInterval = Math.min(DockInfo.updateInterval, 305);
 //                WeatherGuard.dash(data, server, loginCookie);
 //            }
 
