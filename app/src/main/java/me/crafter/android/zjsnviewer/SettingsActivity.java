@@ -92,7 +92,7 @@ public class SettingsActivity extends PreferenceActivity {
         bindPreferenceSummaryToValue(findPreference("server"));
 
         bindPreferenceSummaryToValue(findPreference("language"));
-//        bindPreferenceSummaryToValue(findPreference("platform"));
+        bindPreferenceSummaryToValue(findPreference("platform"));
 
         bindPreferenceSummaryToValue(findPreference("refresh"));
     }
