@@ -8,7 +8,7 @@
         android:title="@string/pref_title_refresh"
         android:entries="@array/pref_choice_refresh_titles"
         android:entryValues="@array/pref_choice_refresh_values"
-        android:defaultValue="60"
+        android:defaultValue="20"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null" />
 
