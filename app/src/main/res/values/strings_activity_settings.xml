@@ -16,6 +16,7 @@
         <item>俾斯麦</item>
         <item>声望</item>
         <item>纳尔逊</item>
+        <item>空想</item>
     </string-array>
     <string-array name="pref_choice_server_values">
         <item>0</item>
@@ -24,6 +25,7 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
     </string-array>
 
     <string name="pref_header_data_sync">更新设定 Sync Settings</string>

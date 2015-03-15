@@ -26,7 +26,8 @@ public class NetworkManager {
             "http://s3.zj.p7game.com/",
             "http://s4.zj.p7game.com/",
             "http://s5.zj.p7game.com/",
-            "http://s6.zj.p7game.com/"
+            "http://s6.zj.p7game.com/",
+            "http://s7.zj.p7game.com/"
     };
 
     public static void updateDockInfo(Context context){
