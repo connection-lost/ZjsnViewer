@@ -53,7 +53,7 @@
     <string name="pref_title_platform">平台 Platform （暂时仅限官方）</string>
     <string-array name="pref_choice_platform_titles">
         <item>官方</item>
-        <item>百度（不可用）</item>
+        <item>百度（不可用，也许能做到）</item>
     </string-array>
     <string-array name="pref_choice_platform_values">
         <item>1</item>
@@ -97,7 +97,7 @@
     <string name="pref_summary_notify_make">Constriction Notifications (Equipment)</string>
 
     <string name="pref_header_about">关于 About</string>
-    <string name="pref_copyright">战舰少女Viewer b1.7 by 提督の機霸\n©2014&#8211;2015 crafter.me</string>
+    <string name="pref_copyright">战舰少女Viewer b1.8 by 提督の機霸\n©2014&#8211;2015 crafter.me</string>
 
     <string name="pref_summary_on">Master Switch</string>
 
