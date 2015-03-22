@@ -10,13 +10,13 @@
 
     <string name="pref_title_server_name">服务器 Server</string>
     <string-array name="pref_choice_server_name">
-        <item>ZERO</item>
-        <item>胡德</item>
-        <item>萨拉托加</item>
-        <item>俾斯麦</item>
-        <item>声望</item>
-        <item>纳尔逊</item>
-        <item>空想</item>
+        <item>0 - ZERO</item>
+        <item>1 - 胡德</item>
+        <item>2 - 萨拉托加</item>
+        <item>3 - 俾斯麦</item>
+        <item>4 - 声望</item>
+        <item>5 - 纳尔逊</item>
+        <item>6 - 空想</item>
     </string-array>
     <string-array name="pref_choice_server_values">
         <item>0</item>
