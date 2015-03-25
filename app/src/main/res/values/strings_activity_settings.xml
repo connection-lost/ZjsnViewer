@@ -17,6 +17,8 @@
         <item>4 - 声望</item>
         <item>5 - 纳尔逊</item>
         <item>6 - 空想</item>
+        <item>7 - 海伦娜</item>
+        <item>8 - 突击者</item>
     </string-array>
     <string-array name="pref_choice_server_values">
         <item>0</item>
@@ -26,6 +28,8 @@
         <item>4</item>
         <item>5</item>
         <item>6</item>
+        <item>7</item>
+        <item>8</item>
     </string-array>
 
     <string name="pref_header_data_sync">更新设定 Sync Settings</string>

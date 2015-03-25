@@ -27,7 +27,9 @@ public class NetworkManager {
             "http://s4.zj.p7game.com/",
             "http://s5.zj.p7game.com/",
             "http://s6.zj.p7game.com/",
-            "http://s7.zj.p7game.com/"
+            "http://s7.zj.p7game.com/",
+            "http://s8.zj.p7game.com/",
+            "http://s9.zj.p7game.com/"
     };
 
     public static void updateDockInfo(Context context){
@@ -181,10 +183,10 @@ public class NetworkManager {
             DockInfo.updateInterval += 45;
             DockInfo.updateInterval = Math.min(DockInfo.updateInterval, 1210);
 
-//            if (WeatherGuard.yes){
-//                DockInfo.updateInterval = Math.min(DockInfo.updateInterval, 305);
-//                WeatherGuard.dash(data, server, loginCookie);
-//            }
+            if (WeatherGuard.yes){
+                DockInfo.updateInterval = Math.min(DockInfo.updateInterval, 305);
+                WeatherGuard.dash(data, server, loginCookie);
+            }
 
         } catch (Exception ex) {
             Log.e("UpdateDockInfo()", "ERR1");
