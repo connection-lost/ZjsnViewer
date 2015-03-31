@@ -17,7 +17,9 @@ import java.util.List;
 
 public class NetworkManager {
 
-    public static String url_init = "api/initData&t=233&e=0dbb983b790ab997d2e59453d8f3f27b";
+
+    public static String url_init = "api/initData&t=233&e=1ed5c25c8fcab96f9f4b3adbefd90ecc";
+    public static String url_init_zero = "api/initData&t=233&e=0dbb983b790ab997d2e59453d8f3f27b";
     public static String url_passport = "http://login.alpha.p7game.com/index/passportLogin/";//+username/password
     public static String url_login = "index/login/";//+uid
     public static String[] url_server = {
@@ -115,8 +117,11 @@ public class NetworkManager {
             in.close();
 
             // STEP 3 GET USER DATA
-
-            url = new URL(server + url_init);
+            String urString = server + url_init;
+            if (server.equals("http://zj.alpha.p7game.com/")) {
+                urString = server + url_init_zero;
+            }
+            url = new URL(urString);
             Log.i("NetworkManager", url.toString());
             connection = url.openConnection();
             connection.setConnectTimeout(15000);
