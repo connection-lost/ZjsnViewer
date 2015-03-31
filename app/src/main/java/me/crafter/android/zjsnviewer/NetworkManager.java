@@ -116,7 +116,7 @@ public class NetworkManager {
 
             // STEP 3 GET USER DATA
 
-            url = new URL(server + url_init);
+            url = new URL(server + Encrypt.encrypt());
             connection = url.openConnection();
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(15000);
