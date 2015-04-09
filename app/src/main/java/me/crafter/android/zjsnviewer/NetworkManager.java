@@ -117,7 +117,7 @@ public class NetworkManager {
 
             // STEP 3 GET USER DATA
             String urString = server + url_init;
-            
+
             url = new URL(urString);
             Log.i("NetworkManager", url.toString());
             connection = url.openConnection();
