@@ -30,7 +30,8 @@ public class NetworkManager {
             "http://s6.zj.p7game.com/",
             "http://s7.zj.p7game.com/",
             "http://s8.zj.p7game.com/",
-            "http://s9.zj.p7game.com/"
+            "http://s9.zj.p7game.com/",
+            "http://s10.zj.p7game.com/"
     };
 
     public static void updateDockInfo(Context context){
@@ -41,7 +42,7 @@ public class NetworkManager {
         String username = prefs.getString("username", "none");
         String password = prefs.getString("password", "none");
         String server = prefs.getString("server", "-1");
-        if (server.equals("-1")) return;
+        if (server != null && server.equals("-1")) return;
         server = url_server[Integer.parseInt(server)];
 
         Boolean on = prefs.getBoolean("on", false);

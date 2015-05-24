@@ -19,6 +19,7 @@
         <item>6 - 空想</item>
         <item>7 - 海伦娜</item>
         <item>8 - 突击者</item>
+        <item>9 - 黎塞留</item>
     </string-array>
     <string-array name="pref_choice_server_values">
         <item>0</item>
@@ -30,6 +31,7 @@
         <item>6</item>
         <item>7</item>
         <item>8</item>
+        <item>9</item>
     </string-array>
 
     <string name="pref_header_data_sync">更新设定 Sync Settings</string>
@@ -101,7 +103,7 @@
     <string name="pref_summary_notify_make">Constriction Notifications (Equipment)</string>
 
     <string name="pref_header_about">关于 About</string>
-    <string name="pref_copyright">战舰少女Viewer b1.10 by 提督の機霸\n©2014&#8211;2015 crafter.me</string>
+    <string name="pref_copyright">战舰少女Viewer b1.11 by 提督の機霸\n©2014&#8211;2015 crafter.me</string>
 
     <string name="pref_summary_on">Master Switch</string>
 
