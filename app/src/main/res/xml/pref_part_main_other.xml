@@ -1,0 +1,14 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:title="高级设定"
+        android:summary="强制服务器/黑科技"
+        android:key="go_pref_sync">
+    </Preference>
+
+    <Preference
+        android:title="检查更新"
+        android:summary="呜喵~ 0w0"
+        android:key="go_pref_sync">
+    </Preference>
+</PreferenceScreen>

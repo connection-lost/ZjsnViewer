@@ -75,7 +75,7 @@ public class TimerService extends Service {
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    Log.i("TimerService", "run() - TimerService Receive Call");
+//                   Log.i("TimerService", "run() - TimerService Receive Call");
 
                     new Proceed().execute(null);
                 }
@@ -100,7 +100,7 @@ public class TimerService extends Service {
             //if screen not on, widget should not update
             PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
             if (!pm.isScreenOn()){
-                Log.i("TimerService", "run() - Screen is off, ignores update.");
+                //Log.i("TimerService", "run() - Screen is off, ignores update.");
             } else {
                 int currentUnix = DockInfo.currentUnix();
                 if (currentUnix - lastWidgetUpdate >= Integer.parseInt(prefs.getString("refresh", "60"))){
