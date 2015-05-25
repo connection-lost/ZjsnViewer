@@ -12,35 +12,6 @@ public class Storage {
 
     public static int language = 0;
 
-//    public static String str_tiduName = "提督の名前";
-//    public static String str_reportTitle = "战舰少女码头报告";
-//    public static String str_locked = "该槽位已被锁定";
-//    public static String str_idle = "空闲中";
-//    public static String str_hour = "时";
-//    public static String str_minute = "分";
-//    public static String str_travel = "远征中 - ";
-//    public static String str_repair = "修理中 - ";
-//    public static String str_build = "建造中 - ";
-//    public static String str_make = "开发中 - ";
-//    public static String str_travel2 = "远征完成";
-//    public static String str_repair2 = "修理完成";
-//    public static String str_build2 = "建造完成";
-//    public static String str_make2 = "开发完成";
-//    public static String str_thereIs = "有";
-//    public static String str_teamsTravelling = "个队伍正在远征，";
-//    public static String str_travelDone = "远征结束，";
-//    public static String str_team = "队、";
-//    public static String str_allFleetFixed = "全部舰船维修完成，";
-//    public static String str_isRepairing = "艘船正在维修，";
-//    public static String str_allFleetBuilt = "全部舰船建造完成，";
-//    public static String str_fleetIsBuilding = "艘船正在建造，";
-//    public static String str_allEquipmentMade = "全部装备开发完成。";
-//    public static String str_equipmentIsMaking = "个装备正在开发。";
-//    public static String str_badLogin = "用户名密码错误";
-//    public static String str_noUserData = "数据错误，你选错服务器了？";
-//    public static String str_badConnection = "网炸了";
-//    public static String str_notOn = "未开启";
-
     public static String str_tiduName = "提督の名前";
     public static String[] str_reportTitle = {"战舰少女码头报告","战舰少女码头报告","戰艦少女碼頭通知","Warship Girls Dock Report","提督注意書","战舰少女码头报告",""};
     public static String[] str_locked = {"该槽位已被锁定","槽位锁定","該槽位已被鎖定","Slot Locked","???","x",""};
@@ -86,8 +57,7 @@ public class Storage {
         if (intent == null){
             intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.p7game.com/games.php"));
         }
-        PendingIntent pending = PendingIntent.getActivity(context, 0, intent, 0);
-        return pending;
+        return PendingIntent.getActivity(context, 0, intent, 0);
     }
 
 }
