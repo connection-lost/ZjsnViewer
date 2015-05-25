@@ -106,6 +106,7 @@
     <string name="pref_copyright">战舰少女Viewer b1.11 by 提督の機霸\n©2014&#8211;2015 crafter.me</string>
 
     <string name="pref_summary_on">Master Switch</string>
+    <string name="pref_ringtone_silent">silent</string>
 
 
 </resources>
