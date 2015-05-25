@@ -22,28 +22,28 @@ public class SettingsActivity extends PreferenceActivity {
     }
 
     private void setupSimplePreferencesScreen() {
-        addPreferencesFromResource(R.xml.pref_top);
+        addPreferencesFromResource(R.xml.pref_shared_top);
 
         // Add 'general' preferences.
         PreferenceCategory fakeHeader = new PreferenceCategory(this);
         fakeHeader.setTitle(R.string.pref_header_account);
         getPreferenceScreen().addPreference(fakeHeader);
-        addPreferencesFromResource(R.xml.pref_general);
+        addPreferencesFromResource(R.xml.pref_part_general);
 
         fakeHeader = new PreferenceCategory(this);
         fakeHeader.setTitle(R.string.pref_header_notifications);
         getPreferenceScreen().addPreference(fakeHeader);
-        addPreferencesFromResource(R.xml.pref_notification);
+        addPreferencesFromResource(R.xml.pref_part_notification);
 
         fakeHeader = new PreferenceCategory(this);
         fakeHeader.setTitle(R.string.pref_header_data_sync);
         getPreferenceScreen().addPreference(fakeHeader);
-        addPreferencesFromResource(R.xml.pref_data_sync);
+        addPreferencesFromResource(R.xml.pref_part_sync);
 
         fakeHeader = new PreferenceCategory(this);
         fakeHeader.setTitle(R.string.pref_header_about);
         getPreferenceScreen().addPreference(fakeHeader);
-        addPreferencesFromResource(R.xml.pref_bot);
+        addPreferencesFromResource(R.xml.pref_shared_bot);
 
         bindPreferenceSummaryToValue(findPreference("username"));
         bindPreferenceSummaryToValue(findPreference("server"));
