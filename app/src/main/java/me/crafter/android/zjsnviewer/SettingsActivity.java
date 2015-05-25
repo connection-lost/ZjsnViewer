@@ -12,6 +12,7 @@ import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
 
+@SuppressWarnings("deprecation")
 public class SettingsActivity extends PreferenceActivity {
 
     @Override
