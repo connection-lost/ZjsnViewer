@@ -11,12 +11,9 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
 @SuppressWarnings("deprecation")
-public class ZjsnViewer extends PreferenceActivity {
+public class SettingsGeneral extends PreferenceActivity {
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -27,30 +24,21 @@ public class ZjsnViewer extends PreferenceActivity {
     private void setupSimplePreferencesScreen() {
         addPreferencesFromResource(R.xml.pref_shared_top);
 
-        // Add 'main' preferences.
+        // Add 'general' preferences.
         PreferenceCategory fakeHeader = new PreferenceCategory(this);
-        fakeHeader.setTitle(R.string.pref_header_main);
+        fakeHeader.setTitle(R.string.pref_header_account);
         getPreferenceScreen().addPreference(fakeHeader);
-        addPreferencesFromResource(R.xml.pref_part_main_settings);
+        addPreferencesFromResource(R.xml.pref_part_general);
 
-        // Add 'other' preferences.
-        fakeHeader = new PreferenceCategory(this);
-        fakeHeader.setTitle(R.string.pref_header_other);
-        getPreferenceScreen().addPreference(fakeHeader);
-        addPreferencesFromResource(R.xml.pref_part_main_other);
-
-        // Add bottom
-        fakeHeader = new PreferenceCategory(this);
-        fakeHeader.setTitle(R.string.pref_header_about);
-        getPreferenceScreen().addPreference(fakeHeader);
-        addPreferencesFromResource(R.xml.pref_shared_bot);
-
+        bindPreferenceSummaryToValue(findPreference("username"));
+        bindPreferenceSummaryToValue(findPreference("server"));
+        bindPreferenceSummaryToValue(findPreference("language"));
     }
 
-    public void openGeneralTab(View v){
-        Log.i("main", "openGeneralTab");
-    }
-
+    /**
+     * A preference value change listener that updates the preference's summary
+     * to reflect its new value.
+     */
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {

@@ -1,11 +1,5 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <CheckBoxPreference
-        android:key="on"
-        android:title="@string/pref_title_on"
-        android:summary="@string/pref_summary_on"
-        android:defaultValue="true" />
-
     <EditTextPreference
         android:key="username"
         android:title="@string/pref_title_account"
@@ -34,14 +28,14 @@
         android:negativeButtonText="@null"
         android:positiveButtonText="@null" />
 
-    <ListPreference
-        android:key="platform"
-        android:title="@string/pref_title_platform"
-        android:defaultValue="1"
-        android:entries="@array/pref_choice_platform_titles"
-        android:entryValues="@array/pref_choice_platform_values"
-        android:negativeButtonText="@null"
-        android:positiveButtonText="@null" />
+    <!--<ListPreference-->
+        <!--android:key="platform"-->
+        <!--android:title="@string/pref_title_platform"-->
+        <!--android:defaultValue="1"-->
+        <!--android:entries="@array/pref_choice_platform_titles"-->
+        <!--android:entryValues="@array/pref_choice_platform_values"-->
+        <!--android:negativeButtonText="@null"-->
+        <!--android:positiveButtonText="@null" />-->
 
     <ListPreference
         android:key="language"
