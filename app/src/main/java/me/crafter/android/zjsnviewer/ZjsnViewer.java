@@ -11,6 +11,9 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 @SuppressWarnings("deprecation")
 public class ZjsnViewer extends PreferenceActivity {
@@ -42,6 +45,10 @@ public class ZjsnViewer extends PreferenceActivity {
         getPreferenceScreen().addPreference(fakeHeader);
         addPreferencesFromResource(R.xml.pref_shared_bot);
 
+    }
+
+    public void openGeneralTab(View v){
+        Log.i("main", "openGeneralTab");
     }
 
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {

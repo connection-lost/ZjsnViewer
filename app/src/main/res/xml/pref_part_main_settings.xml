@@ -10,6 +10,8 @@
         android:title="账户设置"
         android:summary="用户名/密码/服务器"
         android:key="go_pref_general">
+            <intent android:targetPackage="me.crafter.android.zjsnviewer"
+            android:targetClass="me.crafter.android.zjsnviewer.SettingsGeneral"/>
     </Preference>
 
     <Preference
@@ -27,7 +29,7 @@
     <Preference
         android:title="自定义"
         android:summary="字体大小/颜色/显示方式"
-        android:key="go_pref_sync">
+        android:key="go_pref_customize">
     </Preference>
 
 </PreferenceScreen>
