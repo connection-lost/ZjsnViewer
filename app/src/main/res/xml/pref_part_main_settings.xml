@@ -7,7 +7,7 @@
         android:defaultValue="true" />
 
     <Preference
-        android:title="账户设置"
+        android:title="@string/pref_header_account"
         android:summary="用户名/密码/服务器"
         android:key="go_pref_general">
             <intent android:targetPackage="me.crafter.android.zjsnviewer"

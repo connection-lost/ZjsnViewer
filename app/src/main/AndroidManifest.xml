@@ -84,22 +84,28 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".SettingsGeneral"
-            android:label="@string/title_activity_settings" >
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+        <!-- Main Class -->
         <activity
             android:name=".ZjsnViewer"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Settings General -->
+        <activity
+            android:name=".SettingsGeneral"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="me.crafter.android.zjsnviewer.ZjsnViewer" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="me.crafter.android.zjsnviewer.ZjsnViewer" />
+            >
+        </activity>
+
+
 
 
     </application>
