@@ -85,10 +85,10 @@
     <string name="pref_title_notify_build">建造结束通知</string>
     <string name="pref_title_notify_make">开发结束通知</string>
 
-    <string name="pref_summary_notify_general">Turn On Notifications</string>
-    <string name="pref_summary_notify_travel">Expedition Notifications</string>
-    <string name="pref_summary_notify_repair">Repair Notifications</string>
-    <string name="pref_summary_notify_build">Constriction Notifications (Fleet)</string>
-    <string name="pref_summary_notify_make">Constriction Notifications (Equipment)</string>
+    <!--<string name="pref_summary_notify_general">Turn On Notifications</string>-->
+    <!--<string name="pref_summary_notify_travel">Expedition Notifications</string>-->
+    <!--<string name="pref_summary_notify_repair">Repair Notifications</string>-->
+    <!--<string name="pref_summary_notify_build">Constriction Notifications (Fleet)</string>-->
+    <!--<string name="pref_summary_notify_make">Constriction Notifications (Equipment)</string>-->
 
 </resources>
