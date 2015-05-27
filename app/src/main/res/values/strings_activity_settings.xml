@@ -5,112 +5,12 @@
 
     <string name="pref_header_main">各种设定</string>
     <string name="pref_header_other">其他</string>
-
     <string name="pref_header_account">账户设置</string>
-    <string name="pref_title_account">用户名</string>
-    <string name="pref_default_account">此处输入用户名</string>
-    <string name="pref_title_password">密码</string>
-    <string name="pref_title_server_name">服务器</string>
-
-    <!--<string name="pref_title_platform">平台 Platform （暂时仅限官方）</string>-->
-    <!--<string-array name="pref_choice_platform_titles">-->
-        <!--<item>官方</item>-->
-        <!--<item>百度（不可用，也许能做到）</item>-->
-    <!--</string-array>-->
-    <!--<string-array name="pref_choice_platform_values">-->
-        <!--<item>1</item>-->
-        <!--<item>2</item>-->
-    <!--</string-array>-->
-
-    <string name="pref_title_language">语言/显示形式</string>
-    <string-array name="pref_choice_language_titles">
-        <item>简体中文</item>
-        <item>简体中文短</item>
-        <item>正體中文</item>
-        <item>English</item>
-        <item>日本語</item>
-        <item>精简 Lite スリム化</item>
-    </string-array>
-    <string-array name="pref_choice_language_values">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-    </string-array>
-
-
-    <string-array name="pref_choice_server_name">
-        <item>0 - ZERO</item>
-        <item>1 - 胡德</item>
-        <item>2 - 萨拉托加</item>
-        <item>3 - 俾斯麦</item>
-        <item>4 - 声望</item>
-        <item>5 - 纳尔逊</item>
-        <item>6 - 空想</item>
-        <item>7 - 海伦娜</item>
-        <item>8 - 突击者</item>
-        <item>9 - 黎塞留</item>
-    </string-array>
-    <string-array name="pref_choice_server_values">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-    </string-array>
-
-    <string name="pref_header_data_sync">更新设定 Sync Settings</string>
-
-    <string name="pref_title_refresh">挂件刷新时间 Widget Refresh Interval</string>
-    <string-array name="pref_choice_refresh_titles">
-        <item>5秒</item>
-        <item>10秒</item>
-        <item>20秒</item>
-        <item>30秒</item>
-        <item>1分钟</item>
-        <item>2分钟</item>
-        <item>5分钟</item>
-    </string-array>
-    <string-array name="pref_choice_refresh_values">
-        <item>5</item>
-        <item>10</item>
-        <item>20</item>
-        <item>30</item>
-        <item>60</item>
-        <item>120</item>
-        <item>300</item>
-    </string-array>
-
-
-
-
-    <!-- Example settings for Notifications -->
-    <string name="pref_title_on">总开关</string>
-
+    <string name="pref_header_data_sync">更新设定</string>
     <string name="pref_header_notification">通知设定 Notifications</string>
-
-    <string name="pref_title_notify_general">开启推送通知</string>
-    <string name="pref_title_notify_travel">远征结束通知</string>
-    <string name="pref_title_notify_repair">维修结束通知</string>
-    <string name="pref_title_notify_build">建造结束通知</string>
-    <string name="pref_title_notify_make">开发结束通知</string>
-
-    <string name="pref_summary_notify_general">Turn On Notifications</string>
-    <string name="pref_summary_notify_travel">Expedition Notifications</string>
-    <string name="pref_summary_notify_repair">Repair Notifications</string>
-    <string name="pref_summary_notify_build">Constriction Notifications (Fleet)</string>
-    <string name="pref_summary_notify_make">Constriction Notifications (Equipment)</string>
 
     <string name="pref_header_about">关于 About</string>
     <string name="pref_copyright">战舰少女Viewer 2.-1 by 提督の機霸\n©2014&#8211;2015 crafter.me</string>
-
     <string name="pref_summary_on">Master Switch</string>
     <string name="pref_ringtone_silent">silent</string>
 
