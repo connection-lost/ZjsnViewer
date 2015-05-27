@@ -1,6 +1,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <CheckBoxPreference
+    <SwitchPreference
         android:key="notification_general"
         android:title="@string/pref_title_notify_general"
         android:summary="@string/pref_summary_notify_general"

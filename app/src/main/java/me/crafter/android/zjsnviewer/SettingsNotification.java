@@ -10,50 +10,42 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
 
 @SuppressWarnings("deprecation")
-public class SettingsActivity extends PreferenceActivity {
+public class SettingsNotification extends PreferenceActivity {
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+        setupToolBar();
         setupSimplePreferencesScreen();
     }
 
     private void setupSimplePreferencesScreen() {
-        addPreferencesFromResource(R.xml.pref_shared_top);
-
-        // Add 'general' preferences.
+        addPreferencesFromResource(R.xml.pref_shared_empty);
+        // Add 'notification' preferences.
         PreferenceCategory fakeHeader = new PreferenceCategory(this);
-        fakeHeader.setTitle(R.string.pref_header_account);
-        getPreferenceScreen().addPreference(fakeHeader);
-        addPreferencesFromResource(R.xml.pref_part_general);
-
-        fakeHeader = new PreferenceCategory(this);
         fakeHeader.setTitle(R.string.pref_header_notification);
         getPreferenceScreen().addPreference(fakeHeader);
         addPreferencesFromResource(R.xml.pref_part_notification);
-
-        fakeHeader = new PreferenceCategory(this);
-        fakeHeader.setTitle(R.string.pref_header_data_sync);
-        getPreferenceScreen().addPreference(fakeHeader);
-        addPreferencesFromResource(R.xml.pref_part_sync);
-
-        fakeHeader = new PreferenceCategory(this);
-        fakeHeader.setTitle(R.string.pref_header_about);
-        getPreferenceScreen().addPreference(fakeHeader);
-        addPreferencesFromResource(R.xml.pref_shared_bot);
-
-        bindPreferenceSummaryToValue(findPreference("username"));
-        bindPreferenceSummaryToValue(findPreference("server"));
-
-        bindPreferenceSummaryToValue(findPreference("language"));
-        bindPreferenceSummaryToValue(findPreference("platform"));
-
-        bindPreferenceSummaryToValue(findPreference("refresh"));
     }
 
+    private void setupToolBar(){
+        LinearLayout root = (LinearLayout)findViewById(android.R.id.list).getParent().getParent().getParent();
+        Toolbar bar = (Toolbar) LayoutInflater.from(this).inflate(R.layout.pref_shared_toolbar, root, false);
+        root.addView(bar, 0); // insert at top
+        bar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
     /**
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.

@@ -94,7 +94,7 @@
     <!-- Example settings for Notifications -->
     <string name="pref_title_on">总开关</string>
 
-    <string name="pref_header_notifications">通知设定 Notifications</string>
+    <string name="pref_header_notification">通知设定 Notifications</string>
 
     <string name="pref_title_notify_general">开启推送通知</string>
     <string name="pref_title_notify_travel">远征结束通知</string>

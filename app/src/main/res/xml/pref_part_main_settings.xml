@@ -18,12 +18,16 @@
         android:title="通知设置"
         android:summary="远征/入渠/建造结束通知"
         android:key="go_pref_notification">
+        <intent android:targetPackage="me.crafter.android.zjsnviewer"
+            android:targetClass="me.crafter.android.zjsnviewer.SettingsNotification"/>
     </Preference>
 
     <Preference
         android:title="更新设置"
         android:summary="挂件刷新时间"
         android:key="go_pref_sync">
+        <intent android:targetPackage="me.crafter.android.zjsnviewer"
+            android:targetClass="me.crafter.android.zjsnviewer.SettingsSync"/>
     </Preference>
 
     <Preference
