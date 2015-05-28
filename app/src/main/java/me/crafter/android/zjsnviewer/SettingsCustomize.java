@@ -33,7 +33,7 @@ public class SettingsCustomize extends PreferenceActivity {
         fakeHeader.setTitle(R.string.pref_header_customize);
         getPreferenceScreen().addPreference(fakeHeader);
         addPreferencesFromResource(R.xml.pref_part_customize);
-        bindPreferenceSummaryToValue(findPreference("textsize"));
+        bindPreferenceSummaryToValue(findPreference("textsize_minor"));
     }
 
     private void setupToolBar(){
