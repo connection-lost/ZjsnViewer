@@ -58,7 +58,7 @@
         <item>9</item>
     </string-array>
 
-    <string name="pref_title_refresh">挂件刷新时间 Widget Refresh Interval</string>
+    <string name="pref_title_refresh">挂件刷新时间</string>
     <string-array name="pref_choice_refresh_titles">
         <item>5秒</item>
         <item>10秒</item>
