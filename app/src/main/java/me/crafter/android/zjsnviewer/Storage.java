@@ -62,8 +62,8 @@ public class Storage {
 
     public static float getTextSizeMinor(Context context){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String size = prefs.getString("textsize", "14");
-        float ret = 14;
+        String size = prefs.getString("textsize_minor", "48");
+        float ret = 48;
         try {
             ret = Float.parseFloat(size);
         } catch (Exception ex) {}
