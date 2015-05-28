@@ -4,11 +4,17 @@
     <string name="title_actionbar_default">战舰少女Viewer设置</string>
 
     <string name="pref_header_main">各种设定</string>
-    <string name="pref_header_other">其他</string>
     <string name="pref_header_account">账户设置</string>
     <string name="pref_header_data_sync">更新设定</string>
     <string name="pref_header_notification">通知设定</string>
     <string name="pref_header_customize">自定义</string>
+    <string name="pref_header_other">其他</string>
+
+    <string name="pref_summary_account">用户名/密码/服务器</string>
+    <string name="pref_summary_data_sync">远征/入渠/建造结束通知</string>
+    <string name="pref_summary_notification">挂件刷新时间</string>
+    <string name="pref_summary_customize">字体大小/显示方式</string>
+    <string name="pref_summary_other">其他</string>
 
     <string name="pref_header_about">关于 About</string>
     <string name="pref_copyright">战舰少女Viewer 2.-1 by 提督の機霸\n©2014&#8211;2015 crafter.me</string>
