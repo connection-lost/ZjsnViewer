@@ -3,7 +3,7 @@
     <EditTextPreference
         android:key="textsize"
         android:title="@string/pref_title_textsize"
-        android:defaultValue="@float/pref_default_textsize"
+        android:defaultValue="@string/pref_default_textsize"
         android:selectAllOnFocus="true"
         android:inputType="numberDecimal"
         android:singleLine="true"

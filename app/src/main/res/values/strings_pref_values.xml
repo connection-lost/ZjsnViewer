@@ -92,6 +92,6 @@
     <string name="pref_summary_notify_make">Constriction Notifications (Equipment)</string>
 
     <string name="pref_title_textsize">挂件字体大小</string>
-    <float name="pref_default_textsize">14</float>
+    <string name="pref_default_textsize">14</string>
 
 </resources>

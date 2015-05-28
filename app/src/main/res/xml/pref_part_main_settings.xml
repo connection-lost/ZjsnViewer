@@ -34,6 +34,8 @@
         android:title="自定义"
         android:summary="字体大小/颜色/显示方式"
         android:key="go_pref_customize">
+        <intent android:targetPackage="me.crafter.android.zjsnviewer"
+            android:targetClass="me.crafter.android.zjsnviewer.SettingsCustomize"/>
     </Preference>
 
 </PreferenceScreen>
