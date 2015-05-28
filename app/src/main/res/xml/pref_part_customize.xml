@@ -1,9 +1,9 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <EditTextPreference
-        android:key="textsize"
-        android:title="@string/pref_title_textsize"
-        android:defaultValue="@string/pref_default_textsize"
+        android:key="textsize_minor"
+        android:title="@string/pref_title_textsize_minor"
+        android:defaultValue="@string/pref_default_textsize_minor"
         android:selectAllOnFocus="true"
         android:inputType="numberDecimal"
         android:singleLine="true"

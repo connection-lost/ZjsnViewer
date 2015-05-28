@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.widget.RemoteViews;
 
 
@@ -49,6 +50,11 @@ public class Widget_Make extends AppWidgetProvider {
         views.setTextViewText(R.id.textView2, info[1]);
         views.setTextViewText(R.id.textView3, info[2]);
         views.setTextViewText(R.id.textView4, info[3]);
+        float textsize = Storage.getTextSizeMinor(context);
+        views.setTextViewTextSize(R.id.textView1, TypedValue.COMPLEX_UNIT_PX, textsize);
+        views.setTextViewTextSize(R.id.textView2, TypedValue.COMPLEX_UNIT_PX, textsize);
+        views.setTextViewTextSize(R.id.textView3, TypedValue.COMPLEX_UNIT_PX, textsize);
+        views.setTextViewTextSize(R.id.textView4, TypedValue.COMPLEX_UNIT_PX, textsize);
         appWidgetManager.updateAppWidget(new ComponentName(context, Widget_Make.class), views);
     }
 }

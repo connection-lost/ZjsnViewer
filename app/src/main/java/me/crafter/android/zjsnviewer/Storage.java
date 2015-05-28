@@ -60,4 +60,14 @@ public class Storage {
         return PendingIntent.getActivity(context, 0, intent, 0);
     }
 
+    public static float getTextSizeMinor(Context context){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        String size = prefs.getString("textsize", "14");
+        float ret = 14;
+        try {
+            ret = Float.parseFloat(size);
+        } catch (Exception ex) {}
+        return ret;
+    }
+
 }
