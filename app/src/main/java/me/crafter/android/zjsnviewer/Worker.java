@@ -16,7 +16,7 @@ public class Worker {
 
     public static void mainSetTextSize(Context context, RemoteViews views){
         float textsize = Storage.getTextSizeMajor(context);
-        views.setTextViewTextSize(R.id.textView1, TypedValue.COMPLEX_UNIT_PX, textsize);
+        views.setTextViewTextSize(R.id.textView2, TypedValue.COMPLEX_UNIT_PX, textsize);
         views.setTextViewTextSize(R.id.textView, TypedValue.COMPLEX_UNIT_PX, textsize);
     }
 }
