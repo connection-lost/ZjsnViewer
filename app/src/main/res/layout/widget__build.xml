@@ -35,10 +35,11 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/none"
                 android:id="@+id/textView1"
-                android:shadowColor="#ff111111"
+                android:shadowColor="@color/widget_minor_shadow"
                 android:shadowDx="1"
                 android:shadowDy="1"
-                android:shadowRadius="2"/>
+                android:shadowRadius="2"
+                android:textColor="@color/widget_minor" />
 
         </RelativeLayout>
 
@@ -66,7 +67,8 @@
                 android:shadowColor="#ff111111"
                 android:shadowDx="1"
                 android:shadowDy="1"
-                android:shadowRadius="2"/>
+                android:shadowRadius="2"
+                android:textColor="@color/widget_minor" />
 
         </RelativeLayout>
 
@@ -94,7 +96,8 @@
                 android:shadowColor="#ff111111"
                 android:shadowDx="1"
                 android:shadowDy="1"
-                android:shadowRadius="2"/>
+                android:shadowRadius="2"
+                android:textColor="@color/widget_minor"/>
 
         </RelativeLayout>
 
@@ -122,7 +125,8 @@
                 android:shadowColor="#ff111111"
                 android:shadowDx="1"
                 android:shadowDy="1"
-                android:shadowRadius="2"/>
+                android:shadowRadius="2"
+                android:textColor="@color/widget_minor"/>
 
         </RelativeLayout>
     </LinearLayout>

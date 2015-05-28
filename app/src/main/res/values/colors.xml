@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="widget_minor">#fafafa</color>
+    <color name="widget_major">#070707</color>
 
-
+    <color name="widget_minor_shadow">#070707</color>
+    <color name="widget_major_shadow">#fafafa</color>
 
 
 

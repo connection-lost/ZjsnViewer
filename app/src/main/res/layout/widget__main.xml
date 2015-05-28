@@ -28,8 +28,8 @@
         android:id="@+id/textView"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:textColor="#ff2a2a2a"
-        android:shadowColor="#ffffffff"
+        android:textColor="@color/widget_major"
+        android:shadowColor="@color/widget_major_shadow"
         android:shadowDx="1"
         android:shadowDy="1"
         android:shadowRadius="2"/>
@@ -41,8 +41,8 @@
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textColor="#ff2a2a2a"
-        android:shadowColor="#ffffffff"
+        android:textColor="@color/widget_major"
+        android:shadowColor="@color/widget_major_shadow"
         android:shadowDx="1"
         android:shadowDy="1"
         android:shadowRadius="2"/>
