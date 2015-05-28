@@ -58,7 +58,7 @@ public class Widget_Main extends AppWidgetProvider {
         if (DockInfo.level.equals("150")){
             views.setTextViewText(R.id.textView, "Level: 150 (MAX)");
         }
-
+        Worker.mainSetTextSize(context, views);
         appWidgetManager.updateAppWidget(new ComponentName(context, Widget_Main.class), views);
     }
 }

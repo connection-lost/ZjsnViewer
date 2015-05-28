@@ -91,7 +91,10 @@
     <string name="pref_summary_notify_build">Constriction Notifications (Fleet)</string>
     <string name="pref_summary_notify_make">Constriction Notifications (Equipment)</string>
 
-    <string name="pref_title_textsize_minor">挂件字体大小</string>
+    <string name="pref_title_textsize_minor">信息挂件字体大小</string>
     <string name="pref_default_textsize_minor">48</string>
+
+    <string name="pref_title_textsize_major">主挂件字体大小</string>
+    <string name="pref_default_textsize_major">48</string>
 
 </resources>

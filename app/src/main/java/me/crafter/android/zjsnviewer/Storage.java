@@ -60,6 +60,17 @@ public class Storage {
         return PendingIntent.getActivity(context, 0, intent, 0);
     }
 
+    public static float getTextSizeMajor(Context context){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        String size = prefs.getString("textsize_major", "48");
+        float ret = 48;
+        try {
+            ret = Float.parseFloat(size);
+        } catch (Exception ex) {}
+        ret = Math.max(0.001F, ret);
+        return ret;
+    }
+
     public static float getTextSizeMinor(Context context){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String size = prefs.getString("textsize_minor", "48");
@@ -67,6 +78,7 @@ public class Storage {
         try {
             ret = Float.parseFloat(size);
         } catch (Exception ex) {}
+        ret = Math.max(0.001F, ret);
         return ret;
     }
 
