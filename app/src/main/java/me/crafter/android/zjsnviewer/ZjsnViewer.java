@@ -1,5 +1,6 @@
 package me.crafter.android.zjsnviewer;
 
+import android.content.Context;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -22,6 +23,7 @@ public class ZjsnViewer extends PreferenceActivity {
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         setupSimplePreferencesScreen();
+        registerListener();
     }
 
     private void setupSimplePreferencesScreen() {
@@ -47,8 +49,22 @@ public class ZjsnViewer extends PreferenceActivity {
 
     }
 
-    public void openGeneralTab(View v){
-        Log.i("main", "openGeneralTab");
+    // Listener
+    private void registerListener(){
+        findPreference("go_pref_check_update").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            public boolean onPreferenceClick(Preference preference) {
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.checking_update), Toast.LENGTH_SHORT).show();
+                // TODO check update here
+                return true;
+            }
+        });
+        findPreference("go_pref_advanced").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            public boolean onPreferenceClick(Preference preference) {
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.unavailable), Toast.LENGTH_SHORT).show();
+                // TODO remove this and add preference page
+                return true;
+            }
+        });
     }
 
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {

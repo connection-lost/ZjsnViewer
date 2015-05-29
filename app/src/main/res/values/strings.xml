@@ -17,4 +17,8 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_zjsn_viewer">ZjsnViewer</string>
 
+
+
+    <string name="checking_update">检查更新中</string>
+    <string name="unavailable">暂未开放 QwQ</string>
 </resources>
