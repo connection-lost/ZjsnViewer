@@ -3,6 +3,7 @@ package me.crafter.android.zjsnviewer;
 import android.content.Context;
 import android.util.TypedValue;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 public class Worker {
 
@@ -18,6 +19,10 @@ public class Worker {
         float textsize = Storage.getTextSizeMajor(context);
         views.setTextViewTextSize(R.id.textView2, TypedValue.COMPLEX_UNIT_PX, textsize);
         views.setTextViewTextSize(R.id.textView, TypedValue.COMPLEX_UNIT_PX, textsize);
+    }
+
+    public static void checkUpdate(Context context){
+        Toast.makeText(context, context.getString(R.string.checking_update), Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -23,7 +23,7 @@ public class ZjsnViewer extends PreferenceActivity {
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         setupSimplePreferencesScreen();
-        registerListener();
+        registerListener(getApplicationContext());
     }
 
     private void setupSimplePreferencesScreen() {
@@ -50,11 +50,10 @@ public class ZjsnViewer extends PreferenceActivity {
     }
 
     // Listener
-    private void registerListener(){
+    private void registerListener(final Context context){
         findPreference("go_pref_check_update").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             public boolean onPreferenceClick(Preference preference) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.checking_update), Toast.LENGTH_SHORT).show();
-                // TODO check update here
+                Worker.checkUpdate(context);
                 return true;
             }
         });
