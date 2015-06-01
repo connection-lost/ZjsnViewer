@@ -82,4 +82,8 @@ public class Storage {
         return ret;
     }
 
+    public static int getVersion(Context context){
+        return R.integer.version;
+    }
+
 }

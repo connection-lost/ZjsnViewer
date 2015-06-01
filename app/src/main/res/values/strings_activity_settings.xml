@@ -18,6 +18,7 @@
 
     <string name="pref_header_about">关于 About</string>
     <string name="pref_copyright">战舰少女Viewer 2.-1 by 提督の機霸\n©2014&#8211;2015 crafter.me</string>
+    <integer name="version">20</integer>
     <string name="pref_summary_on">Master Switch</string>
     <string name="pref_ringtone_silent">silent</string>
 
