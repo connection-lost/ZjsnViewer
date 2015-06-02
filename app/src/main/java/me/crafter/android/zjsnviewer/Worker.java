@@ -132,7 +132,7 @@ public class Worker {
         return ret;
     }
 
-    public static void askUpdate(final Activity activity, final Context context, String message, String url){
+    public static void askUpdate(final Activity activity, final Context context, String message, final String url){
         new Worker();
         new AlertDialog.Builder(activity)
                 .setTitle(R.string.check_update_title)
@@ -140,7 +140,7 @@ public class Worker {
                 .setPositiveButton(R.string.check_update_yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         DownloadManager downloadManager = (DownloadManager)activity.getSystemService(activity.DOWNLOAD_SERVICE);
-                        Uri Download_Uri = Uri.parse("https://www.crafter.me/zjsnviewer/release/ZjsnViewer-b1.11.apk");
+                        Uri Download_Uri = Uri.parse(url);
                         DownloadManager.Request request = new DownloadManager.Request(Download_Uri);
                         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
                         request.setAllowedOverRoaming(true);
