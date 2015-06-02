@@ -134,7 +134,6 @@ public class Worker {
     }
 
     public static void askUpdate(final Activity activity, final Context context, String message, final String url){
-        new Worker();
         new AlertDialog.Builder(activity)
                 .setTitle(R.string.check_update_title)
                 .setMessage(message)
