@@ -53,7 +53,7 @@ public class ZjsnViewer extends PreferenceActivity {
     private void registerListener(final Context context){
         findPreference("go_pref_check_update").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             public boolean onPreferenceClick(Preference preference) {
-                Worker.checkUpdate(context);
+                Worker.checkUpdate(ZjsnViewer.this, context);
                 return true;
             }
         });
