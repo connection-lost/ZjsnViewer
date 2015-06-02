@@ -34,10 +34,10 @@ public class Worker {
         Toast.makeText(context, context.getString(R.string.checking_update), Toast.LENGTH_SHORT).show();
         new AsyncTask<Void, Void, Void>() {
             State state = State.INTERRUPT;
+            String newVersionString = "";
             @Override
             protected Void doInBackground( final Void ... params ) {
                 Log.i("Worker",  "checkUpdate");
-                int currVersion = Storage.getVersion(context);
                 String response = visit("http://zjsn.acg.land/version.json");
                 Log.i("Worker", "Response: " + response);
                 if (response.equals("ERR1")){
@@ -46,14 +46,14 @@ public class Worker {
                 }
                 try {
                     JSONObject obj = new JSONObject(response);
+                    int currVersion = Storage.getVersion(context);
                     int newVersion = obj.getInt("currentVersion");
                     if (newVersion > currVersion){
                         state = State.UPDATE_FOUND;
                     } else {
                         state = State.NO_UPDATE_FOUND;
                     }
-
-
+                    newVersionString = obj.getString("versionString");
 
                 } catch (Exception ex){
                     state = State.PARSE_ERROR;
@@ -75,7 +75,7 @@ public class Worker {
                         Toast.makeText(context, context.getString(R.string.check_update_fail_parse), Toast.LENGTH_SHORT).show();
                         break;
                     case UPDATE_FOUND:
-                        Toast.makeText(context, context.getString(R.string.check_update_success_update_available), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, context.getString(R.string.check_update_success_update_available) + " " + newVersionString, Toast.LENGTH_SHORT).show();
                         break;
                     case NO_UPDATE_FOUND:
                         Toast.makeText(context, context.getString(R.string.check_update_success_no_update), Toast.LENGTH_SHORT).show();

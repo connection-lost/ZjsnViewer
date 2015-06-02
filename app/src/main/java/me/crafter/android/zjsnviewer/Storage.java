@@ -83,7 +83,7 @@ public class Storage {
     }
 
     public static int getVersion(Context context){
-        return R.integer.version;
+        return context.getResources().getInteger(R.integer.version);
     }
 
 }
