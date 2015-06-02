@@ -48,9 +48,7 @@ public class Worker {
             String downloadLink = "";
             @Override
             protected Void doInBackground( final Void ... params ) {
-                Log.i("Worker",  "checkUpdate");
                 String response = visit("http://zjsn.acg.land/version.json");
-                Log.i("Worker", "Response: " + response);
                 if (response.equals("ERR1")){
                     state = State.CONNECTION_FAIL;
                     return null;
@@ -76,8 +74,6 @@ public class Worker {
                     state = State.PARSE_ERROR;
                     return null;
                 }
-
-
                 return null;
             }
             @Override
@@ -157,7 +153,7 @@ public class Worker {
                     public void onClick(DialogInterface dialog, int which) {
                     }
                 })
-                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setIcon(android.R.drawable.ic_dialog_info)
                 .show();
     }
 
