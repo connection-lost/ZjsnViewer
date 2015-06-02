@@ -7,6 +7,8 @@ import android.util.TypedValue;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -31,18 +33,57 @@ public class Worker {
     public static void checkUpdate(final Context context){
         Toast.makeText(context, context.getString(R.string.checking_update), Toast.LENGTH_SHORT).show();
         new AsyncTask<Void, Void, Void>() {
+            State state = State.INTERRUPT;
             @Override
             protected Void doInBackground( final Void ... params ) {
                 Log.i("Worker",  "checkUpdate");
                 int currVersion = Storage.getVersion(context);
+                String response = visit("http://zjsn.acg.land/version.json");
+                Log.i("Worker", "Response: " + response);
+                if (response.equals("ERR1")){
+                    state = State.CONNECTION_FAIL;
+                    return null;
+                }
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    int newVersion = obj.getInt("currentVersion");
+                    if (newVersion > currVersion){
+                        state = State.UPDATE_FOUND;
+                    } else {
+                        state = State.NO_UPDATE_FOUND;
+                    }
 
 
+
+                } catch (Exception ex){
+                    state = State.PARSE_ERROR;
+                    return null;
+                }
 
 
                 return null;
             }
             @Override
             protected void onPostExecute( final Void result ) {
+                switch (state){
+                    case CONNECTION_FAIL:
+                    case CONNECTION_RESET:
+                    case INTERRUPT:
+                        Toast.makeText(context, context.getString(R.string.check_update_fail_connection), Toast.LENGTH_SHORT).show();
+                        break;
+                    case PARSE_ERROR:
+                        Toast.makeText(context, context.getString(R.string.check_update_fail_parse), Toast.LENGTH_SHORT).show();
+                        break;
+                    case UPDATE_FOUND:
+                        Toast.makeText(context, context.getString(R.string.check_update_success_update_available), Toast.LENGTH_SHORT).show();
+                        break;
+                    case NO_UPDATE_FOUND:
+                        Toast.makeText(context, context.getString(R.string.check_update_success_no_update), Toast.LENGTH_SHORT).show();
+                        break;
+                    default:
+                        Toast.makeText(context, context.getString(R.string.check_update_fail_parse), Toast.LENGTH_SHORT).show();
+                        break;
+                }
             }
         }.execute();
     }
