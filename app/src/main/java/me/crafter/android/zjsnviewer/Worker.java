@@ -135,16 +135,6 @@ public class Worker {
                 .setMessage(message)
                 .setPositiveButton(R.string.check_update_yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-//                        DownloadManager downloadManager = (DownloadManager)activity.getSystemService(activity.DOWNLOAD_SERVICE);
-//                        Uri Download_Uri = Uri.parse(url);
-//                        DownloadManager.Request request = new DownloadManager.Request(Download_Uri);
-//                        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
-//                        request.setAllowedOverRoaming(true);
-//                        request.setDescription(context.getResources().getString(R.string.check_update_title_download_manager));
-//                        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "ZjsnViewer.apk");
-//                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-//                        downloadManager.enqueue(request);
-//                        Toast.makeText(context, context.getString(R.string.check_update_downloading), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                         activity.startActivity(intent);
                     }

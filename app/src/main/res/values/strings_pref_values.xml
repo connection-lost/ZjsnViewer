@@ -23,6 +23,7 @@
         <item>English</item>
         <item>日本語</item>
         <item>精简 Lite スリム化</item>
+        <item>？？？</item>
     </string-array>
     <string-array name="pref_choice_language_values">
         <item>0</item>
@@ -31,6 +32,7 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
     </string-array>
 
     <string-array name="pref_choice_server_name">
