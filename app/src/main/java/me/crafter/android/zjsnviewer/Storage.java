@@ -27,7 +27,7 @@ public class Storage {
     public static String[] str_build2 = {"建造完成","建造完成","建造完成","Construction Complete","建造完了","00:00","快抱抱"};
     public static String[] str_make2 = {"开发完成","开发完成","開發完成","Construction Complete","開壳完了","00:00","工具在这里"};
     public static String[] str_thereIs = {"有","有","有","There is(are) ","","","有"};
-    public static String[] str_teamsTravelling = {"个队伍正在远征，","个队伍正在远征，","個隊伍正在遠征，"," teams expedicting,","艦隊遠征中，","个队伍远征中","个队伍出去玩了，"};
+    public static String[] str_teamsTravelling = {"个队伍正在远征，","个队伍正在远征，","個隊伍正在遠征，"," teams expedicting,","艦隊遠征中，","个队伍远征中，","个队伍出去玩了，"};
     public static String[] str_travelDone = {"远征结束，","远征结束，","遠征結束"," completed. ","遠征完了，","远征结束，","回家了，"};
     public static String[] str_team = {"队、","队、","隊、"," team,","隊，","队、","队"};
     public static String[] str_allFleetFixed = {"全部舰船维修完成，","全部舰船维修完成，","全部艦船維修完成","All fleet repaired. ","全艦隊入渠完了","维修全部结束，","所有的妹妹都穿好了衣服，"};

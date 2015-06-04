@@ -35,6 +35,7 @@ public class SettingsCustomize extends PreferenceActivity {
         addPreferencesFromResource(R.xml.pref_part_customize);
         bindPreferenceSummaryToValue(findPreference("textsize_major"));
         bindPreferenceSummaryToValue(findPreference("textsize_minor"));
+        bindPreferenceSummaryToValue(findPreference("language"));
     }
 
     private void setupToolBar(){

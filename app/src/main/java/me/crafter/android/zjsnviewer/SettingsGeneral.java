@@ -36,7 +36,6 @@ public class SettingsGeneral extends PreferenceActivity {
 
         bindPreferenceSummaryToValue(findPreference("username"));
         bindPreferenceSummaryToValue(findPreference("server"));
-        bindPreferenceSummaryToValue(findPreference("language"));
     }
 
     private void setupToolBar(){
