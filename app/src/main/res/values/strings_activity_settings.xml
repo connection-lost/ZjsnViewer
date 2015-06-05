@@ -1,6 +1,5 @@
 <resources>
     <string name="title_activity_settings">ZjsnViewer Settings</string>
-    <string name="title_activity_main">ZjsnViewer 设置</string>
     <string name="title_actionbar_default">战舰少女Viewer设置</string>
 
     <string name="pref_header_main">各种设定</string>
