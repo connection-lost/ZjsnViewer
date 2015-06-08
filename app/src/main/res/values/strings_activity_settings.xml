@@ -8,6 +8,7 @@
     <string name="pref_header_notification">通知设定</string>
     <string name="pref_header_customize">自定义</string>
     <string name="pref_header_other">其他</string>
+    <string name="pref_header_black">黑科技</string>
 
     <string name="pref_summary_account">用户名/密码/服务器</string>
     <string name="pref_summary_data_sync">远征/入渠/建造结束通知</string>

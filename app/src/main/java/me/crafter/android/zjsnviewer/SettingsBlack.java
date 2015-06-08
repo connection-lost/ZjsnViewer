@@ -1,6 +1,5 @@
 package me.crafter.android.zjsnviewer;
 
-import android.content.Context;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -11,54 +10,47 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 
 @SuppressWarnings("deprecation")
-public class ZjsnViewer extends PreferenceActivity {
+public class SettingsBlack extends PreferenceActivity {
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+        setupToolBar();
         setupSimplePreferencesScreen();
-        registerListener(getApplicationContext());
     }
 
     private void setupSimplePreferencesScreen() {
-        addPreferencesFromResource(R.xml.pref_shared_top);
-
-        // Add 'main' preferences.
+        addPreferencesFromResource(R.xml.pref_shared_empty);
+        // Add 'black' preferences.
         PreferenceCategory fakeHeader = new PreferenceCategory(this);
-        fakeHeader.setTitle(R.string.pref_header_main);
-        getPreferenceScreen().addPreference(fakeHeader);
-        addPreferencesFromResource(R.xml.pref_part_main_settings);
-
-        // Add 'other' preferences.
-        fakeHeader = new PreferenceCategory(this);
-        fakeHeader.setTitle(R.string.pref_header_other);
-        getPreferenceScreen().addPreference(fakeHeader);
-        addPreferencesFromResource(R.xml.pref_part_main_other);
-
-        // Add bottom
-        fakeHeader = new PreferenceCategory(this);
-        fakeHeader.setTitle(R.string.pref_header_about);
-        getPreferenceScreen().addPreference(fakeHeader);
-        addPreferencesFromResource(R.xml.pref_shared_bot);
-
+        fakeHeader.setTitle(R.string.pref_header_black);
+        //getPreferenceScreen().addPreference(fakeHeader);
+        //addPreferencesFromResource(R.xml.pref_part_customize);
+        //bindPreferenceSummaryToValue(findPreference(""));
     }
 
-    // Listener
-    private void registerListener(final Context context){
-        findPreference("go_pref_check_update").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            public boolean onPreferenceClick(Preference preference) {
-                Worker.checkUpdate(ZjsnViewer.this, context);
-                return true;
+    private void setupToolBar(){
+        LinearLayout root = (LinearLayout)findViewById(android.R.id.list).getParent().getParent().getParent();
+        Toolbar bar = (Toolbar) LayoutInflater.from(this).inflate(R.layout.pref_shared_toolbar, root, false);
+        root.addView(bar, 0); // insert at top
+        bar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
-
+    /**
+     * A preference value change listener that updates the preference's summary
+     * to reflect its new value.
+     */
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {

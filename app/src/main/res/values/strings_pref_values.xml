@@ -99,4 +99,6 @@
     <string name="pref_title_textsize_major">主挂件字体大小</string>
     <string name="pref_default_textsize_major">48</string>
 
+    <string name="pref_title_black">黑科技开关</string>
+
 </resources>

@@ -86,4 +86,8 @@ public class Storage {
         return context.getResources().getInteger(R.integer.version);
     }
 
+    public static boolean black(Context context){
+        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean("black", false);
+    }
+
 }

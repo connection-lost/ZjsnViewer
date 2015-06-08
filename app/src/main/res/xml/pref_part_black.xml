@@ -1,0 +1,9 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:key="black"
+        android:title="@string/pref_title_black"
+        android:defaultValue="false" />
+
+
+</PreferenceScreen>
