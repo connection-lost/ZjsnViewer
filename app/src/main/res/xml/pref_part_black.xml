@@ -3,7 +3,14 @@
     <SwitchPreference
         android:key="black"
         android:title="@string/pref_title_black"
+        android:summary="@string/pref_summary_black"
         android:defaultValue="false" />
 
+    <SwitchPreference
+        android:key="root"
+        android:dependency="black"
+        android:title="@string/pref_title_root"
+        android:summary="@string/pref_summary_root"
+        android:defaultValue="false" />
 
 </PreferenceScreen>

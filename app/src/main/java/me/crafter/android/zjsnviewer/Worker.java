@@ -18,6 +18,8 @@ import android.widget.Toast;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
@@ -145,6 +147,30 @@ public class Worker {
                 })
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .show();
+    }
+
+    public static boolean testSuperUser(final Context context){
+        Process p;
+        try {
+            p = Runtime.getRuntime().exec("su");
+            DataOutputStream os = new DataOutputStream(p.getOutputStream());
+            os.writeBytes("echo \"Do I have root?\" >/system/sd/temporary.txt\n");
+            os.writeBytes("exit\n");
+            os.flush();
+            try {
+                p.waitFor();
+                if (p.exitValue() != 255) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            } catch (InterruptedException e) {
+                return false;
+            }
+        } catch (IOException e) {
+            return false;
+        }
     }
 
 }

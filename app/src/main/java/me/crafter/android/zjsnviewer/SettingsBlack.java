@@ -1,5 +1,6 @@
 package me.crafter.android.zjsnviewer;
 
+import android.content.Context;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -15,6 +16,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 @SuppressWarnings("deprecation")
 public class SettingsBlack extends PreferenceActivity {
@@ -24,6 +26,7 @@ public class SettingsBlack extends PreferenceActivity {
         super.onPostCreate(savedInstanceState);
         setupToolBar();
         setupSimplePreferencesScreen();
+        registerListener(getApplicationContext());
     }
 
     private void setupSimplePreferencesScreen() {
@@ -31,9 +34,19 @@ public class SettingsBlack extends PreferenceActivity {
         // Add 'black' preferences.
         PreferenceCategory fakeHeader = new PreferenceCategory(this);
         fakeHeader.setTitle(R.string.pref_header_black);
-        //getPreferenceScreen().addPreference(fakeHeader);
-        //addPreferencesFromResource(R.xml.pref_part_customize);
+        getPreferenceScreen().addPreference(fakeHeader);
+        addPreferencesFromResource(R.xml.pref_part_black);
         //bindPreferenceSummaryToValue(findPreference(""));
+    }
+
+    // Listener
+    private void registerListener(final Context context){
+        findPreference("black").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            public boolean onPreferenceClick(Preference preference) {
+                Toast.makeText(context, context.getResources().getString(R.string.black_warning), Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
     }
 
     private void setupToolBar(){

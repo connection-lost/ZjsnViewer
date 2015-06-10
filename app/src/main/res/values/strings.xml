@@ -37,4 +37,7 @@
     <string name="check_update_no">下次再说</string>
 
     <string name="unavailable">暂未开放 QwQ</string>
+
+
+    <string name="black_warning">黑科技有风险，使用请谨慎</string>
 </resources>

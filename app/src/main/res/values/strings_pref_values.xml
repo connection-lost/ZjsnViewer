@@ -100,5 +100,8 @@
     <string name="pref_default_textsize_major">48</string>
 
     <string name="pref_title_black">黑科技开关</string>
+    <string name="pref_summary_black">比较新奇的玩意，请谨慎使用</string>
+    <string name="pref_title_root">真·黑科技</string>
+    <string name="pref_summary_root">无视平台与服务器，甚至不需要设置用户名密码，需要root权限支持</string>
 
 </resources>
