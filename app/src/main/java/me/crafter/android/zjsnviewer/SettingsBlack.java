@@ -1,6 +1,7 @@
 package me.crafter.android.zjsnviewer;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -45,9 +46,10 @@ public class SettingsBlack extends PreferenceActivity {
     private void registerListener(final Context context){
         // TODO change
         // Ref: http://stackoverflow.com/questions/2542938/sharedpreferences-onsharedpreferencechangelistener-not-being-called-consistently
-        findPreference("black").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            public boolean onPreferenceClick(Preference preference) {
-                if (Storage.black(context)) {
+        findPreference("black").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference,Object newValue) {
+                if ((Boolean)newValue){
                     Toast.makeText(context, context.getResources().getString(R.string.black_warning), Toast.LENGTH_SHORT).show();
                 } else {
                     //PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("root", false).commit();
@@ -56,20 +58,47 @@ public class SettingsBlack extends PreferenceActivity {
                 return true;
             }
         });
-        findPreference("root").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            public boolean onPreferenceClick(Preference preference) {
-                if (Storage.root(context)){
+        findPreference("root").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference,Object newValue) {
+                if ((Boolean)newValue){
                     Toast.makeText(context, context.getResources().getString(R.string.root_please), Toast.LENGTH_SHORT).show();
                     if (Worker.testSuperUser(context)){
                         Toast.makeText(context, context.getResources().getString(R.string.root_success), Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(context, context.getResources().getString(R.string.root_fail), Toast.LENGTH_SHORT).show();
-                        ((SwitchPreference)findPreference("root")).setChecked(false);
+                        // TODO not working
+                        ((SwitchPreference)preference).setChecked(false);
                     }
                 }
                 return true;
             }
         });
+//        findPreference("black").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+//            public boolean onPreferenceClick(Preference preference) {
+//                if (Storage.black(context)) {
+//                    Toast.makeText(context, context.getResources().getString(R.string.black_warning), Toast.LENGTH_SHORT).show();
+//                } else {
+//                    //PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("root", false).commit();
+//                    ((SwitchPreference)findPreference("root")).setChecked(false);
+//                }
+//                return true;
+//            }
+//        });
+//        findPreference("root").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+//            public boolean onPreferenceClick(Preference preference) {
+//                if (Storage.root(context)){
+//                    Toast.makeText(context, context.getResources().getString(R.string.root_please), Toast.LENGTH_SHORT).show();
+//                    if (Worker.testSuperUser(context)){
+//                        Toast.makeText(context, context.getResources().getString(R.string.root_success), Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        Toast.makeText(context, context.getResources().getString(R.string.root_fail), Toast.LENGTH_SHORT).show();
+//                        ((SwitchPreference)findPreference("root")).setChecked(false);
+//                    }
+//                }
+//                return true;
+//            }
+//        });
     }
 
     private void setupToolBar(){
