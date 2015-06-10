@@ -90,4 +90,8 @@ public class Storage {
         return PreferenceManager.getDefaultSharedPreferences(context).getBoolean("black", false);
     }
 
+    public static boolean root(Context context){
+        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean("root", false);
+    }
+
 }

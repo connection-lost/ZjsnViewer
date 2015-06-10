@@ -11,8 +11,10 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
+import android.preference.SwitchPreference;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -41,9 +43,30 @@ public class SettingsBlack extends PreferenceActivity {
 
     // Listener
     private void registerListener(final Context context){
+        // TODO change
+        // Ref: http://stackoverflow.com/questions/2542938/sharedpreferences-onsharedpreferencechangelistener-not-being-called-consistently
         findPreference("black").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             public boolean onPreferenceClick(Preference preference) {
-                Toast.makeText(context, context.getResources().getString(R.string.black_warning), Toast.LENGTH_SHORT).show();
+                if (Storage.black(context)) {
+                    Toast.makeText(context, context.getResources().getString(R.string.black_warning), Toast.LENGTH_SHORT).show();
+                } else {
+                    //PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("root", false).commit();
+                    ((SwitchPreference)findPreference("root")).setChecked(false);
+                }
+                return true;
+            }
+        });
+        findPreference("root").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            public boolean onPreferenceClick(Preference preference) {
+                if (Storage.root(context)){
+                    Toast.makeText(context, context.getResources().getString(R.string.root_please), Toast.LENGTH_SHORT).show();
+                    if (Worker.testSuperUser(context)){
+                        Toast.makeText(context, context.getResources().getString(R.string.root_success), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(context, context.getResources().getString(R.string.root_fail), Toast.LENGTH_SHORT).show();
+                        ((SwitchPreference)findPreference("root")).setChecked(false);
+                    }
+                }
                 return true;
             }
         });

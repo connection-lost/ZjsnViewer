@@ -38,6 +38,9 @@
 
     <string name="unavailable">暂未开放 QwQ</string>
 
-
     <string name="black_warning">黑科技有风险，使用请谨慎</string>
+    <string name="root_please">请给我root权限喵~ 0w0</string>
+    <string name="root_success">root成功 ~\(≧▽≦)/~</string>
+    <string name="root_fail">root失败 QwQ</string>
+
 </resources>
