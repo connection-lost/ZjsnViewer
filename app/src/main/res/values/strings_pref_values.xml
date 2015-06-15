@@ -46,6 +46,7 @@
         <item>7 - 海伦娜</item>
         <item>8 - 突击者</item>
         <item>9 - 黎塞留</item>
+        <item>10 - 贝尔法斯特</item>
     </string-array>
     <string-array name="pref_choice_server_values">
         <item>0</item>
@@ -58,6 +59,7 @@
         <item>7</item>
         <item>8</item>
         <item>9</item>
+        <item>10</item>
     </string-array>
 
     <string name="pref_title_refresh">挂件刷新时间</string>
