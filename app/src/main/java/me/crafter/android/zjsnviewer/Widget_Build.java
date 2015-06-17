@@ -1,5 +1,6 @@
 package me.crafter.android.zjsnviewer;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
@@ -50,6 +51,7 @@ public class Widget_Build extends AppWidgetProvider {
         views.setTextViewText(R.id.textView3, info[2]);
         views.setTextViewText(R.id.textView4, info[3]);
         Worker.widgetSetTextSize(context, views);
+
         appWidgetManager.updateAppWidget(new ComponentName(context, Widget_Build.class), views);
     }
 }
