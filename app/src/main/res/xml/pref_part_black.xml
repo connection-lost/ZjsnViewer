@@ -13,4 +13,10 @@
         android:summary="@string/pref_summary_root"
         android:defaultValue="false" />
 
+    <Preference
+        android:key="ohwait"
+        android:selectable="true"
+        android:persistent="false"
+        android:summary="请注意以上设置仅询问了root权限，实际内容暂时还没有做出来 QwQ"/>
+
 </PreferenceScreen>
