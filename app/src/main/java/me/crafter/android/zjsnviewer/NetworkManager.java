@@ -19,6 +19,7 @@ public class NetworkManager {
 
 
     public static String url_init = "api/initData&t=233&e=0dbb983b790ab997d2e59453d8f3f27b";
+    public static String url_init0 = "api/initGame&t=233&e=5f3cd4e0d30c4376f8c9685d263f5184";
     public static String url_passport = "http://login.alpha.p7game.com/index/passportLogin/";//+username/password
     public static String url_login = "index/login/";//+uid
     public static String[] url_server = {
@@ -120,6 +121,11 @@ public class NetworkManager {
             // STEP 3 GET USER DATA
             String urString = server + url_init;
 
+            // Wait, zero changed
+            if (Integer.parseInt(prefs.getString("server", "-1")) == 0){
+                urString = server + url_init0;
+            }
+
             url = new URL(urString);
             Log.i("NetworkManager", url.toString());
             connection = url.openConnection();
@@ -187,7 +193,7 @@ public class NetworkManager {
             Log.i("NetworkManager", "Update successful");
             DockInfo.updateInterval += 75;
             DockInfo.updateInterval = Math.min(DockInfo.updateInterval, 1210);
-//
+
 //            if (WeatherGuard.yes){
 //                DockInfo.updateInterval = Math.min(DockInfo.updateInterval, 305);
 //                WeatherGuard.dash(data, server, loginCookie);
