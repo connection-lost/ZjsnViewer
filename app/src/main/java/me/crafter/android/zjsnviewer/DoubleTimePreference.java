@@ -3,6 +3,7 @@ package me.crafter.android.zjsnviewer;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.preference.DialogPreference;
+import android.support.annotation.NonNull;
 import android.text.format.DateFormat;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -47,7 +48,7 @@ public class DoubleTimePreference extends DialogPreference {
     }
 
     @Override
-    protected void onBindDialogView(View view) {
+    protected void onBindDialogView(@NonNull View view) {
         super.onBindDialogView(view);
         startPicker = (TimePicker)picker.findViewById(R.id.timePicker);
         endPicker = (TimePicker)picker.findViewById(R.id.timePicker2);
@@ -64,16 +65,13 @@ public class DoubleTimePreference extends DialogPreference {
         super.onDialogClosed(positiveResult);
 
         if (positiveResult) {
-            long startTime = 0;
-            long endTime = 0;
-
             calendar.set(Calendar.HOUR_OF_DAY, startPicker.getCurrentHour());
             calendar.set(Calendar.MINUTE, startPicker.getCurrentMinute());
-            startTime = (calendar.getTimeInMillis() % 86400000);
+            long startTime = (calendar.getTimeInMillis() % 86400000);
 
             calendar2.set(Calendar.HOUR_OF_DAY, endPicker.getCurrentHour());
             calendar2.set(Calendar.MINUTE, endPicker.getCurrentMinute());
-            endTime = (calendar2.getTimeInMillis() % 86400000);
+            long endTime = (calendar2.getTimeInMillis() % 86400000);
 
             Log.i("CalendarTime", "" + startTime + " - " + endTime);
 
@@ -92,7 +90,7 @@ public class DoubleTimePreference extends DialogPreference {
 
     @Override
     protected void onSetInitialValue(boolean restoreValue, Object defaultValue) {
-        String value = "0:0";
+        String value;
         if (restoreValue) {
             if (defaultValue == null){
                 value = getPersistedString("0:0");
@@ -127,11 +125,9 @@ public class DoubleTimePreference extends DialogPreference {
     public long[] toTwoLongs(String in){
         try {
             String[] splitted = in.split(":");
-            long[] ret = {Long.parseLong(splitted[0]), Long.parseLong(splitted[1])};
-            return ret;
+            return new long[]{Long.parseLong(splitted[0]), Long.parseLong(splitted[1])};
         } catch (Exception ex) {
-            long[] ret = {0L, 0L};
-            return ret;
+            return new long[]{0L, 0L};
         }
     }
 
