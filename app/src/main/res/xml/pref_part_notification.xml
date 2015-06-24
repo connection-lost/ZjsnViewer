@@ -33,4 +33,9 @@
         android:title="@string/pref_title_notify_make"
         android:defaultValue="true" />
 
+    <me.crafter.android.zjsnviewer.DoubleTimePreference
+        android:dependency="notification_general"
+        android:key="notification_do_not_disturb"
+        android:title="免打扰" />
+
 </PreferenceScreen>

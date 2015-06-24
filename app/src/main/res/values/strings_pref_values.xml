@@ -106,4 +106,8 @@
     <string name="pref_title_root">真·黑科技</string>
     <string name="pref_summary_root">无视平台与服务器，甚至不需要设置用户名密码，需要root权限支持</string>
 
+    <string name="pref_time_start">开始时间</string>
+    <string name="pref_time_end">结束时间</string>
+    <string name="pref_time_info">你将不会在以上时间段内收到推送通知。</string>
+
 </resources>

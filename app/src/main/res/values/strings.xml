@@ -43,4 +43,7 @@
     <string name="root_success">root成功 ~\(≧▽≦)/~</string>
     <string name="root_fail">root失败 QwQ</string>
 
+    <string name="settings_yes">确定</string>
+    <string name="settings_no">取消</string>
+
 </resources>
