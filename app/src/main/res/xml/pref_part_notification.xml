@@ -34,6 +34,7 @@
         android:defaultValue="true" />
 
     <SwitchPreference
+        android:dependency="notification_general"
         android:key="notification_do_not_disturb_on"
         android:title="@string/pref_title_do_not_disturb_on"
         android:summary="@string/pref_summary_do_not_disturb_on"
