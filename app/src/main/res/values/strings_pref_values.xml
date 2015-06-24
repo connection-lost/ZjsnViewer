@@ -106,6 +106,12 @@
     <string name="pref_title_root">真·黑科技</string>
     <string name="pref_summary_root">无视平台与服务器，甚至不需要设置用户名密码，需要root权限支持</string>
 
+
+
+    <string name="pref_title_do_not_disturb_on">免打扰模式</string>
+    <string name="pref_summary_do_not_disturb_on">在设定的时间段内，你将不会收到任何通知，该时间可以跨天。</string>
+    <string name="pref_title_do_not_disturb_set">免打扰时间段</string>
+
     <string name="pref_time_start">开始时间</string>
     <string name="pref_time_end">结束时间</string>
     <string name="pref_time_info">你将不会在以上时间段内收到推送通知。</string>

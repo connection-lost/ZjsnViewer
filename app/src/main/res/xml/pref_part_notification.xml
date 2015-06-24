@@ -33,9 +33,16 @@
         android:title="@string/pref_title_notify_make"
         android:defaultValue="true" />
 
+    <SwitchPreference
+        android:key="notification_do_not_disturb_on"
+        android:title="@string/pref_title_do_not_disturb_on"
+        android:summary="@string/pref_summary_do_not_disturb_on"
+        android:defaultValue="false" />
+
     <me.crafter.android.zjsnviewer.DoubleTimePreference
-        android:dependency="notification_general"
-        android:key="notification_do_not_disturb"
-        android:title="免打扰" />
+        android:dependency="notification_do_not_disturb_on"
+        android:key="notification_do_not_disturb_time"
+        android:title="@string/pref_title_do_not_disturb_set"
+        android:defaultValue="14400000:45000000" />
 
 </PreferenceScreen>
