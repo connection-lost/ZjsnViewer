@@ -6,7 +6,6 @@ import android.preference.DialogPreference;
 import android.support.annotation.NonNull;
 import android.text.format.DateFormat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TimePicker;
@@ -42,7 +41,6 @@ public class DoubleTimePreference extends DialogPreference {
 
     @Override
     protected View onCreateDialogView() {
-        //picker = new TimePicker(getContext());
         picker = LayoutInflater.from(getContext()).inflate(R.layout.double_time_preference, null);
         return (picker);
     }
@@ -68,13 +66,9 @@ public class DoubleTimePreference extends DialogPreference {
             calendar.set(Calendar.HOUR_OF_DAY, startPicker.getCurrentHour());
             calendar.set(Calendar.MINUTE, startPicker.getCurrentMinute());
             long startTime = (calendar.getTimeInMillis() % 86400000);
-
             calendar2.set(Calendar.HOUR_OF_DAY, endPicker.getCurrentHour());
             calendar2.set(Calendar.MINUTE, endPicker.getCurrentMinute());
             long endTime = (calendar2.getTimeInMillis() % 86400000);
-
-            Log.i("CalendarTime", "" + startTime + " - " + endTime);
-
             setSummary(getSummary());
             if (callChangeListener(toOneString(startTime, endTime))) {
                 persistString(toOneString(startTime, endTime));
