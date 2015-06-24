@@ -52,10 +52,10 @@ public class DoubleTimePreference extends DialogPreference {
         endPicker = (TimePicker)picker.findViewById(R.id.timePicker2);
         startPicker.setCurrentHour(calendar.get(Calendar.HOUR_OF_DAY));
         startPicker.setCurrentMinute(calendar.get(Calendar.MINUTE));
-        startPicker.setIs24HourView(true);
+        //startPicker.setIs24HourView(true);
         endPicker.setCurrentHour(calendar2.get(Calendar.HOUR_OF_DAY));
         endPicker.setCurrentMinute(calendar2.get(Calendar.MINUTE));
-        endPicker.setIs24HourView(true);
+        //endPicker.setIs24HourView(true);
     }
 
     @Override
