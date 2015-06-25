@@ -116,7 +116,7 @@ public class DoubleTimePreference extends DialogPreference {
         return summary;
     }
 
-    public long[] toTwoLongs(String in){
+    public static long[] toTwoLongs(String in){
         try {
             String[] splitted = in.split(":");
             return new long[]{Long.parseLong(splitted[0]), Long.parseLong(splitted[1])};
@@ -125,7 +125,7 @@ public class DoubleTimePreference extends DialogPreference {
         }
     }
 
-    public String toOneString(long first, long second){
+    public static String toOneString(long first, long second){
         return first + ":" + second;
     }
 

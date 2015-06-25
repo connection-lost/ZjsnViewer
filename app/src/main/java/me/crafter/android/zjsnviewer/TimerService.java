@@ -87,7 +87,6 @@ public class TimerService extends Service {
         protected Object doInBackground(Object... arg0){
             Context context = instance;
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-
             Storage.language = Integer.parseInt(prefs.getString("language", "0"));
 
             DockInfo.requestUpdate(context);

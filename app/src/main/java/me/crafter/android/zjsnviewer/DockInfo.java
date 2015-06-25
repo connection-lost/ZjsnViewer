@@ -130,6 +130,9 @@ public class DockInfo {
     }
 
     public static boolean shouldNotify(Context context){
+        // First check no disturb
+        if (Storage.isNoDisturbNow(context)) return false;
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
         if (!prefs.getBoolean("notification_general", true)) return false;

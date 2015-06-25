@@ -6,7 +6,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.preference.PreferenceManager;
+import android.text.format.DateFormat;
+import android.util.Log;
 import android.widget.RemoteViews;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class Storage {
 
@@ -80,6 +85,27 @@ public class Storage {
         } catch (Exception ex) {}
         ret = Math.max(0.001F, ret);
         return ret;
+    }
+
+    public static boolean isNoDisturbNow(Context context){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean on = prefs.getBoolean("notification_do_not_disturb_on", false);
+        if (on){
+            int now = Integer.parseInt(DateFormat.format("HHmm", new Date(System.currentTimeMillis() % 86400000)).toString());
+            long[] interval = DoubleTimePreference.toTwoLongs(prefs.getString("notification_do_not_disturb_time", "14400000:45000000"));
+            int start = Integer.parseInt(DateFormat.format("HHmm", new Date(interval[0])).toString());
+            int finish = Integer.parseInt(DateFormat.format("HHmm", new Date(interval[1])).toString());
+            Log.i("Storage", now + " " + start + " " + finish);
+            if (start < finish){ // Not cross day
+                return (now > start && now < finish);
+            } else if (start > finish){ // Cross day
+                return (now > start || now < finish);
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
     public static int getVersion(Context context){
