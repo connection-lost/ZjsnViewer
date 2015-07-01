@@ -18,7 +18,7 @@ import java.util.List;
 public class NetworkManager {
 
 
-    public static String url_init = "api/initData&t=233&e=0dbb983b790ab997d2e59453d8f3f27b";
+    public static String url_init = "api/initGame&t=233&e=5f3cd4e0d30c4376f8c9685d263f5184";
     public static String url_init0 = "api/initGame&t=233&e=5f3cd4e0d30c4376f8c9685d263f5184";
     public static String url_passport = "http://login.alpha.p7game.com/index/passportLogin/";//+username/password
     public static String url_login = "index/login/";//+uid
