@@ -8,8 +8,8 @@ android {
         applicationId "me.crafter.android.zjsnviewer"
         minSdkVersion 16
         targetSdkVersion 21
-        versionCode 23
-        versionName "2.3 - Dr. Pepper"
+        versionCode 24
+        versionName "2.4 - Egg Drop Soup"
     }
     buildTypes {
         release {

@@ -17,9 +17,9 @@
     <string name="pref_summary_other">其他</string>
 
     <string name="pref_header_about">关于</string>
-    <string name="pref_copyright">战舰少女Viewer 2.3 by 提督の機霸\n©2014&#8211;2015 crafter.me</string>
-    <string name="versions">2.3</string>
-    <integer name="version">23</integer>
+    <string name="pref_copyright">战舰少女Viewer 2.4 by 提督の機霸\n©2014&#8211;2015 crafter.me</string>
+    <string name="versions">2.4</string>
+    <integer name="version">24</integer>
     <string name="pref_summary_on">Master Switch</string>
     <string name="pref_ringtone_silent">silent</string>
 
