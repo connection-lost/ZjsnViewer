@@ -148,14 +148,19 @@ public class NetworkManager {
             in.close();
 
             // STEP 3 GET USER DATA
-            String urString = server + url_init_p7;
+            String urString;
+            if (serverId < 100){
+                urString = server + url_init_p7;
+            } else {
+                urString = server + url_init_hm;
+            }
             // Wait, zero changed
             if (serverId == 0){
                 urString = server + url_init_zero;
             }
 
             url = new URL(urString);
-//            Log.i("NetWorkManager > 3", url.toString());
+//          Log.i("NetWorkManager > 3", url.toString());
             connection = url.openConnection();
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(15000);
