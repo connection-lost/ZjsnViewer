@@ -24,7 +24,7 @@ public class NetworkManager {
     public static String url_passport_p7 = "http://login.alpha.p7game.com/index/passportLogin/";// +username/password
     public static String url_passport_hm = "http://login.hk.jianniang.com/index/passportLogin/";// +username/password
     public static String url_login = "index/login/";//+uid
-    public static String[] url_server = {
+    public static String[] url_server_p7 = {
             "http://zj.alpha.p7game.com/",
             "http://s2.zj.p7game.com/",
             "http://s3.zj.p7game.com/",
@@ -36,16 +36,20 @@ public class NetworkManager {
             "http://s9.zj.p7game.com/",
             "http://s10.zj.p7game.com/",
             "http://s11.zj.p7game.com/",
-            "http://s2.hk.jianniang.com",
-            "http://s3.hk.jianniang.com",
-            "http://s4.hk.jianniang.com",
-            "http://s5.hk.jianniang.com",
-            "http://s6.hk.jianniang.com",
-            "http://s7.hk.jianniang.com",
-            "http://s8.hk.jianniang.com",
-            "http://s9.hk.jianniang.com",
-            "http://s10.hk.jianniang.com",
-            "http://s11.hk.jianniang.com",
+    };
+
+    public static String[] url_server_hm = {
+            "http://zj.alpha.jianniang.com/",
+            "http://s2.hk.jianniang.com/",
+            "http://s3.hk.jianniang.com/",
+            "http://s4.hk.jianniang.com/",
+            "http://s5.hk.jianniang.com/",
+            "http://s6.hk.jianniang.com/",
+            "http://s7.hk.jianniang.com/",
+            "http://s8.hk.jianniang.com/",
+            "http://s9.hk.jianniang.com/",
+            "http://s10.hk.jianniang.com/",
+            "http://s11.hk.jianniang.com/"
     };
 
     public static void updateDockInfo(Context context){
@@ -57,7 +61,12 @@ public class NetworkManager {
         String password = prefs.getString("password", "none");
         String server = prefs.getString("server", "-1");
         if (server != null && server.equals("-1")) return;
-        server = url_server[Integer.parseInt(server)];
+        int serverId = Integer.parseInt(server);
+        if (serverId < 100){
+            server = url_server_p7[serverId];
+        } else {
+            server = url_server_hm[serverId-100];
+        }
 
         Boolean on = prefs.getBoolean("on", false);
         if (!on){
@@ -80,7 +89,13 @@ public class NetworkManager {
         try {
             // STEP 1 PASSPORT LOGIN
 
-            URL url = new URL(url_passport_p7 +username+"/"+password);
+            URL url;
+            if (serverId < 100){
+                url = new URL(url_passport_p7 +username+"/"+password);
+            } else {
+                url = new URL(url_passport_hm +username+"/"+password);
+            }
+            Log.i("NetWorkManager > 1", url.toString());
             URLConnection connection = url.openConnection();
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(15000);
@@ -100,7 +115,9 @@ public class NetworkManager {
             List<String> cookies = connection.getHeaderFields().get("Set-Cookie");
             String loginCookie = "";
             for (String cookie : cookies){
-                loginCookie = cookie;
+                if (cookie.contains("hf_skey")){
+                    loginCookie = cookie;
+                }
             }
 
             in.close();
@@ -111,6 +128,7 @@ public class NetworkManager {
             // STEP 2 UID SERVER LOGIN
 
             url = new URL(server + url_login + uid);
+            Log.i("NetWorkManager > 2", url.toString());
             connection = url.openConnection();
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(15000);
@@ -118,7 +136,9 @@ public class NetworkManager {
             cookies = connection.getHeaderFields().get("Set-Cookie");
             loginCookie = "";
             for (String cookie : cookies){
-                loginCookie = cookie;
+                if (cookie.contains("hf_skey")){
+                    loginCookie = cookie;
+                }
             }
 
 
@@ -139,7 +159,7 @@ public class NetworkManager {
             }
 
             url = new URL(urString);
-            Log.i("NetworkManager", url.toString());
+            Log.i("NetWorkManager > 3", url.toString());
             connection = url.openConnection();
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(15000);
