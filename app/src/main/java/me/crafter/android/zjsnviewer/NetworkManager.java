@@ -88,14 +88,13 @@ public class NetworkManager {
 
         try {
             // STEP 1 PASSPORT LOGIN
-
             URL url;
             if (serverId < 100){
                 url = new URL(url_passport_p7 +username+"/"+password);
             } else {
                 url = new URL(url_passport_hm +username+"/"+password);
             }
-            Log.i("NetWorkManager > 1", url.toString());
+//          Log.i("NetWorkManager > 1", url.toString());
             URLConnection connection = url.openConnection();
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(15000);
@@ -126,9 +125,8 @@ public class NetworkManager {
             int uid = obj.getInt("userId");
 
             // STEP 2 UID SERVER LOGIN
-
             url = new URL(server + url_login + uid);
-            Log.i("NetWorkManager > 2", url.toString());
+//          Log.i("NetWorkManager > 2", url.toString());
             connection = url.openConnection();
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(15000);
@@ -141,7 +139,6 @@ public class NetworkManager {
                 }
             }
 
-
             in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             //String inputLine;
             response = new StringBuffer();
@@ -152,14 +149,13 @@ public class NetworkManager {
 
             // STEP 3 GET USER DATA
             String urString = server + url_init_p7;
-
             // Wait, zero changed
-            if (Integer.parseInt(prefs.getString("server", "-1")) == 0){
+            if (serverId == 0){
                 urString = server + url_init_zero;
             }
 
             url = new URL(urString);
-            Log.i("NetWorkManager > 3", url.toString());
+//            Log.i("NetWorkManager > 3", url.toString());
             connection = url.openConnection();
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(15000);
@@ -172,8 +168,7 @@ public class NetworkManager {
                 response.append(inputLine);
             }
             in.close();
-            //Log.i("NetworkManager", response.toString());
-
+//          Log.i("NetworkManager", response.toString());
             JSONObject data = new JSONObject(response.toString());
 
             if (!data.has("userVo")){
