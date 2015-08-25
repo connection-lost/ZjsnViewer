@@ -50,10 +50,13 @@ public class Storage {
 
     public static String getZjsnPackageName(Context context){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        if (prefs.getString("server", "-1").equals("0")){
+        int serverId = Integer.parseInt(prefs.getString("server", "-1"));
+        if (serverId == 0){
             return "com.muka.shipwarzero";
-        } else {
+        } else if (serverId < 100){
             return "com.muka.shipwar";
+        } else {
+            return "com.muka.shipwartw";
         }
     }
 
