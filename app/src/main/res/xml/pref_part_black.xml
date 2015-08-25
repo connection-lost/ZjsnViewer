@@ -14,6 +14,7 @@
 
     <EditTextPreference
         android:key="alt_url_login"
+        android:dependency="altserver"
         android:title="@string/pref_title_alt_url_login"
         android:defaultValue="@string/pref_default_alt_url_login"
         android:selectAllOnFocus="true"
@@ -23,6 +24,7 @@
 
     <EditTextPreference
         android:key="alt_url_server"
+        android:dependency="altserver"
         android:title="@string/pref_title_alt_url_server"
         android:defaultValue="@string/pref_default_alt_url_server"
         android:selectAllOnFocus="true"
