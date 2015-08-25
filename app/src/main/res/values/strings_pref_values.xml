@@ -36,17 +36,28 @@
     </string-array>
 
     <string-array name="pref_choice_server_name">
-        <item>0 - ZERO</item>
-        <item>1 - 胡德</item>
-        <item>2 - 萨拉托加</item>
-        <item>3 - 俾斯麦</item>
-        <item>4 - 声望</item>
-        <item>5 - 纳尔逊</item>
-        <item>6 - 空想</item>
-        <item>7 - 海伦娜</item>
-        <item>8 - 突击者</item>
-        <item>9 - 黎塞留</item>
-        <item>10 - 贝尔法斯特</item>
+        <item>[国] ZERO</item>
+        <item>[国] 胡德</item>
+        <item>[国] 萨拉托加</item>
+        <item>[国] 俾斯麦</item>
+        <item>[国] 声望</item>
+        <item>[国] 纳尔逊</item>
+        <item>[国] 空想</item>
+        <item>[国] 海伦娜</item>
+        <item>[国] 突击者</item>
+        <item>[国] 黎塞留</item>
+        <item>[国] 贝尔法斯特</item>
+        <item>[国] 追赶者</item>
+        <item>[台] HMS Hood</item>
+        <item>[台] USS Saratoga</item>
+        <item>[台] KMS Bismarck</item>
+        <item>[台] HMS Renown</item>
+        <item>[台] HMS Nelson</item>
+        <item>[台] Le Fantasque</item>
+        <item>[台] USS Helena</item>
+        <item>[台] USS Ranger</item>
+        <item>[台] Richelieu</item>
+        <item>[台] HMS Belfast</item>
     </string-array>
     <string-array name="pref_choice_server_values">
         <item>0</item>
@@ -60,6 +71,17 @@
         <item>8</item>
         <item>9</item>
         <item>10</item>
+        <item>11</item>
+        <item>101</item>
+        <item>102</item>
+        <item>103</item>
+        <item>104</item>
+        <item>105</item>
+        <item>106</item>
+        <item>107</item>
+        <item>108</item>
+        <item>109</item>
+        <item>110</item>
     </string-array>
 
     <string name="pref_title_refresh">挂件刷新时间</string>

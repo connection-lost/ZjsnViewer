@@ -18,9 +18,11 @@ import java.util.List;
 public class NetworkManager {
 
 
-    public static String url_init = "api/initGame&t=233&e=5f3cd4e0d30c4376f8c9685d263f5184";
-    public static String url_init0 = "api/initGame&t=233&e=5f3cd4e0d30c4376f8c9685d263f5184";
-    public static String url_passport = "http://login.alpha.p7game.com/index/passportLogin/";//+username/password
+    public static String url_init_p7 = "api/initGame&t=233&e=5f3cd4e0d30c4376f8c9685d263f5184";
+    public static String url_init_zero = "api/initGame&t=233&e=5f3cd4e0d30c4376f8c9685d263f5184";
+    public static String url_init_hm = "api/initGame&t=233&e=5f3cd4e0d30c4376f8c9685d263f5184";
+    public static String url_passport_p7 = "http://login.alpha.p7game.com/index/passportLogin/";// +username/password
+    public static String url_passport_hm = "http://login.hk.jianniang.com/index/passportLogin/";// +username/password
     public static String url_login = "index/login/";//+uid
     public static String[] url_server = {
             "http://zj.alpha.p7game.com/",
@@ -33,7 +35,17 @@ public class NetworkManager {
             "http://s8.zj.p7game.com/",
             "http://s9.zj.p7game.com/",
             "http://s10.zj.p7game.com/",
-            "http://s11.zj.p7game.com/"
+            "http://s11.zj.p7game.com/",
+            "http://s2.hk.jianniang.com",
+            "http://s3.hk.jianniang.com",
+            "http://s4.hk.jianniang.com",
+            "http://s5.hk.jianniang.com",
+            "http://s6.hk.jianniang.com",
+            "http://s7.hk.jianniang.com",
+            "http://s8.hk.jianniang.com",
+            "http://s9.hk.jianniang.com",
+            "http://s10.hk.jianniang.com",
+            "http://s11.hk.jianniang.com",
     };
 
     public static void updateDockInfo(Context context){
@@ -68,7 +80,7 @@ public class NetworkManager {
         try {
             // STEP 1 PASSPORT LOGIN
 
-            URL url = new URL(url_passport+username+"/"+password);
+            URL url = new URL(url_passport_p7 +username+"/"+password);
             URLConnection connection = url.openConnection();
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(15000);
@@ -119,11 +131,11 @@ public class NetworkManager {
             in.close();
 
             // STEP 3 GET USER DATA
-            String urString = server + url_init;
+            String urString = server + url_init_p7;
 
             // Wait, zero changed
             if (Integer.parseInt(prefs.getString("server", "-1")) == 0){
-                urString = server + url_init0;
+                urString = server + url_init_zero;
             }
 
             url = new URL(urString);
