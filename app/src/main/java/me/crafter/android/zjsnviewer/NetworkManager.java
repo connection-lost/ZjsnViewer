@@ -53,10 +53,8 @@ public class NetworkManager {
     };
 
     public static void updateDockInfo(Context context){
-
         Log.i("NetworkManager", "updateDockInfo()");
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String username = prefs.getString("username", "none");
         String password = prefs.getString("password", "none");
         String server = prefs.getString("server", "-1");
@@ -67,6 +65,13 @@ public class NetworkManager {
         } else {
             server = url_server_hm[serverId-100];
         }
+
+        // Black: Alt Server
+        boolean altserver = prefs.getBoolean("altserver", false);
+        if (altserver){
+            server = prefs.getString("alt_url_server", "");
+        }
+        // the login alt server is changed in step 1
 
         Boolean on = prefs.getBoolean("on", false);
         if (!on){
@@ -93,6 +98,9 @@ public class NetworkManager {
                 url = new URL(url_passport_p7 +username+"/"+password);
             } else {
                 url = new URL(url_passport_hm +username+"/"+password);
+            }
+            if (altserver){
+                url = new URL(prefs.getString("alt_url_login", "") +username+"/"+password);
             }
 //          Log.i("NetWorkManager > 1", url.toString());
             URLConnection connection = url.openConnection();
@@ -149,14 +157,12 @@ public class NetworkManager {
 
             // STEP 3 GET USER DATA
             String urString;
-            if (serverId < 100){
+            if (serverId == 0){
+                urString = server + url_init_zero;
+            } else if (serverId < 100){
                 urString = server + url_init_p7;
             } else {
                 urString = server + url_init_hm;
-            }
-            // Wait, zero changed
-            if (serverId == 0){
-                urString = server + url_init_zero;
             }
 
             url = new URL(urString);
@@ -167,7 +173,7 @@ public class NetworkManager {
             connection.setRequestProperty("cookie", loginCookie);
 
             in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            //String inputLine;
+            // String inputLine;
             response = new StringBuffer();
             while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
@@ -184,7 +190,6 @@ public class NetworkManager {
             DockInfo.exp = data.getJSONObject("userVo").getString("exp");
             DockInfo.nextExp = data.getJSONObject("userVo").getString("nextExp");
             DockInfo.level = data.getJSONObject("userVo").getString("level");
-
 
             JSONObject pveExploreVo = data.getJSONObject("pveExploreVo");
             JSONArray levels = pveExploreVo.getJSONArray("levels");

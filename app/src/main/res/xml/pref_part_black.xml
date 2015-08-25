@@ -1,22 +1,33 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <SwitchPreference
-        android:key="black"
-        android:title="@string/pref_title_black"
-        android:summary="@string/pref_summary_black"
-        android:defaultValue="false" />
-
-    <SwitchPreference
         android:key="root"
-        android:dependency="black"
         android:title="@string/pref_title_root"
         android:summary="@string/pref_summary_root"
         android:defaultValue="false" />
 
-    <Preference
-        android:key="ohwait"
-        android:selectable="true"
-        android:persistent="false"
-        android:summary="请注意以上设置仅询问了root权限，实际内容暂时还没有做出来 QwQ"/>
+    <SwitchPreference
+        android:key="altserver"
+        android:title="@string/pref_title_alt_server"
+        android:summary="@string/pref_summary_alt_server"
+        android:defaultValue="false" />
+
+    <EditTextPreference
+        android:key="alt_url_login"
+        android:title="@string/pref_title_alt_url_login"
+        android:defaultValue="@string/pref_default_alt_url_login"
+        android:selectAllOnFocus="true"
+        android:inputType="text"
+        android:singleLine="true"
+        android:maxLines="1" />
+
+    <EditTextPreference
+        android:key="alt_url_server"
+        android:title="@string/pref_title_alt_url_server"
+        android:defaultValue="@string/pref_default_alt_url_server"
+        android:selectAllOnFocus="true"
+        android:inputType="text"
+        android:singleLine="true"
+        android:maxLines="1" />
 
 </PreferenceScreen>

@@ -39,25 +39,26 @@ public class SettingsBlack extends PreferenceActivity {
         fakeHeader.setTitle(R.string.pref_header_black);
         getPreferenceScreen().addPreference(fakeHeader);
         addPreferencesFromResource(R.xml.pref_part_black);
-        //bindPreferenceSummaryToValue(findPreference(""));
+        bindPreferenceSummaryToValue(findPreference("alt_url_login"));
+        bindPreferenceSummaryToValue(findPreference("alt_url_server"));
     }
 
     // Listener
     private void registerListener(final Context context){
         // TODO change
         // Ref: http://stackoverflow.com/questions/2542938/sharedpreferences-onsharedpreferencechangelistener-not-being-called-consistently
-        findPreference("black").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference,Object newValue) {
-                if ((Boolean)newValue){
-                    Toast.makeText(context, context.getResources().getString(R.string.black_warning), Toast.LENGTH_SHORT).show();
-                } else {
-                    //PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("root", false).commit();
-                    ((SwitchPreference)findPreference("root")).setChecked(false);
-                }
-                return true;
-            }
-        });
+//        findPreference("black").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+//            @Override
+//            public boolean onPreferenceChange(Preference preference,Object newValue) {
+//                if ((Boolean)newValue){
+//                    Toast.makeText(context, context.getResources().getString(R.string.black_warning), Toast.LENGTH_SHORT).show();
+//                } else {
+//                    //PreferenceManager.getDefaultSharedPreferences(context).edit().putBoolean("root", false).commit();
+//                    ((SwitchPreference)findPreference("root")).setChecked(false);
+//                }
+//                return true;
+//            }
+//        });
         findPreference("root").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference,Object newValue) {
