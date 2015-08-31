@@ -58,6 +58,8 @@ public class TimerService extends Service {
 
     @Override
     public void onTaskRemoved(Intent rootIntent){
+        // test
+        Log.d("TimerService", "onTaskRemoved is called");
         Intent restartServiceIntent = new Intent(getApplicationContext(), this.getClass());
         restartServiceIntent.setPackage(getPackageName());
         PendingIntent restartServicePendingIntent = PendingIntent.getService(getApplicationContext(), 1, restartServiceIntent, PendingIntent.FLAG_ONE_SHOT);
