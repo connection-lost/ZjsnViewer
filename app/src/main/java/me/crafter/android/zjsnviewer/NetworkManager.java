@@ -20,9 +20,13 @@ public class NetworkManager {
 
     public static String url_init_p7 = "api/initGame&t=233&e=5f3cd4e0d30c4376f8c9685d263f5184";
     public static String url_init_zero = "api/initGame&t=233&e=5f3cd4e0d30c4376f8c9685d263f5184";
+    //New Warship girl 2.0.0 maybe enable time auth, so e need to covent a UNIX time and add to  string.
+    //About the &e= maybe is md5(Request URL+&t=+Current Unix Time + SecretKey
+    //We still unknow the new SecretKey, hack it from Warship girl 2.0.0 apk (Work in progress)
     public static String url_init_hm = "api/initGame&t=233&e=5f3cd4e0d30c4376f8c9685d263f5184";
     public static String url_passport_p7 = "http://login.alpha.p7game.com/index/passportLogin/";// +username/password
-    public static String url_passport_hm = "http://login.hk.jianniang.com/index/passportLogin/";// +username/password
+    //hm change the login in url as http://login.jianniang.com/index/passportLogin/
+    public static String url_passport_hm = "http://login.jianniang.com/index/passportLogin/";// +username/password
     public static String url_login = "index/login/";//+uid
     public static String[] url_server_p7 = {
             "http://zj.alpha.p7game.com/",
@@ -40,16 +44,16 @@ public class NetworkManager {
 
     public static String[] url_server_hm = {
             "http://zj.alpha.jianniang.com/",
-            "http://s2.hk.jianniang.com/",
-            "http://s3.hk.jianniang.com/",
-            "http://s4.hk.jianniang.com/",
-            "http://s5.hk.jianniang.com/",
-            "http://s6.hk.jianniang.com/",
-            "http://s7.hk.jianniang.com/",
-            "http://s8.hk.jianniang.com/",
-            "http://s9.hk.jianniang.com/",
-            "http://s10.hk.jianniang.com/",
-            "http://s11.hk.jianniang.com/"
+            "http://s2.jianniang.com/",
+            "http://s3.jianniang.com/",
+            "http://s4.jianniang.com/",
+            "http://s5.jianniang.com/",
+            "http://s6.jianniang.com/",
+            "http://s7.jianniang.com/",
+            "http://s8.jianniang.com/",
+            "http://s9.jianniang.com/",
+            "http://s10.jianniang.com/",
+            "http://s11.jianniang.com/"
     };
 
     public static void updateDockInfo(Context context){
