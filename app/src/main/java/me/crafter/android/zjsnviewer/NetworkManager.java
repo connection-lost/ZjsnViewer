@@ -23,7 +23,8 @@ public class NetworkManager {
     //New Warship girl 2.0.0 maybe enable time auth, so e need to covent a UNIX time and add to  string.
     //About the &e= maybe is md5(Request URL+&t=+Current Unix Time + SecretKey
     //We still unknow the new SecretKey, hack it from Warship girl 2.0.0 apk (Work in progress)
-    public static String url_init_hm = "api/initGame&t=233&e=5f3cd4e0d30c4376f8c9685d263f5184";
+    public static String url_init_hm = "api/initGame";
+    public String url_init_hm_encrypt = "&e=";
     public static String url_passport_p7 = "http://login.alpha.p7game.com/index/passportLogin/";// +username/password
     //hm change the login in url as http://login.jianniang.com/index/passportLogin/
     public static String url_passport_hm = "http://login.jianniang.com/index/passportLogin/";// +username/password
@@ -56,8 +57,14 @@ public class NetworkManager {
             "http://s11.jianniang.com/"
     };
 
+    public static String getCurrentUnixTime() {
+        long unixTime = System.currentTimeMillis() / 10L;
+        return String.valueOf(unixTime);
+    }
+
     public static void updateDockInfo(Context context){
         Log.i("NetworkManager", "updateDockInfo()");
+        Log.i("NetworkManager unix time", getCurrentUnixTime());
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String username = prefs.getString("username", "none");
         String password = prefs.getString("password", "none");
@@ -101,12 +108,12 @@ public class NetworkManager {
             if (serverId < 100){
                 url = new URL(url_passport_p7 +username+"/"+password);
             } else {
-                url = new URL(url_passport_hm +username+"/"+password);
+                url = new URL(url_passport_hm +username+"/"+password+"/&t="+getCurrentUnixTime()+"&e=");
             }
             if (altserver){
                 url = new URL(prefs.getString("alt_url_login", "") +username+"/"+password);
             }
-//          Log.i("NetWorkManager > 1", url.toString());
+            Log.i("NetWorkManager > 1", url.toString());
             URLConnection connection = url.openConnection();
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(15000);
@@ -137,8 +144,8 @@ public class NetworkManager {
             int uid = obj.getInt("userId");
 
             // STEP 2 UID SERVER LOGIN
-            url = new URL(server + url_login + uid);
-//          Log.i("NetWorkManager > 2", url.toString());
+            url = new URL(server + url_login + uid+"&t="+getCurrentUnixTime()+"&e=");
+            Log.i("NetWorkManager > 2", url.toString());
             connection = url.openConnection();
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(15000);
@@ -166,11 +173,11 @@ public class NetworkManager {
             } else if (serverId < 100){
                 urString = server + url_init_p7;
             } else {
-                urString = server + url_init_hm;
+                urString = server + url_init_hm +"/&t=" + getCurrentUnixTime() + "&e=";
             }
 
             url = new URL(urString);
-//          Log.i("NetWorkManager > 3", url.toString());
+            Log.i("NetWorkManager > 3", url.toString());
             connection = url.openConnection();
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(15000);
