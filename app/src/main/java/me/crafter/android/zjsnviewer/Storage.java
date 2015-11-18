@@ -56,14 +56,14 @@ public class Storage {
         } else if (serverId < 100){
             return "com.muka.shipwar";
         } else {
-            return "com.muka.shipwartw";
+            return "org.huanmeng.Zhanjian2_alipay";
         }
     }
 
     public static PendingIntent getStartPendingIntent(Context context){
         Intent intent = context.getPackageManager().getLaunchIntentForPackage(Storage.getZjsnPackageName(context));
         if (intent == null){
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.p7game.com/games.php"));
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.crafter.me/zjsnviewer/"));
         }
         return PendingIntent.getActivity(context, 0, intent, 0);
     }
