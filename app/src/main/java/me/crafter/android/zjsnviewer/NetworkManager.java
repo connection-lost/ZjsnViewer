@@ -1,30 +1,29 @@
 package me.crafter.android.zjsnviewer;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.List;
-
 public class NetworkManager {
 
 
     public static String url_init_p7 = "api/initGame&t=233&e=5f3cd4e0d30c4376f8c9685d263f5184";
     public static String url_init_zero = "api/initGame&t=233&e=5f3cd4e0d30c4376f8c9685d263f5184";
-    //New Warship girl 2.0.0 maybe enable time auth, so e need to covent a UNIX time and add to  string.
-    //About the &e= maybe is md5(Request URL+&t=+Current Unix Time + SecretKey
-    //We still unknow the new SecretKey, hack it from Warship girl 2.0.0 apk (Work in progress)
-    public static String url_init_hm = "api/initGame";
-    public String url_init_hm_encrypt = "&e=";
+    public static String url_init_hm = "api/initGame&t=233&e=3deb25e23f5fdd11d792d63bd66ced7c";
     public static String url_passport_p7 = "http://login.alpha.p7game.com/index/passportLogin/";// +username/password
     //hm change the login in url as http://login.jianniang.com/index/passportLogin/
     public static String url_passport_hm = "http://login.jianniang.com/index/passportLogin/";// +username/password
@@ -94,7 +93,8 @@ public class NetworkManager {
         ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> procInfos = activityManager.getRunningAppProcesses();
         for (int i = 0; i < procInfos.size(); i++){
-            if (procInfos.get(i).processName.startsWith("com.muka.shipwar")){
+            String processName = procInfos.get(i).processName;
+            if (processName.startsWith("com.muka.shipwar") || processName.startsWith("org.huanmeng.Zhanjian2")){
                 DockInfo.updateInterval = 15;
                 Storage.str_tiduName = Storage.str_gameRunning[Storage.language];
                 return;
@@ -108,7 +108,7 @@ public class NetworkManager {
             if (serverId < 100){
                 url = new URL(url_passport_p7 +username+"/"+password);
             } else {
-                url = new URL(url_passport_hm +username+"/"+password+"/&t="+getCurrentUnixTime()+"&e=");
+                url = new URL(url_passport_hm +username+"/"+password);
             }
             if (altserver){
                 url = new URL(prefs.getString("alt_url_login", "") +username+"/"+password);
@@ -131,12 +131,8 @@ public class NetworkManager {
             }
 
             List<String> cookies = connection.getHeaderFields().get("Set-Cookie");
-            String loginCookie = "";
-            for (String cookie : cookies){
-                if (cookie.contains("hf_skey")){
-                    loginCookie = cookie;
-                }
-            }
+            Map<String, String> cookieMap = new HashMap<String, String>();
+            String loginCookie = parseCookie(cookies, cookieMap);
 
             in.close();
 
@@ -144,19 +140,14 @@ public class NetworkManager {
             int uid = obj.getInt("userId");
 
             // STEP 2 UID SERVER LOGIN
-            url = new URL(server + url_login + uid+"&t="+getCurrentUnixTime()+"&e=");
+            url = new URL(server + url_login + uid);
             Log.i("NetWorkManager > 2", url.toString());
             connection = url.openConnection();
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(15000);
             connection.setRequestProperty("cookie", loginCookie);
             cookies = connection.getHeaderFields().get("Set-Cookie");
-            loginCookie = "";
-            for (String cookie : cookies){
-                if (cookie.contains("hf_skey")){
-                    loginCookie = cookie;
-                }
-            }
+            loginCookie = parseCookie(cookies, cookieMap);
 
             in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             //String inputLine;
@@ -173,7 +164,7 @@ public class NetworkManager {
             } else if (serverId < 100){
                 urString = server + url_init_p7;
             } else {
-                urString = server + url_init_hm +"/&t=" + getCurrentUnixTime() + "&e=";
+                urString = server + url_init_hm;
             }
 
             url = new URL(urString);
@@ -265,4 +256,20 @@ public class NetworkManager {
 
     }
 
+    private static String parseCookie(List<String> cookies, Map<String, String> cookieMap) {
+        for (String cookie : cookies) {
+            String[] token = cookie.split("=");
+            cookieMap.put(token[0], cookie);
+        }
+        StringBuffer sb = new StringBuffer();
+        int size = cookieMap.size();
+        int count = 0;
+        for (String cookie : cookieMap.values()) {
+            sb.append(cookie);
+            if (++count != size) {
+                sb.append(";");
+            }
+        }
+        return sb.toString();
+    }
 }
