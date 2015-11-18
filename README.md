@@ -11,4 +11,11 @@ Inspired by KancolleViewer
 http://grabacr.net/kancolleviewer
 
 Special thanks to:
-萨拉托加 玄学统计局 黑喵
+
+萨拉托加
+
+玄学统计局
+
+黑喵
+
+神秘大神 (https://github.com/warshipgirl)
