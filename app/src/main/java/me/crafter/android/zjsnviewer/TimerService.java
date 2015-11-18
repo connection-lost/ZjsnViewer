@@ -78,7 +78,7 @@ public class TimerService extends Service {
                 @Override
                 public void run() {
 //                   Log.i("TimerService", "run() - TimerService Receive Call");
-                    new Proceed().execute(null);
+                    new Proceed().execute();
                 }
             });
         }

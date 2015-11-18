@@ -7,7 +7,6 @@ import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -68,7 +67,7 @@ public class NetworkManager {
         String username = prefs.getString("username", "none");
         String password = prefs.getString("password", "none");
         String server = prefs.getString("server", "-1");
-        if (server != null && server.equals("-1")) return;
+        if (server.equals("-1")) return;
         int serverId = Integer.parseInt(server);
         if (serverId < 100){
             server = url_server_p7[serverId];
@@ -131,7 +130,7 @@ public class NetworkManager {
             }
 
             List<String> cookies = connection.getHeaderFields().get("Set-Cookie");
-            Map<String, String> cookieMap = new HashMap<String, String>();
+            Map<String, String> cookieMap = new HashMap<>();
             String loginCookie = parseCookie(cookies, cookieMap);
 
             in.close();
