@@ -63,7 +63,7 @@ public class NetworkManager {
 
     public static void updateDockInfo(Context context){
         Log.i("NetworkManager", "updateDockInfo()");
-        Log.i("NetworkManager unix time", getCurrentUnixTime());
+        Log.i("NetworkManager", "Unix: " + getCurrentUnixTime());
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         String username = prefs.getString("username", "none");
         String password = prefs.getString("password", "none");
