@@ -19,6 +19,7 @@ import android.util.Log;
 
 public class NetworkManager {
 
+    // TODO this class needs cleanup
 
     public static String url_init_p7 = "api/initGame&t=233&e=5f3cd4e0d30c4376f8c9685d263f5184";
     public static String url_init_zero = "api/initGame&t=233&e=5f3cd4e0d30c4376f8c9685d263f5184";
