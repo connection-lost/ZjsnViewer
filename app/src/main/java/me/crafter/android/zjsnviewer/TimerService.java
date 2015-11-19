@@ -90,7 +90,6 @@ public class TimerService extends Service {
             Context context = instance;
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
             Storage.language = Integer.parseInt(prefs.getString("language", "0"));
-
             DockInfo.requestUpdate(context);
             //notification checker
             if (DockInfo.shouldNotify(context)){
