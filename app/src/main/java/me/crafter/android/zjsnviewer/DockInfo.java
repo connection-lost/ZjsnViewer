@@ -10,6 +10,7 @@ import java.util.List;
 
 public class DockInfo {
 
+    static boolean zjsn_running_state = false;
     public static int lastUpdate = -1;
 
     public static int[] dockTravelTime = {0, 0, 0, 0};
@@ -266,7 +267,6 @@ public class DockInfo {
     public static boolean requestUpdate(Context context){
         boolean ret = true;
         Log.i("DockInfo", "Current Interval is " + updateInterval + " (" + (currentUnix() - lastUpdate) + ")");
-        boolean zjsn_running_state = false;
         switch (ZjsnState.getZjsnState(context, TimerService.NOTIFY_INTERVAL)) {
             case -1:
                 //Nothing happen.
