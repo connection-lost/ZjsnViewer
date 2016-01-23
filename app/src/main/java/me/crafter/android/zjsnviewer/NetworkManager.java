@@ -94,7 +94,7 @@ public class NetworkManager {
         List<ActivityManager.RunningAppProcessInfo> procInfos = activityManager.getRunningAppProcesses();
         for (int i = 0; i < procInfos.size(); i++){
             String processName = procInfos.get(i).processName;
-            if (processName.startsWith("com.muka.shipwar") || processName.startsWith("org.huanmeng.Zhanjian2")){
+            if (processName.startsWith("com.muka.shipwar") || processName.startsWith("com.huanmeng.zhanjian2")){
                 DockInfo.updateInterval = 15;
                 Storage.str_tiduName = Storage.str_gameRunning[Storage.language];
                 return;
