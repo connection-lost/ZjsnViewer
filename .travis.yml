@@ -1,4 +1,5 @@
 language: android
+jdk: openjdk7
 android:
   components:
   - build-tools-21.1.2
@@ -10,12 +11,12 @@ android:
 script:
 - "./gradlew assembleRelease"
 before_deploy:  
-  - mv ./app/app-release.apk ./app/Zjsnviewer.apk
+  - mv app/build/outputs/apk/app-release.apk app/build/outputs/apk/Zjsnviewer.apk
 deploy:
   provider: releases
   api_key:
     secure: Jmz8pk7OTjM7VMHTYdQxWQz+Tng0NFgIgpW2dPqNRlmwro4cFaKwelt0uckGNJCdTf7oZngtCoP1IFiD6ZqisSRqxp1spd1Xtqv0pxeTKXoY5EQthHl5iM3QLnQtE/Uwbcg387TFhC/lZt34khmFI5Pe9GNPGuf4yYa/MspNcR8AUnoo60p/LHgcQgr9tLViFgE4+1grSFPFnW3JksadFYkGlAxL4Yf6pbEKDKtoGJm34E2MkQFeKiw3g2RJRBjguWzPub8O3gz7q1P/9v6ysBxiwUMWdOsFUoQ7ysVm+CRgwKagIAmdYaU/31lkw+XLU43rAFi3u8hbCbyqC3mzGNdRL8sXKdVMmHJJcSOhynfwKAH8SFX9WHmAbw4xbs68+dI7zdt8vVF4/GZj2uXSD6jrzMOna6IF8jSgYLa7HhNVEqHS1rZA3J3mxob9MWTsoxhDXXhwnmcRhRRuwHIFGvzAH4zyAUt2tbYsI+l8paml5s4KEU3zVRNSNyUWRyzNa8ZEBnlNP+tbdIMzHi2Z9f7zGwFzy4aJrSjFZeFlffYNkdbGZARQqGYpz7x4gL2uVkYbtTkb9p047Q0n//1ApEayERAJ06CNHDMmC9bzpcST1qxfRg+q3PNs5jk9ORw9RmlmuYfAvWHTFocxmzc2wiwvnrXfPvLlJxajwM6jnjU=
-  file: ./app/Zjsnviewer.apk
+  file: app/build/outputs/apk/Zjsnviewer.apk
   skip_cleanup: true
   on:
     tags: true
