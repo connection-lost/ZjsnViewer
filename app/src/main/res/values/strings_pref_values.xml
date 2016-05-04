@@ -48,6 +48,7 @@
         <item>[台] 突击者</item>
         <item>[台] 黎赛留</item>
         <item>[台] 贝尔法斯特</item>
+        <item>[台] 埃塞克斯</item>
     </string-array>
     <string-array name="pref_choice_server_values">
         <item>0</item>
@@ -72,6 +73,7 @@
         <item>108</item>
         <item>109</item>
         <item>110</item>
+        <item>111</item>
     </string-array>
 
     <string name="pref_title_refresh">挂件刷新时间</string>
