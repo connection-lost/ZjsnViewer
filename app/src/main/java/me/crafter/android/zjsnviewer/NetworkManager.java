@@ -53,7 +53,8 @@ public class NetworkManager {
             "http://s8.jianniang.com/",
             "http://s9.jianniang.com/",
             "http://s10.jianniang.com/",
-            "http://s11.jianniang.com/"
+            "http://s11.jianniang.com/",
+            "http://s12.jianniang.com/"
     };
 
     public static String getCurrentUnixTime() {
