@@ -56,7 +56,7 @@ public class Storage {
         } else if (serverId < 100){
             return "com.muka.shipwar";
         } else {
-            return "com.huanmeng.Zhanjian2";
+            return "com.huanmeng.zhanjian2";
         }
     }
 

@@ -40,7 +40,7 @@ public class ZjsnState {
             if(events.getNextEvent(event)) {
                 if(event.getEventType() == UsageEvents.Event.MOVE_TO_FOREGROUND) {
                     Log.i("packagename", event.getPackageName());
-                    if(event.getPackageName().startsWith("com.muka.shipwar") || event.getPackageName().startsWith("org.huanmeng.Zhanjian2")) {
+                    if(event.getPackageName().startsWith("com.muka.shipwar") || event.getPackageName().startsWith("com.huanmeng.zhanjian2")) {
                         Log.i("getZjsnState", "Zjsn Move to Foreground");
                         return 0;
                     }
