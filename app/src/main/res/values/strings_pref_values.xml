@@ -111,10 +111,10 @@
     <string name="pref_summary_notify_make">Constriction Notifications (Equipment)</string>
 
     <string name="pref_title_textsize_minor">信息挂件字体大小</string>
-    <string name="pref_default_textsize_minor">48</string>
+    <string name="pref_default_textsize_minor">24</string>
 
     <string name="pref_title_textsize_major">主挂件字体大小</string>
-    <string name="pref_default_textsize_major">48</string>
+    <string name="pref_default_textsize_major">24</string>
 
     <string name="pref_title_black">黑科技开关</string>
     <string name="pref_summary_black">比较新奇的玩意，请谨慎使用</string>

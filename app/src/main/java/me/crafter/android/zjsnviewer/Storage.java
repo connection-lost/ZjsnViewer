@@ -70,8 +70,8 @@ public class Storage {
 
     public static float getTextSizeMajor(Context context){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String size = prefs.getString("textsize_major", "48");
-        float ret = 48;
+        String size = prefs.getString("textsize_major", "24");
+        float ret = 24;
         try {
             ret = Float.parseFloat(size);
         } catch (Exception ex) {}
@@ -81,8 +81,8 @@ public class Storage {
 
     public static float getTextSizeMinor(Context context){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String size = prefs.getString("textsize_minor", "48");
-        float ret = 48;
+        String size = prefs.getString("textsize_minor", "24");
+        float ret = 24;
         try {
             ret = Float.parseFloat(size);
         } catch (Exception ex) {}
