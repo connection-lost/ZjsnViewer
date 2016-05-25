@@ -1,6 +1,7 @@
 package me.crafter.android.zjsnviewer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -24,6 +25,12 @@ public class ZjsnViewer extends PreferenceActivity {
         super.onPostCreate(savedInstanceState);
         setupSimplePreferencesScreen();
         registerListener(getApplicationContext());
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        startService(new Intent(this, TimerService.class));
     }
 
     private void setupSimplePreferencesScreen() {

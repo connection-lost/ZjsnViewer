@@ -34,6 +34,12 @@ public class TimerService extends Service {
     private Timer mTimer = null;
 
     @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        // If we get killed, after returning from here, restart
+        return START_STICKY;
+    }
+
+    @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
