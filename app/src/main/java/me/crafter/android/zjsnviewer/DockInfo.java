@@ -268,16 +268,13 @@ public class DockInfo {
         boolean ret = true;
         Log.i("DockInfo", "Current Interval is " + updateInterval + " (" + (currentUnix() - lastUpdate) + ")");
         switch (ZjsnState.getZjsnState(context, TimerService.NOTIFY_INTERVAL)) {
-            case -1:
-                //Nothing happen.
-                break;
             case 0:
                 zjsn_running_state = true;
-                //Zjsn in foreground
+                //Zjsn in running(both foreground and background)
                 break;
             case 1:
                 zjsn_running_state = false;
-                //Zjsn in background
+                //Zjsn in not running
                 break;
         }
         if(!zjsn_running_state) {
@@ -294,7 +291,8 @@ public class DockInfo {
         ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> procInfos = activityManager.getRunningAppProcesses();
         for (int i = 0; i < procInfos.size(); i++){
-            if (procInfos.get(i).processName.startsWith("com.muka.shipwar")){
+            String processName = procInfos.get(i).processName;
+            if (processName.startsWith("com.muka.shipwar")||processName.startsWith("com.huanmeng.zhanjian2")){
                 DockInfo.updateInterval = 15;
                 Storage.str_tiduName = Storage.str_gameRunning[Storage.language];
                 break;
