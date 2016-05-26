@@ -92,7 +92,7 @@ public class NetworkManager {
         }
 
 
-        if (ZjsnState.getZjsnState() == 1){
+        if (ZjsnState.getZjsnState() == 0){
             DockInfo.updateInterval = 15;
             Storage.str_tiduName = Storage.str_gameRunning[Storage.language];
             return;

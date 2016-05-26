@@ -11,6 +11,7 @@ import java.util.List;
 public class DockInfo {
 
     static boolean zjsn_running_state = false;
+    static boolean zjsn_formal_state = false;
     public static int lastUpdate = -1;
 
     public static int[] dockTravelTime = {0, 0, 0, 0};
@@ -267,6 +268,7 @@ public class DockInfo {
     public static boolean requestUpdate(Context context){
         boolean ret = true;
         Log.i("DockInfo", "Current Interval is " + updateInterval + " (" + (currentUnix() - lastUpdate) + ")");
+        zjsn_formal_state = zjsn_running_state;
         switch (ZjsnState.getZjsnState()) {
             case 0:
                 zjsn_running_state = true;
@@ -278,7 +280,7 @@ public class DockInfo {
                 break;
         }
         if(!zjsn_running_state) {
-            if (currentUnix() - lastUpdate > updateInterval) {
+            if (currentUnix() - lastUpdate > updateInterval || zjsn_formal_state != zjsn_running_state) {
                 //lastUpdate is put before updateDockInfo
                 //to prevent multi request caused by delay
                 lastUpdate = currentUnix();
