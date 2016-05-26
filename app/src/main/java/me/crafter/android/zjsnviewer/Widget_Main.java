@@ -54,7 +54,7 @@ public class Widget_Main extends AppWidgetProvider {
         super.onReceive(context, intent);
 
         if (SYNC_CLICKED.equals(intent.getAction())) {
-
+            DockInfo.requestUpdate(context);
             AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
 
             RemoteViews remoteViews;
@@ -64,7 +64,7 @@ public class Widget_Main extends AppWidgetProvider {
             watchWidget = new ComponentName(context, Widget_Main.class);
 
 //            remoteViews.setTextViewText(R.id.imageButton, "TESTING");
-
+            Widget_Main.updateWidget(context);
             appWidgetManager.updateAppWidget(watchWidget, remoteViews);
 
         }
