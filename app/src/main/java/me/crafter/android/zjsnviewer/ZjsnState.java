@@ -17,8 +17,8 @@ import java.util.List;
  * Edit by PaleNeutron on 2016/5/25.
  */
 public class ZjsnState {
-
-    public static int getZjsnState(Context context, long updateInterval) {
+//if running return 0
+    public static int getZjsnState() {
         List<AndroidAppProcess> processes = AndroidProcesses.getRunningAppProcesses();
         for (int i = 0; i < processes.size(); i++) {
             String processName = processes.get(i).name;
