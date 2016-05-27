@@ -279,8 +279,10 @@ public class DockInfo {
                 //Zjsn in not running
                 break;
         }
-        if(!zjsn_running_state) {
-            if (currentUnix() - lastUpdate > updateInterval || zjsn_formal_state != zjsn_running_state) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+//        如果战舰少女没有运行或者自动运行被关闭则允许更新
+        if(!zjsn_running_state||!prefs.getBoolean("auto_run", true)) {
+            if (currentUnix() - lastUpdate > updateInterval || zjsn_formal_state != zjsn_running_state||!prefs.getBoolean("auto_run", true)) {
                 //lastUpdate is put before updateDockInfo
                 //to prevent multi request caused by delay
                 lastUpdate = currentUnix();
@@ -291,12 +293,11 @@ public class DockInfo {
         }
 
 
-        if (zjsn_running_state){
+        if (zjsn_running_state&&prefs.getBoolean("auto_run", true)){
             DockInfo.updateInterval = 15;
             Storage.str_tiduName = Storage.str_gameRunning[Storage.language];
         }
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         Boolean on = prefs.getBoolean("on", false);
         if (!on){
             DockInfo.updateInterval = 15;
