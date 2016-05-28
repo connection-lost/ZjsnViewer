@@ -34,6 +34,12 @@ public class TimerService extends Service {
     private Timer mTimer = null;
 
     @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        // If we get killed, after returning from here, restart
+        return START_STICKY;
+    }
+
+    @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
@@ -90,7 +96,9 @@ public class TimerService extends Service {
             Context context = instance;
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
             Storage.language = Integer.parseInt(prefs.getString("language", "0"));
-            DockInfo.requestUpdate(context);
+            if (prefs.getBoolean("auto_run", true)) {
+                DockInfo.requestUpdate(context);
+            }
             //notification checker
             if (DockInfo.shouldNotify(context)){
                 NotificationSender.notify(context, Storage.str_reportTitle[Storage.language], DockInfo.getStatusReportAllFull());

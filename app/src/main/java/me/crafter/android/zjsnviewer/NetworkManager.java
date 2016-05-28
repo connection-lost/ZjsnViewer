@@ -91,16 +91,13 @@ public class NetworkManager {
             return;
         }
 
-        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        List<ActivityManager.RunningAppProcessInfo> procInfos = activityManager.getRunningAppProcesses();
-        for (int i = 0; i < procInfos.size(); i++){
-            String processName = procInfos.get(i).processName;
-            if (processName.startsWith("com.muka.shipwar") || processName.startsWith("com.huanmeng.zhanjian2")){
-                DockInfo.updateInterval = 15;
-                Storage.str_tiduName = Storage.str_gameRunning[Storage.language];
-                return;
-            }
+
+        if (ZjsnState.getZjsnState() == 0 && prefs.getBoolean("auto_run", true)){
+            DockInfo.updateInterval = 15;
+            Storage.str_tiduName = Storage.str_gameRunning[Storage.language];
+            return;
         }
+
         String error = "";
 
         try {

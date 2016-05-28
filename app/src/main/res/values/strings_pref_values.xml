@@ -97,6 +97,7 @@
     </string-array>
 
     <string name="pref_title_on">总开关</string>
+    <string name="pref_auto_on">自动模式</string>
     <string name="pref_title_notify_general">开启推送通知</string>
     <string name="pref_title_notify_travel">远征结束通知</string>
     <string name="pref_title_notify_repair">维修结束通知</string>
@@ -111,10 +112,10 @@
     <string name="pref_summary_notify_make">Constriction Notifications (Equipment)</string>
 
     <string name="pref_title_textsize_minor">信息挂件字体大小</string>
-    <string name="pref_default_textsize_minor">48</string>
+    <string name="pref_default_textsize_minor">24</string>
 
     <string name="pref_title_textsize_major">主挂件字体大小</string>
-    <string name="pref_default_textsize_major">48</string>
+    <string name="pref_default_textsize_major">24</string>
 
     <string name="pref_title_black">黑科技开关</string>
     <string name="pref_summary_black">比较新奇的玩意，请谨慎使用</string>

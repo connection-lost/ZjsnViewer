@@ -6,12 +6,14 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.RemoteViews;
-
+import android.util.Log;
 
 public class Widget_Main extends AppWidgetProvider {
 
+    private static final String SYNC_CLICKED    = "automaticWidgetSyncButtonClick";
     @Override
     public void onEnabled(Context context) {
         context.startService(new Intent(context, TimerService.class));
@@ -29,6 +31,14 @@ public class Widget_Main extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds){
         context.startService(new Intent(context, TimerService.class));
         super.onUpdate(context, appWidgetManager, appWidgetIds);
+        RemoteViews remoteViews;
+        ComponentName watchWidget;
+
+        remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget__main);
+        watchWidget = new ComponentName(context, Widget_Main.class);
+
+        remoteViews.setOnClickPendingIntent(R.id.imageButton, getPendingSelfIntent(context, SYNC_CLICKED));
+        appWidgetManager.updateAppWidget(watchWidget, remoteViews);
         updateWidget(context);
     }
 
@@ -38,7 +48,46 @@ public class Widget_Main extends AppWidgetProvider {
         //Toast.makeText(context, "啦啦啦", Toast.LENGTH_SHORT).show();
         updateWidget(context);
     }
+    private class UpdateTask extends AsyncTask<Void,Void,Void> {
+        private Context context=null;
+        public UpdateTask(Context main_context){
+            context = main_context;
+        }
+        @Override
+        protected Void doInBackground(Void... params) {
+            DockInfo.updateInterval = 1;
+            DockInfo.requestUpdate(context);
+            Widget_Main.updateWidget(context);
+            return null;
+        }
+    }
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        // TODO Auto-generated method stub
+        super.onReceive(context, intent);
 
+        if (SYNC_CLICKED.equals(intent.getAction())) {
+            Log.i("widget","clicked");
+
+            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+            new UpdateTask(context).execute();
+            RemoteViews remoteViews;
+            ComponentName watchWidget;
+
+            remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget__main);
+            watchWidget = new ComponentName(context, Widget_Main.class);
+
+//            remoteViews.setTextViewText(R.id.imageButton, "TESTING");
+
+            appWidgetManager.updateAppWidget(watchWidget, remoteViews);
+
+        }
+    }
+    protected PendingIntent getPendingSelfIntent(Context context, String action) {
+        Intent intent = new Intent(context, getClass());
+        intent.setAction(action);
+        return PendingIntent.getBroadcast(context, 0, intent, 0);
+    }
 
     public static void updateWidget(Context context){
         updateWidget(context, AppWidgetManager.getInstance(context));
@@ -46,10 +95,11 @@ public class Widget_Main extends AppWidgetProvider {
 
     public static void updateWidget(Context context, AppWidgetManager appWidgetManager){
         //Log.i("Widget_Main", "updateWidget()");
-        PendingIntent pending = Storage.getStartPendingIntent(context);
+//        PendingIntent pending = Storage.getStartPendingIntent(context);
+//        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget__main);
-
-        views.setOnClickPendingIntent(R.id.imageButton, pending);
+//
+//        views.setOnClickPendingIntent(R.id.imageButton, pendingIntent);
 
         //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         //views.setTextViewText(R.id.textView, "Last Update: " + sdf.format(new Date()));
