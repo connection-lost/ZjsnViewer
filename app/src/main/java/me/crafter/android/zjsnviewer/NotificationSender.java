@@ -6,12 +6,14 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.PowerManager;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 
 public class NotificationSender {
@@ -21,6 +23,9 @@ public class NotificationSender {
 
     public static void notify(final Context context, final String title, final String text) {
         final Resources res = context.getResources();
+
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean screen_light = prefs.getBoolean("notification_screen_light", true);
 
         final Notification.Builder builder = new Notification.Builder(context)
                 .setDefaults(Notification.DEFAULT_ALL)
@@ -32,9 +37,11 @@ public class NotificationSender {
                 .setContentIntent(Storage.getStartPendingIntent(context))
                 .setAutoCancel(true);
 
-        PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "ZJSN");
-        wl.acquire(10000);
+        if(screen_light) {
+            PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+            PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "ZJSN");
+            wl.acquire(10000);
+        }
         notify(context, builder.build());
     }
 
