@@ -10,6 +10,7 @@ import java.util.List;
 
 public class DockInfo {
 
+    static boolean zjsn_running_state = false;
     public static int lastUpdate = -1;
 
     public static int[] dockTravelTime = {0, 0, 0, 0};
@@ -266,13 +267,28 @@ public class DockInfo {
     public static boolean requestUpdate(Context context){
         boolean ret = true;
         Log.i("DockInfo", "Current Interval is " + updateInterval + " (" + (currentUnix() - lastUpdate) + ")");
-        if (currentUnix() - lastUpdate > updateInterval){
-            //lastUpdate is put before updateDockInfo
-            //to prevent multi request caused by delay
-            lastUpdate = currentUnix();
-            NetworkManager.updateDockInfo(context);
-        } else {
-            ret = false;
+        switch (ZjsnState.getZjsnState(context, TimerService.NOTIFY_INTERVAL)) {
+            case -1:
+                //Nothing happen.
+                break;
+            case 0:
+                zjsn_running_state = true;
+                //Zjsn in foreground
+                break;
+            case 1:
+                zjsn_running_state = false;
+                //Zjsn in background
+                break;
+        }
+        if(!zjsn_running_state) {
+            if (currentUnix() - lastUpdate > updateInterval) {
+                //lastUpdate is put before updateDockInfo
+                //to prevent multi request caused by delay
+                lastUpdate = currentUnix();
+                NetworkManager.updateDockInfo(context);
+            } else {
+                ret = false;
+            }
         }
 
         ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
