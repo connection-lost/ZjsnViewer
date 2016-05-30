@@ -88,7 +88,7 @@ public class NetworkManager {
             server = url_server_hm[serverId-100];
         }
         else {
-            server = url_server_hm_ios[serverId-200];
+            server = url_server_hm_ios[serverId-201];
         }
 
         // Black: Alt Server
