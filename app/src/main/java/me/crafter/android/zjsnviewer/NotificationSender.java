@@ -3,13 +3,10 @@ package me.crafter.android.zjsnviewer;
 import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.PowerManager;
@@ -27,26 +24,33 @@ public class NotificationSender {
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         boolean screen_light = prefs.getBoolean("notification_screen_light", true);
 
-        final Notification.Builder builder = new Notification.Builder(context)
-                .setDefaults(Notification.DEFAULT_ALL)
+        final NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
+//                .setDefaults(Notification.DEFAULT_ALL)
                 .setSmallIcon(R.drawable.logo)
                 .setContentTitle(title)
                 .setContentText(text)
-                .setStyle(new Notification.BigTextStyle().bigText(text))
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+//                .setStyle(new NotificationCompat.BigTextStyle().bigText(text))
+//                TODO 加个是否显示浮动窗口的选项
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                .setDefaults(Notification.DEFAULT_LIGHTS)
                 .setContentIntent(Storage.getStartPendingIntent(context))
                 .setAutoCancel(true);
 
         if(screen_light) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                builder.setVisibility(Notification.VISIBILITY_PUBLIC);
+            } else {
             PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
             PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "ZJSN");
             wl.acquire(10000);
+            }
         }
-        notify(context, builder.build());
+        SendNotification(context, builder.build());
     }
 
     @TargetApi(Build.VERSION_CODES.ECLAIR)
-    private static void notify(final Context context, final Notification notification) {
+    private static void SendNotification(final Context context, final Notification notification) {
         final NotificationManager nm = (NotificationManager) context
                 .getSystemService(Context.NOTIFICATION_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR) {
