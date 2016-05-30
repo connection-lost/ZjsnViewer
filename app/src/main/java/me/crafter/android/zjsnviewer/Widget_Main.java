@@ -58,6 +58,10 @@ public class Widget_Main extends AppWidgetProvider {
             DockInfo.updateInterval = 1;
             DockInfo.requestUpdate(context);
             Widget_Main.updateWidget(context);
+            Widget_Travel.updateWidget(context);
+            Widget_Repair.updateWidget(context);
+            Widget_Build.updateWidget(context);
+            Widget_Make.updateWidget(context);
             return null;
         }
     }
