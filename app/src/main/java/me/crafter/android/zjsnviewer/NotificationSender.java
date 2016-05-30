@@ -23,19 +23,22 @@ public class NotificationSender {
 
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         boolean screen_light = prefs.getBoolean("notification_screen_light", true);
+        boolean if_send_vibration = prefs.getBoolean("notification_vibration", true);
 
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
 //                .setDefaults(Notification.DEFAULT_ALL)
                 .setSmallIcon(R.drawable.logo)
                 .setContentTitle(title)
                 .setContentText(text)
-//                .setStyle(new NotificationCompat.BigTextStyle().bigText(text))
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(text))
+//                .setStyle(new Notification.InboxStyle())
 //                TODO 加个是否显示浮动窗口的选项
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                .setDefaults(Notification.DEFAULT_LIGHTS)
+                .setDefaults(NotificationCompat.DEFAULT_ALL)
                 .setContentIntent(Storage.getStartPendingIntent(context))
                 .setAutoCancel(true);
+
+        if (!if_send_vibration)  builder.setVibrate(new long[0]);
 
         if(screen_light) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

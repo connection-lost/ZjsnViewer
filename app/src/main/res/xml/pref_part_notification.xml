@@ -38,6 +38,11 @@
         android:title="@string/pref_title_notify_screen_light"
         android:defaultValue="true" />
 
+    <CheckBoxPreference
+        android:key="notification_vibration"
+        android:title="@string/pref_title_notify_vibration"
+        android:defaultValue="true" />
+
     <SwitchPreference
         android:dependency="notification_general"
         android:key="notification_do_not_disturb_on"
