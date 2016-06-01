@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
@@ -33,11 +34,11 @@ public class TimerService extends Service {
     // timer handling
     private Timer mTimer = null;
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        // If we get killed, after returning from here, restart
-        return START_STICKY;
-    }
+//    @Override
+//    public int onStartCommand(Intent intent, int flags, int startId) {
+//        // If we get killed, after returning from here, restart
+//        return START_STICKY;
+//    }
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -106,7 +107,13 @@ public class TimerService extends Service {
             //check if screen is on
             //if screen not on, widget should not update
             PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-            if (!pm.isScreenOn()){
+            boolean screenon = true;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH){
+                screenon = pm.isInteractive();
+            } else {
+                screenon = pm.isScreenOn();
+            }
+            if (!screenon){
                 //Log.i("TimerService", "run() - Screen is off, ignores update.");
             } else {
                 int currentUnix = DockInfo.currentUnix();

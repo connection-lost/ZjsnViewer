@@ -27,6 +27,7 @@ public class NetworkManager {
     public static String url_passport_p7 = "http://login.alpha.p7game.com/index/passportLogin/";// +username/password
     //hm change the login in url as http://login.jianniang.com/index/passportLogin/
     public static String url_passport_hm = "http://login.jianniang.com/index/passportLogin/";// +username/password
+    public static String url_passport_hm_ios = "http://loginios.jianniang.com/index/passportLogin/";// +username/password
     public static String url_login = "index/login/";//+uid
     public static String[] url_server_p7 = {
             "http://zj.alpha.p7game.com/",
@@ -57,6 +58,14 @@ public class NetworkManager {
             "http://s12.jianniang.com/"
     };
 
+    public static String[] url_server_hm_ios = {
+        "http://s101.jianniang.com/",
+        "http://s102.jianniang.com/",
+        "http://s103.jianniang.com/",
+        "http://s104.jianniang.com/",
+        "http://s105.jianniang.com/",
+        "http://s106.jianniang.com/"
+    };
     public static String getCurrentUnixTime() {
         long unixTime = System.currentTimeMillis() / 10L;
         return String.valueOf(unixTime);
@@ -71,10 +80,15 @@ public class NetworkManager {
         String server = prefs.getString("server", "-1");
         if (server.equals("-1")) return;
         int serverId = Integer.parseInt(server);
+
         if (serverId < 100){
             server = url_server_p7[serverId];
-        } else {
+        }
+        else if (serverId < 200) {
             server = url_server_hm[serverId-100];
+        }
+        else {
+            server = url_server_hm_ios[serverId-201];
         }
 
         // Black: Alt Server
@@ -105,8 +119,10 @@ public class NetworkManager {
             URL url;
             if (serverId < 100){
                 url = new URL(url_passport_p7 +username+"/"+password);
-            } else {
+            }else if (serverId < 200){
                 url = new URL(url_passport_hm +username+"/"+password);
+            }else {
+                url = new URL(url_passport_hm_ios +username+"/"+password);
             }
             if (altserver){
                 url = new URL(prefs.getString("alt_url_login", "") +username+"/"+password);

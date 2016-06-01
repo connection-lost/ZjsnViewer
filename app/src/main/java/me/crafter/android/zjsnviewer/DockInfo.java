@@ -133,6 +133,7 @@ public class DockInfo {
 
     public static boolean shouldNotify(Context context){
         // First check no disturb
+        Log.d("DockInfo", "check notify");
         if (Storage.isNoDisturbNow(context)) return false;
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
