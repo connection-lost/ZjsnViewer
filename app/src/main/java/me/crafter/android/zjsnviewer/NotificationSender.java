@@ -22,8 +22,8 @@ public class NotificationSender {
         final Resources res = context.getResources();
 
         final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        boolean screen_light = prefs.getBoolean("notification_screen_light", true);
-        boolean if_send_vibration = prefs.getBoolean("notification_vibration", true);
+        final boolean screen_light = prefs.getBoolean("notification_screen_light", true);
+        final boolean if_send_vibration = prefs.getBoolean("notification_vibration", true);
 
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
 //                .setDefaults(Notification.DEFAULT_ALL)
@@ -34,15 +34,19 @@ public class NotificationSender {
 //                .setStyle(new Notification.InboxStyle())
 //                TODO 加个是否显示浮动窗口的选项
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setDefaults(NotificationCompat.DEFAULT_ALL)
+                .setDefaults(NotificationCompat.DEFAULT_LIGHTS|NotificationCompat.DEFAULT_SOUND)
                 .setContentIntent(Storage.getStartPendingIntent(context))
                 .setAutoCancel(true);
 
-        if (!if_send_vibration)  builder.setVibrate(new long[0]);
+        if (if_send_vibration) {
+            builder.setDefaults(NotificationCompat.DEFAULT_VIBRATE);
+        } else {
+            builder.setVibrate(new long[]{0L});
+        }
 
         if(screen_light) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                builder.setVisibility(Notification.VISIBILITY_PUBLIC);
+                builder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
             } else {
             PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
             PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "ZJSN");
