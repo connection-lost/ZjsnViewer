@@ -133,7 +133,7 @@
     <string name="pref_title_black">黑科技开关</string>
     <string name="pref_summary_black">比较新奇的玩意，请谨慎使用</string>
     <string name="pref_title_root">真·黑科技 (未完成)</string>
-    <string name="pref_summary_root">无视平战舰少女R与服务器，甚至不需要设置用户名密码，需要root权限支持</string>
+    <string name="pref_summary_root">无视平台与服务器，甚至不需要设置用户名密码，需要root权限支持</string>
     <string name="pref_title_alt_server">手动输入服务器</string>
     <string name="pref_summary_alt_server">高级选项，强制使用输入的服务器地址，使用方法请参见网站。</string>
 
