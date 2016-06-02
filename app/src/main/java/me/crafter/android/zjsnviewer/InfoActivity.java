@@ -25,11 +25,6 @@ public class InfoActivity extends FragmentActivity {
     @BindView(R.id.include2)
     Toolbar bar;
 
-//    @BindView(R.id.sr_refresh)
-//    SwipeRefreshLayout sr_refresh;
-
-//    @BindView(R.id.ib_icon)
-//    ImageButton ib_icon;
     @BindView(R.id.tv_name)
     TextView tv_name;
     @BindView(R.id.tv_level)
@@ -46,7 +41,7 @@ public class InfoActivity extends FragmentActivity {
     @BindView(R.id.vp_page)
     ViewPager vp_page;
 
-    private TextView[] tabs = new TextView[4];
+    private ArrayList<TextView> tabs;
     private TravelFragemt travelFragemt;
     private BuildFragment buildFragment;
     private MakeFragment makeFragment;
@@ -76,13 +71,6 @@ public class InfoActivity extends FragmentActivity {
     private void initView(){
 
         bar.setTitle(R.string.pref_header_info);
-
-//        sr_refresh.setColorSchemeResources(
-//                android.R.color.holo_red_light,
-//                android.R.color.holo_orange_light,
-//                android.R.color.holo_green_light
-//        );
-
         initFragment();
     }
 
@@ -94,22 +82,6 @@ public class InfoActivity extends FragmentActivity {
                 finish();
             }
         });
-
-//        sr_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//
-//                Handler handler = new Handler();
-//                handler.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//
-//                        sr_refresh.setRefreshing(false);
-//                        Toast.makeText(InfoActivity.this, "刷新成功", Toast.LENGTH_SHORT).show();
-//                    }
-//                }, 2000);
-//            }
-//        });
 
         vp_page.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -129,14 +101,26 @@ public class InfoActivity extends FragmentActivity {
             }
         });
 
+        for(final TextView textView : tabs){
+
+            View view = (View) textView.getParent();
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    int position = (int) textView.getTag();
+                    vp_page.setCurrentItem(position);
+                    setTab(position);
+                }
+            });
+        }
 
         handler = new Handler();
         runnable = new Runnable() {
             @Override
             public void run() {
 
-                refreeshAllView();
-//                Toast.makeText(InfoActivity.this,new Date().toString(), Toast.LENGTH_SHORT).show();
+                refreshAllView();
                 handler.postDelayed(runnable,RUN_TIME);
             }
         };
@@ -156,14 +140,19 @@ public class InfoActivity extends FragmentActivity {
         fragments.add(buildFragment);
         fragments.add(makeFragment);
 
+        tv_travel.setTag(0);
+        tv_repair.setTag(1);
+        tv_build.setTag(2);
+        tv_make.setTag(3);
         tv_repair.setEnabled(false);
         tv_build.setEnabled(false);
         tv_make.setEnabled(false);
 
-        tabs[0] = tv_travel;
-        tabs[1] = tv_repair;
-        tabs[2] = tv_build;
-        tabs[3] = tv_make;
+        tabs = new ArrayList<>();
+        tabs.add(tv_travel);
+        tabs.add(tv_repair);
+        tabs.add(tv_build);
+        tabs.add(tv_make);
 
         vp_page.setOffscreenPageLimit(4);
         pageAdapter adapter = new pageAdapter(getSupportFragmentManager(), fragments);
@@ -194,12 +183,12 @@ public class InfoActivity extends FragmentActivity {
 
     private void setTab(int position) {
 
-        if (position >= 0 && position < tabs.length){
+        if (position >= 0 && position < tabs.size()){
 
-            for (int i = 0; i < tabs.length; i++){
+            for (int i = 0; i < tabs.size(); i++){
 
-                if (i == position) tabs[i].setEnabled(true);
-                else tabs[i].setEnabled(false);
+                if (i == position) tabs.get(i).setEnabled(true);
+                else tabs.get(i).setEnabled(false);
             }
         }
     }
@@ -209,11 +198,11 @@ public class InfoActivity extends FragmentActivity {
         tv_name.setText(Storage.str_tiduName);
         tv_level.setText("Level: " + DockInfo.level + " (" + DockInfo.exp + "/" + DockInfo.nextExp + ")");
         if (DockInfo.level.equals("150")){
-            tv_level.setText("Level: 150 (MAX)");
+            tv_level.setText(R.string.max);
         }
     }
 
-    private void refreeshAllView(){
+    private void refreshAllView(){
 
         refreshView();
 

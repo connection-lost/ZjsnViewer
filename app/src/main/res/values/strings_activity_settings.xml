@@ -16,7 +16,7 @@
     <string name="pref_summary_notification">挂件刷新时间</string>
     <string name="pref_summary_customize">字体大小/显示方式</string>
     <string name="pref_summary_other">其他</string>
-    <string name="pref_summary_info">快速查看提督信息</string>
+    <string name="pref_summary_info">直接查看提督信息</string>
 
     <string name="pref_header_about">关于</string>
     <string name="pref_copyright">战舰少女Viewer 2.6 by 提督の機霸\n©2014&#8211;2015 crafter.me</string>

@@ -18,6 +18,9 @@
     <string name="shipowner">加载未完成</string>
     <string name="loading">Loading...</string>
 
+    <string name="tidu_name">提督の名前</string>
+    <string name="max">Level: 150 (MAX)</string>
+
     <string name="title_activity_settings_info">SettingsInfo</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>

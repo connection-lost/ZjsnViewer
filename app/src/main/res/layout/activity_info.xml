@@ -3,23 +3,13 @@
     android:id="@+id/activity_info"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/widget_minor"
+    android:background="@color/background_white"
     android:orientation="vertical">
 
     <include
         layout="@layout/pref_shared_toolbar"
         android:id="@+id/include2">
     </include>
-
-    <!--<android.support.v4.widget.SwipeRefreshLayout-->
-        <!--android:id="@+id/sr_refresh"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content">-->
-
-
-        <!--<ScrollView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent">-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -28,9 +18,10 @@
 
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="88dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:background="@color/background_grey">
 
                     <ImageButton
                         android:layout_width="88dp"
@@ -44,16 +35,16 @@
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/app_name"
+                            android:text="@string/tidu_name"
                             android:id="@+id/tv_name"
-                            android:layout_marginTop="10dp"
                             android:layout_centerVertical="true"
                             android:textColor="@color/widget_major"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
                             android:shadowColor="@color/widget_major_shadow"
                             android:shadowDx="1"
                             android:shadowDy="1"
@@ -64,12 +55,12 @@
                             android:layout_height="wrap_content"
                             android:text="@string/shipowner"
                             android:id="@+id/tv_level"
-                            android:layout_alignParentBottom="true"
                             android:textColor="@color/widget_major"
                             android:shadowColor="@color/widget_major_shadow"
                             android:shadowDx="1"
                             android:shadowDy="1"
-                            android:shadowRadius="2"/>
+                            android:shadowRadius="2"
+                            android:layout_below="@+id/tv_name" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -77,42 +68,75 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="5dp"
-                    android:paddingTop="5dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:background="@color/background_grey"
+                    android:baselineAligned="false">
 
-                    <TextView
-                        android:id="@+id/tv_travel"
+                    <LinearLayout
+                        android:id="@+id/ll_travel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:textColor="@drawable/text_color"
-                        android:text="@string/travel_name"/>
-                    <TextView
-                        android:id="@+id/tv_repair"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tv_travel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:gravity="center"
+                            android:textColor="@drawable/text_color"
+                            android:text="@string/travel_name"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_repair"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:textColor="@drawable/text_color"
-                        android:text="@string/repair_name"/>
-                    <TextView
-                        android:id="@+id/tv_build"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tv_repair"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:gravity="center"
+                            android:textColor="@drawable/text_color"
+                            android:text="@string/repair_name"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/ll_build"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:textColor="@drawable/text_color"
-                        android:text="@string/build_name"/>
-                    <TextView
-                        android:id="@+id/tv_make"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tv_build"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:gravity="center"
+                            android:textColor="@drawable/text_color"
+                            android:text="@string/build_name"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/ll_make"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:textColor="@drawable/text_color"
-                        android:text="@string/make_name"/>
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tv_make"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:gravity="center"
+                            android:textColor="@drawable/text_color"
+                            android:text="@string/make_name"/>
+                    </LinearLayout>
                 </LinearLayout>
 
                 <android.support.v4.view.ViewPager
@@ -123,9 +147,5 @@
                 </android.support.v4.view.ViewPager>
 
             </LinearLayout>
-
-        <!--</ScrollView>-->
-
-    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
 
 </LinearLayout>
