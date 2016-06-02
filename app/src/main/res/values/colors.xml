@@ -7,7 +7,8 @@
     <color name="widget_minor_shadow">#070707</color>
     <color name="widget_major_shadow">#fafafa</color>
 
-
+    <color name="font_black">#000000</color>
+    <color name="font_grey">#bbbbbb</color>
 
 
 </resources>
