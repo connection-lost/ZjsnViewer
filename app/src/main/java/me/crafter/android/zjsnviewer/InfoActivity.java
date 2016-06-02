@@ -71,6 +71,7 @@ public class InfoActivity extends FragmentActivity {
     private void initView(){
 
         bar.setTitle(R.string.pref_header_info);
+
         initFragment();
     }
 
@@ -165,7 +166,7 @@ public class InfoActivity extends FragmentActivity {
 
         ArrayList<Fragment> fragments;
 
-        public pageAdapter(FragmentManager fm, ArrayList<Fragment> fragments) {
+        pageAdapter(FragmentManager fm, ArrayList<Fragment> fragments) {
             super(fm);
             this.fragments = fragments;
         }
