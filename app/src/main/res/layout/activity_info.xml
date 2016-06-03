@@ -246,7 +246,8 @@
                     android:padding="15dp"
                     android:gravity="center|start"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/unavailable"/>
+                    android:text="@string/unavailable"
+                    android:textColor="@color/font_black"/>
 
             </LinearLayout>
 
@@ -261,7 +262,8 @@
                 android:padding="15dp"
                 android:gravity="center|start"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/set_name" />
+                android:text="@string/set_name"
+                android:textColor="@color/font_black"/>
         </RelativeLayout>
 
     </android.support.v4.widget.DrawerLayout>
