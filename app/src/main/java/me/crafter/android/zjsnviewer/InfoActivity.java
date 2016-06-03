@@ -1,5 +1,6 @@
 package me.crafter.android.zjsnviewer;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -117,14 +118,27 @@ public class InfoActivity extends FragmentActivity {
             }
         });
 
-                ib_icon.setOnClickListener(new View.OnClickListener() {
+        ib_icon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    DockInfo.updateInterval = 0;
+                    final ProgressDialog progressDialog = ProgressDialog.show(context,"",getString(R.string.loading));
+                    UpdateTask task = new UpdateTask(context);
+                    task.setUpdateTaskStateChange(new UpdateTask.onUpdateTaskStateChange() {
+
                         @Override
-                        public void onClick(View v) {
-                                DockInfo.updateInterval = 0;
-                                new UpdateTask(v.getContext()).execute();
-                                refreshAllView();
-                            }
+                        public void AfterTask() {
+
+                            progressDialog.dismiss();
+                            refreshAllView();
+                        }
                     });
+                    task.execute();
+//                    new UpdateTask(v.getContext()).execute();
+
+                }
+            });
 
         vp_page.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

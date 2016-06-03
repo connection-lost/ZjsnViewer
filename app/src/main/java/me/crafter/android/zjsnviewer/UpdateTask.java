@@ -9,9 +9,15 @@ import android.os.AsyncTask;
  */
 class UpdateTask extends AsyncTask<Void,Void,Void> {
     private Context context=null;
+    private onUpdateTaskStateChange updateTaskStateChange;
     public UpdateTask(Context main_context){
         context = main_context;
     }
+
+    public void setUpdateTaskStateChange(onUpdateTaskStateChange updateTaskStateChange) {
+        this.updateTaskStateChange = updateTaskStateChange;
+    }
+
     @Override
     protected Void doInBackground(Void... params) {
         DockInfo.requestUpdate(context);
@@ -22,5 +28,16 @@ class UpdateTask extends AsyncTask<Void,Void,Void> {
         Widget_Make.updateWidget(context);
         context.startService(new Intent(context, TimerService.class));
         return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        super.onPostExecute(aVoid);
+        if (null != updateTaskStateChange) updateTaskStateChange.AfterTask();
+    }
+
+    public interface onUpdateTaskStateChange{
+
+        void AfterTask();
     }
 }
