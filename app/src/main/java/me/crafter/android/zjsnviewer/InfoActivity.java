@@ -14,6 +14,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +50,9 @@ public class InfoActivity extends FragmentActivity {
     TextView tv_make;
     @BindView(R.id.vp_page)
     ViewPager vp_page;
+
+    @BindView(R.id.ib_icon)
+    ImageButton ib_icon;
 
     @BindView(R.id.tv_drawer_name)
     TextView tv_drawer_name;
@@ -113,6 +117,15 @@ public class InfoActivity extends FragmentActivity {
             }
         });
 
+                ib_icon.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                                DockInfo.updateInterval = 0;
+                                new UpdateTask(v.getContext()).execute();
+                                refreshAllView();
+                            }
+                    });
+
         vp_page.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -164,15 +177,15 @@ public class InfoActivity extends FragmentActivity {
                 startActivity(intent);
             }
         });
-        tv_build_time.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(context, Webactivity.class);
-                intent.putExtra("URL", "http://js.ntwikis.com/jsp/apps/cancollezh/charactors/buildtime.jsp");
-                startActivity(intent);
-            }
-        });
+//        tv_build_time.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent = new Intent(context, Webactivity.class);
+//                intent.putExtra("URL", "http://js.ntwikis.com/jsp/apps/cancollezh/charactors/buildtime.jsp");
+//                startActivity(intent);
+//            }
+//        });
     }
 
     private void initFragment(){

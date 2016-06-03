@@ -254,7 +254,8 @@
                     android:gravity="center|start"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/unavailable"
-                    android:textColor="@color/font_black"/>
+                    android:textColor="@color/font_black"
+                    android:visibility="gone"/>
 
             </LinearLayout>
 

@@ -1,12 +1,9 @@
 package me.crafter.android.zjsnviewer;
 
-import android.app.ActivityManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
-
-import java.util.List;
 
 public class DockInfo {
 
@@ -286,6 +283,7 @@ public class DockInfo {
             if (currentUnix() - lastUpdate > updateInterval || zjsn_formal_state != zjsn_running_state||!prefs.getBoolean("auto_run", true)) {
                 //lastUpdate is put before updateDockInfo
                 //to prevent multi request caused by delay
+                if (updateInterval == 0) updateInterval =15;
                 lastUpdate = currentUnix();
                 NetworkManager.updateDockInfo(context);
             } else {

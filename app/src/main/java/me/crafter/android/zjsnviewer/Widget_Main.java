@@ -6,10 +6,9 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.RemoteViews;
 import android.util.Log;
+import android.widget.RemoteViews;
 
 public class Widget_Main extends AppWidgetProvider {
 
@@ -48,23 +47,7 @@ public class Widget_Main extends AppWidgetProvider {
         //Toast.makeText(context, "啦啦啦", Toast.LENGTH_SHORT).show();
         updateWidget(context);
     }
-    private class UpdateTask extends AsyncTask<Void,Void,Void> {
-        private Context context=null;
-        public UpdateTask(Context main_context){
-            context = main_context;
-        }
-        @Override
-        protected Void doInBackground(Void... params) {
-            DockInfo.updateInterval = 1;
-            DockInfo.requestUpdate(context);
-            Widget_Main.updateWidget(context);
-            Widget_Travel.updateWidget(context);
-            Widget_Repair.updateWidget(context);
-            Widget_Build.updateWidget(context);
-            Widget_Make.updateWidget(context);
-            return null;
-        }
-    }
+
     @Override
     public void onReceive(Context context, Intent intent) {
         // TODO Auto-generated method stub
@@ -74,6 +57,7 @@ public class Widget_Main extends AppWidgetProvider {
             Log.i("widget","clicked");
 
             AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+            DockInfo.updateInterval = 0;
             new UpdateTask(context).execute();
             RemoteViews remoteViews;
             ComponentName watchWidget;
