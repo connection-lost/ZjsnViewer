@@ -29,7 +29,6 @@ class UpdateTask extends AsyncTask<Void,Void,Void> {
         context.startService(new Intent(context, TimerService.class));
         return null;
     }
-
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
