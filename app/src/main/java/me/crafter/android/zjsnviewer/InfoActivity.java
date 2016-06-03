@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -40,6 +41,9 @@ public class InfoActivity extends FragmentActivity {
     TextView tv_make;
     @BindView(R.id.vp_page)
     ViewPager vp_page;
+
+    @BindView(R.id.ib_icon)
+    ImageButton ib_icon;
 
     private ArrayList<TextView> tabs;
     private TravelFragemt travelFragemt;
@@ -82,7 +86,14 @@ public class InfoActivity extends FragmentActivity {
                 finish();
             }
         });
-
+        ib_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DockInfo.updateInterval = 0;
+                new UpdateTask(v.getContext()).execute();
+                refreshAllView();
+            }
+        });
         vp_page.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

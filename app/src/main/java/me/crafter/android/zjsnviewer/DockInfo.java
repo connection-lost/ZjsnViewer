@@ -286,6 +286,7 @@ public class DockInfo {
             if (currentUnix() - lastUpdate > updateInterval || zjsn_formal_state != zjsn_running_state||!prefs.getBoolean("auto_run", true)) {
                 //lastUpdate is put before updateDockInfo
                 //to prevent multi request caused by delay
+                if (updateInterval == 0) updateInterval =15;
                 lastUpdate = currentUnix();
                 NetworkManager.updateDockInfo(context);
             } else {
