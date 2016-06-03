@@ -19,14 +19,6 @@
     </Preference>
 
     <Preference
-        android:title="@string/pref_header_info"
-        android:summary="@string/pref_summary_info"
-        android:key="go_pref_general">
-        <intent android:targetPackage="me.crafter.android.zjsnviewer"
-            android:targetClass="me.crafter.android.zjsnviewer.InfoActivity"/>
-    </Preference>
-
-    <Preference
         android:title="@string/pref_header_notification"
         android:summary="@string/pref_summary_data_sync"
         android:key="go_pref_notification">
