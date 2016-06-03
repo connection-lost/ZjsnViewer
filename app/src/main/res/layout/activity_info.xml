@@ -56,29 +56,32 @@
                         android:layout_height="match_parent">
 
                         <TextView
+                            android:id="@+id/tv_level"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/shipowner"
+                            android:textColor="@color/font_white"
+                            android:shadowColor="@color/widget_major_shadow"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:shadowDx="1"
+                            android:shadowDy="1"
+                            android:shadowRadius="2"
+                            android:layout_below="@+id/tv_name" />
+
+                        <TextView
+                            android:id="@+id/tv_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/tidu_name"
-                            android:id="@+id/tv_name"
-                            android:layout_centerVertical="true"
                             android:textColor="@color/font_white"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:shadowColor="@color/widget_major_shadow"
                             android:shadowDx="1"
                             android:shadowDy="1"
-                            android:shadowRadius="2"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/shipowner"
-                            android:id="@+id/tv_level"
-                            android:textColor="@color/font_white"
-                            android:shadowColor="@color/widget_major_shadow"
-                            android:shadowDx="1"
-                            android:shadowDy="1"
                             android:shadowRadius="2"
-                            android:layout_below="@+id/tv_name" />
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -103,8 +106,9 @@
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:gravity="center"
+                            android:text="@string/travel_name"
                             android:textColor="@drawable/text_color"
-                            android:text="@string/travel_name"/>
+                            android:textAppearance="?android:attr/textAppearanceSmall"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -120,9 +124,9 @@
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:gravity="center"
+                            android:text="@string/repair_name"
                             android:textColor="@drawable/text_color"
-                            android:enabled="false"
-                            android:text="@string/repair_name"/>
+                            android:textAppearance="?android:attr/textAppearanceSmall"/>
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/ll_build"
@@ -137,8 +141,9 @@
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:gravity="center"
+                            android:text="@string/build_name"
                             android:textColor="@drawable/text_color"
-                            android:text="@string/build_name"/>
+                            android:textAppearance="?android:attr/textAppearanceSmall"/>
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/ll_make"
@@ -153,8 +158,9 @@
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:gravity="center"
+                            android:text="@string/make_name"
                             android:textColor="@drawable/text_color"
-                            android:text="@string/make_name"/>
+                            android:textAppearance="?android:attr/textAppearanceSmall"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -222,6 +228,7 @@
                     android:text="@string/shipowner"
                     android:id="@+id/tv_drawer_level"
                     android:textColor="@color/font_white"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
                     android:shadowColor="@color/widget_major_shadow"
                     android:shadowDx="1"
                     android:shadowDy="1"
