@@ -10,7 +10,7 @@ import android.webkit.WebView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Webactivity extends Activity{
+public class WebActivity extends Activity{
 
     @BindView(R.id.web_view)
     WebView webView;

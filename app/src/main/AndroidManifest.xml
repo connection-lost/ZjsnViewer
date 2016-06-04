@@ -153,7 +153,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Webactivity">
+        <activity android:name=".WebActivity">
 
         </activity>
     </application>

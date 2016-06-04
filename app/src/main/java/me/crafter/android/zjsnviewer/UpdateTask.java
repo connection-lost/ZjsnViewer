@@ -7,7 +7,7 @@ import android.os.AsyncTask;
 /**
  * Created by paleneutron on 6/3/2016.
  */
-class UpdateTask extends AsyncTask<Void,Void,Void> {
+public class UpdateTask extends AsyncTask<Void,Void,Void> {
     private Context context=null;
     private onUpdateTaskStateChange updateTaskStateChange;
     public UpdateTask(Context main_context){
