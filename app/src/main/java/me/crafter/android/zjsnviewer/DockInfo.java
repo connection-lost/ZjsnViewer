@@ -1,12 +1,9 @@
 package me.crafter.android.zjsnviewer;
 
-import android.app.ActivityManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
-
-import java.util.List;
 
 public class DockInfo {
 

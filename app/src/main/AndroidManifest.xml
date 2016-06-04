@@ -67,12 +67,16 @@
                 android:resource="@xml/widget__main_info" />
         </receiver>
 
-        <service android:name=".TimerService"></service>
+        <service android:name=".TimerService">
+
+        </service>
 
         <receiver
             android:name=".ScreenReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true">
+
+        </receiver>
 
         <activity
             android:name=".SettingsActivity"
@@ -86,11 +90,6 @@
         <activity
             android:name=".ZjsnViewer"
             android:label="@string/title_activity_main">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <!-- Settings General -->
@@ -145,8 +144,18 @@
                 android:value="me.crafter.android.zjsnviewer.ZjsnViewer" />
             >
         </activity>
-        <activity android:name=".InfoActivity"
-            android:label="@string/pref_header_info"/>
+        <activity android:name=".InfoActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".Webactivity">
+
+        </activity>
     </application>
 
 </manifest>

@@ -1,16 +1,23 @@
 package me.crafter.android.zjsnviewer;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -23,7 +30,10 @@ import me.crafter.android.zjsnviewer.infofragment.TravelFragemt;
 
 public class InfoActivity extends FragmentActivity {
 
-    @BindView(R.id.include2)
+    @BindView(R.id.dl_drawer)
+    DrawerLayout dl_drawer;
+
+    @BindView(R.id.toobar)
     Toolbar bar;
 
     @BindView(R.id.tv_name)
@@ -45,6 +55,17 @@ public class InfoActivity extends FragmentActivity {
     @BindView(R.id.ib_icon)
     ImageButton ib_icon;
 
+    @BindView(R.id.tv_drawer_name)
+    TextView tv_drawer_name;
+    @BindView(R.id.tv_drawer_level)
+    TextView tv_drawer_level;
+    @BindView(R.id.tv_build_time)
+    TextView tv_build_time;
+    @BindView(R.id.tv_setting)
+    TextView tv_setting;
+
+    private Context context;
+
     private ArrayList<TextView> tabs;
     private TravelFragemt travelFragemt;
     private BuildFragment buildFragment;
@@ -53,17 +74,27 @@ public class InfoActivity extends FragmentActivity {
 
     private Handler handler;
     private Runnable runnable;
-    private int RUN_TIME = 30*1000;
+    private int RUN_TIME = 2*1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
         ButterKnife.bind(this);
+        startService(new Intent(this, TimerService.class));
 
+        initData();
         initView();
         initEven();
-        refreshView();
+    }
+
+    public void initData(){
+
+        context = this;
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        String username = prefs.getString("username", "none");
+        String password = prefs.getString("password", "none");
+        if (username.contains("none") &&  password.contains("none")) Toast.makeText(context, R.string.username_hint, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -74,7 +105,7 @@ public class InfoActivity extends FragmentActivity {
 
     private void initView(){
 
-        bar.setTitle(R.string.pref_header_info);
+        refreshView();
         initFragment();
     }
 
@@ -86,14 +117,29 @@ public class InfoActivity extends FragmentActivity {
                 finish();
             }
         });
+
         ib_icon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DockInfo.updateInterval = 0;
-                new UpdateTask(v.getContext()).execute();
-                refreshAllView();
-            }
-        });
+                @Override
+                public void onClick(View v) {
+
+                    DockInfo.updateInterval = 0;
+                    final ProgressDialog progressDialog = ProgressDialog.show(context,"",getString(R.string.loading));
+                    UpdateTask task = new UpdateTask(context);
+                    task.setUpdateTaskStateChange(new UpdateTask.onUpdateTaskStateChange() {
+
+                        @Override
+                        public void AfterTask() {
+
+                            progressDialog.dismiss();
+                            refreshAllView();
+                        }
+                    });
+                    task.execute();
+//                    new UpdateTask(v.getContext()).execute();
+
+                }
+            });
+
         vp_page.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -136,6 +182,24 @@ public class InfoActivity extends FragmentActivity {
             }
         };
         handler.postDelayed(runnable,RUN_TIME);
+
+        tv_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(context, ZjsnViewer.class);
+                startActivity(intent);
+            }
+        });
+//        tv_build_time.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent = new Intent(context, Webactivity.class);
+//                intent.putExtra("URL", "http://js.ntwikis.com/jsp/apps/cancollezh/charactors/buildtime.jsp");
+//                startActivity(intent);
+//            }
+//        });
     }
 
     private void initFragment(){
@@ -176,7 +240,7 @@ public class InfoActivity extends FragmentActivity {
 
         ArrayList<Fragment> fragments;
 
-        public pageAdapter(FragmentManager fm, ArrayList<Fragment> fragments) {
+        pageAdapter(FragmentManager fm, ArrayList<Fragment> fragments) {
             super(fm);
             this.fragments = fragments;
         }
@@ -207,9 +271,12 @@ public class InfoActivity extends FragmentActivity {
     private void refreshView(){
 
         tv_name.setText(Storage.str_tiduName);
+        tv_drawer_name.setText(Storage.str_tiduName);
         tv_level.setText("Level: " + DockInfo.level + " (" + DockInfo.exp + "/" + DockInfo.nextExp + ")");
+        tv_drawer_level.setText("Level: " + DockInfo.level + " (" + DockInfo.exp + "/" + DockInfo.nextExp + ")");
         if (DockInfo.level.equals("150")){
             tv_level.setText(R.string.max);
+            tv_drawer_level.setText(R.string.max);
         }
     }
 

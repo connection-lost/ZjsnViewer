@@ -20,6 +20,8 @@
 
     <string name="tidu_name">提督の名前</string>
     <string name="max">Level: 150 (MAX)</string>
+    <string name="set_name">设置</string>
+    <string name="username_hint">请设置提督的账号密码</string>
 
     <string name="title_activity_settings_info">SettingsInfo</string>
     <string name="hello_world">Hello world!</string>
