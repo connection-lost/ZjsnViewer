@@ -22,7 +22,7 @@ import java.util.TimerTask;
 
 public class TimerService extends Service {
     // constant
-    public static final long NOTIFY_INTERVAL = 5 * 1000; // 10 seconds
+    public static long NOTIFY_INTERVAL = 5 * 1000; // 10 seconds
     public static TimerService instance;
 
     public static BroadcastReceiver mReceiver;
@@ -48,17 +48,18 @@ public class TimerService extends Service {
     @Override
     public void onCreate() {
         Log.i("TimerService", "onCreate()");
-        if (mTimer != null) {
-            mTimer.cancel();
-        } else {
-            mTimer = new Timer();
-            instance = this;
-        }
         if (mReceiver == null){
             IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
             filter.addAction(Intent.ACTION_SCREEN_OFF);
             mReceiver = new ScreenReceiver();
             registerReceiver(mReceiver, filter);
+        }
+
+        if (mTimer != null) {
+            mTimer.cancel();
+        } else {
+            mTimer = new Timer();
+            instance = this;
         }
         mTimer.scheduleAtFixedRate(new TimeDisplayTimerTask(), 0, NOTIFY_INTERVAL);
     }
@@ -84,7 +85,6 @@ public class TimerService extends Service {
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-//                   Log.i("TimerService", "run() - TimerService Receive Call");
                     new Proceed().execute();
                 }
             });
@@ -96,6 +96,7 @@ public class TimerService extends Service {
         protected Object doInBackground(Object... arg0){
             Context context = instance;
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
             Storage.language = Integer.parseInt(prefs.getString("language", "0"));
             if (prefs.getBoolean("auto_run", true)) {
                 DockInfo.requestUpdate(context);
@@ -118,6 +119,7 @@ public class TimerService extends Service {
             } else {
                 int currentUnix = DockInfo.currentUnix();
                 if (currentUnix - lastWidgetUpdate >= Integer.parseInt(prefs.getString("refresh", "60"))){
+
                     lastWidgetUpdate = currentUnix;
                     Widget_Main.updateWidget(context);
                     Widget_Travel.updateWidget(context);
@@ -129,6 +131,21 @@ public class TimerService extends Service {
                 }
             }
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(instance);
+            if (NOTIFY_INTERVAL != (Long.valueOf(prefs.getString("refresh", "60")))*1000) {
+
+                NOTIFY_INTERVAL = (Long.valueOf(prefs.getString("refresh", "60")))*1000;
+                mTimer.cancel();
+                mTimer = new Timer();
+                mTimer.scheduleAtFixedRate(new TimeDisplayTimerTask(), NOTIFY_INTERVAL, NOTIFY_INTERVAL);
+            }
+            Log.i("TimerService", "run() - TimerService Receive Call\nNOTIFY_INTERVAL:" + NOTIFY_INTERVAL + "\nrefresh:"+ prefs.getString("refresh", "60"));
         }
     }
 
