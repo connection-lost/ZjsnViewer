@@ -15,7 +15,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,6 +66,11 @@ public class InfoActivity extends FragmentActivity {
     @BindView(R.id.tv_setting)
     TextView tv_setting;
 
+    @BindView(R.id.sw_title_on)
+    Switch sw_title_on;
+    @BindView(R.id.sw_title_auto_run)
+    Switch sw_title_auto_run;
+
     private Context context;
 
     private ArrayList<TextView> tabs;
@@ -74,18 +81,28 @@ public class InfoActivity extends FragmentActivity {
 
     private Handler handler;
     private Runnable runnable;
-    private int RUN_TIME = 2*1000;
+    private int RUN_TIME = 60*1000;
+    private int FIRST_TIME = 2*1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
         ButterKnife.bind(this);
-        startService(new Intent(this, TimerService.class));
 
         initData();
         initView();
         initEven();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        Boolean on = preferences.getBoolean("on", true);
+        Boolean auto = preferences.getBoolean("auto_run", true);
+        sw_title_on.setChecked(on);
+        sw_title_auto_run.setChecked(auto);
     }
 
     public void initData(){
@@ -181,7 +198,7 @@ public class InfoActivity extends FragmentActivity {
                 handler.postDelayed(runnable,RUN_TIME);
             }
         };
-        handler.postDelayed(runnable,RUN_TIME);
+        handler.postDelayed(runnable,FIRST_TIME);
 
         tv_setting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,15 +208,30 @@ public class InfoActivity extends FragmentActivity {
                 startActivity(intent);
             }
         });
-//        tv_build_time.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent intent = new Intent(context, Webactivity.class);
-//                intent.putExtra("URL", "http://js.ntwikis.com/jsp/apps/cancollezh/charactors/buildtime.jsp");
-//                startActivity(intent);
-//            }
-//        });
+
+        sw_title_on.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+                if (!preferences.edit().putBoolean("on", isChecked).commit()){
+
+                    sw_title_on.setChecked(!isChecked);
+                }
+            }
+        });
+
+        sw_title_auto_run.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+                if (!preferences.edit().putBoolean("auto_run", isChecked).commit()){
+
+                    sw_title_auto_run.setChecked(!isChecked);
+                }
+            }
+        });
     }
 
     private void initFragment(){
