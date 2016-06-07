@@ -8,8 +8,8 @@ android {
         applicationId "me.crafter.android.zjsnviewer"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 29
-        versionName "2.7.2"
+        versionCode 30
+        versionName "2.7.3"
     }
     lintOptions {
         abortOnError false

@@ -39,7 +39,7 @@ public class NotificationSender {
                 .setAutoCancel(true);
 
         if (if_send_vibration) {
-            builder.setDefaults(NotificationCompat.DEFAULT_VIBRATE);
+            builder.setDefaults(NotificationCompat.DEFAULT_ALL);
         } else {
             builder.setVibrate(new long[]{0L});
         }
