@@ -35,6 +35,7 @@ public class NotificationSender {
 //                TODO 加个是否显示浮动窗口的选项
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setDefaults(NotificationCompat.DEFAULT_LIGHTS|NotificationCompat.DEFAULT_SOUND)
+//                .setGroup(Storage.NOTIFICATION_GROUP_KEY)
                 .setContentIntent(Storage.getStartPendingIntent(context))
                 .setAutoCancel(true);
 

@@ -47,6 +47,7 @@ public class Storage {
     public static String[] str_notOn = {"未开启","未开启","未啟動","Disabled","起動しない","x","我在睡觉"};
     public static String[] str_gameRunning = {"游戏运行中","游戏运行中","遊戲運行中","Game is running","起動しない","-","游戏在运行"};
 
+    public static final String NOTIFICATION_GROUP_KEY = "zjsn_group";
 
     public static String getZjsnPackageName(Context context){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
@@ -66,6 +67,13 @@ public class Storage {
             intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.crafter.me/zjsnviewer/"));
         }
         return PendingIntent.getActivity(context, 0, intent, 0);
+    }
+
+    public static PendingIntent getInfoIntent(Context context){
+        Intent intent = new Intent(context, InfoActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent pendIntent = PendingIntent.getActivity(context, 0, intent, 0);
+        return pendIntent;
     }
 
     public static float getTextSizeMajor(Context context){
