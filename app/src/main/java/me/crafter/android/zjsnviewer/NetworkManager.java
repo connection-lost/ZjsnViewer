@@ -26,6 +26,7 @@ public class NetworkManager {
     public static String url_init_hm = "api/initGame&t=233&e=3deb25e23f5fdd11d792d63bd66ced7c";
     public static String url_passport_p7 = "http://login.alpha.p7game.com/index/passportLogin/";// +username/password
     //hm change the login in url as http://login.jianniang.com/index/passportLogin/
+    //hm change the login in url as http://login.jr.moefantasy.com/index/passportLogin/ in 6/4/2016
     public static String url_passport_hm = "http://login.jr.moefantasy.com/index/passportLogin/";// +username/password
     public static String url_passport_hm_ios = "http://loginios.jianniang.com/index/passportLogin/";// +username/password
     public static String url_login = "index/login/";//+uid
@@ -44,7 +45,7 @@ public class NetworkManager {
     };
 
     public static String[] url_server_hm = {
-            "http://zj.alpha.jianniang.com/",
+            "http://zj.alpha.jr.moefantasy.com/",
             "http://s2.jr.moefantasy.com/",
             "http://s3.jr.moefantasy.com/",
             "http://s4.jr.moefantasy.com/",

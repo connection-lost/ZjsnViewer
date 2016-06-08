@@ -10,6 +10,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
+import android.preference.PreferenceScreen;
 import android.preference.RingtonePreference;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -53,6 +54,11 @@ public class ZjsnViewer extends PreferenceActivity {
         fakeHeader.setTitle(R.string.pref_header_main);
         getPreferenceScreen().addPreference(fakeHeader);
         addPreferencesFromResource(R.xml.pref_part_main_settings);
+
+        //hide "on" and "auto_run"
+        PreferenceScreen screen = getPreferenceScreen();
+        screen.removePreference(screen.findPreference("on"));
+        screen.removePreference(screen.findPreference("auto_run"));
 
         // Add 'other' preferences.
         fakeHeader = new PreferenceCategory(this);
