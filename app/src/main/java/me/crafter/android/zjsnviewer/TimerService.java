@@ -36,36 +36,48 @@ public class TimerService extends Service {
     // timer handling
     private Timer mTimer = null;
 
+    private ForegroundReceive receive;
+
 //    @Override
 //    public int onStartCommand(Intent intent, int flags, int startId) {
 //        // If we get killed, after returning from here, restart
 //        return START_STICKY;
 //    }
     private void setForeGround(Context context){
-        String[] info = DockInfo.getTravelBoard();
-        String title = Storage.str_tiduName;
-        String text = Storage.str_thereIs[Storage.language] + DockInfo.countTravelIng() + Storage.str_teamsTravelling[Storage.language];
-        String msg = "";
-        NotificationCompat.BigTextStyle style = new NotificationCompat.BigTextStyle()
-                .setBigContentTitle(title)
-                .setSummaryText(text);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        if (prefs.getBoolean("notification_foreground", true)){
 
-        for (int i = 0; i < 4; i++){
-//            style.addLine(info[i]);
-            msg += info[i] + "\n";
+            String[] info = DockInfo.getTravelBoard();
+            String title = Storage.str_tiduName;
+            String msj_name = prefs.getString("notification_msj_name","");
+            if (!msj_name.isEmpty()){
+
+                Storage.language = Integer.parseInt(prefs.getString("language", "0"));
+                title = msj_name + Storage.str_msjreportTitle[Storage.language];
+            }
+            String text = Storage.str_thereIs[Storage.language] + DockInfo.countTravelIng() + Storage.str_teamsTravelling[Storage.language];
+            String msg = "";
+            NotificationCompat.BigTextStyle style = new NotificationCompat.BigTextStyle()
+                    .setBigContentTitle(title)
+                    .setSummaryText(text);
+
+            for (int i = 0; i < 4; i++){
+    //            style.addLine(info[i]);
+                msg += info[i] + "\n";
+            }
+            style.bigText(msg);
+
+            final NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
+                    .setSmallIcon(R.drawable.cat_icon)
+                    .setContentTitle(title)
+                    .setContentText(text)
+                    .setStyle(style)
+                    .setGroup(Storage.NOTIFICATION_GROUP_KEY)
+                    .setGroupSummary(true)
+                    .setContentIntent(Storage.getInfoIntent(context));
+
+            startForeground(NOTIFICATION_ID,builder.build());
         }
-        style.bigText(msg);
-
-        final NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
-                .setSmallIcon(R.drawable.cat_icon)
-                .setContentTitle(title)
-                .setContentText(text)
-                .setStyle(style)
-                .setGroup(Storage.NOTIFICATION_GROUP_KEY)
-                .setGroupSummary(true)
-                .setContentIntent(Storage.getInfoIntent(context));
-
-        startForeground(NOTIFICATION_ID,builder.build());
     }
     @Override
     public IBinder onBind(Intent intent) {
@@ -91,6 +103,17 @@ public class TimerService extends Service {
         mTimer.scheduleAtFixedRate(new TimeDisplayTimerTask(), 0, NOTIFY_INTERVAL);
 
         setForeGround(this);
+
+        receive = new ForegroundReceive();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("OnOrOff");
+        registerReceiver(receive, filter);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(receive);
     }
 
     @Override
@@ -132,7 +155,15 @@ public class TimerService extends Service {
             }
             //notification checker
             if (DockInfo.shouldNotify(context)){
-                NotificationSender.notify(context, Storage.str_reportTitle[Storage.language], DockInfo.getStatusReportAllFull());
+
+                String msj_name = prefs.getString("notification_msj_name","");
+                if (msj_name.isEmpty()){
+
+                    NotificationSender.notify(context, Storage.str_reportTitle[Storage.language], DockInfo.getStatusReportAllFull());
+                }else {
+
+                    NotificationSender.notify(context, msj_name + Storage.str_msjreportTitle[Storage.language], DockInfo.getStatusReportAllFull());
+                }
             }
             //check if screen is on
             //if screen not on, widget should not update
@@ -168,15 +199,30 @@ public class TimerService extends Service {
             super.onPostExecute(o);
 
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(instance);
-            if (NOTIFY_INTERVAL != (Long.valueOf(prefs.getString("refresh", "60")))*1000) {
+            if (NOTIFY_INTERVAL != (Long.valueOf(prefs.getString("refresh", "60"))) * 1000) {
 
-                NOTIFY_INTERVAL = (Long.valueOf(prefs.getString("refresh", "60")))*1000;
+                NOTIFY_INTERVAL = (Long.valueOf(prefs.getString("refresh", "60"))) * 1000;
                 mTimer.cancel();
                 mTimer = new Timer();
                 mTimer.scheduleAtFixedRate(new TimeDisplayTimerTask(), NOTIFY_INTERVAL, NOTIFY_INTERVAL);
             }
-            Log.i("TimerService", "run() - TimerService Receive Call\nNOTIFY_INTERVAL:" + NOTIFY_INTERVAL + "\nrefresh:"+ prefs.getString("refresh", "60"));
+            Log.i("TimerService", "run() - TimerService Receive Call\nNOTIFY_INTERVAL:" + NOTIFY_INTERVAL + "\nrefresh:" + prefs.getString("refresh", "60"));
         }
     }
 
+    public class ForegroundReceive extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+            if (prefs.getBoolean("notification_foreground", true)){
+
+                setForeGround(context);
+            }else {
+
+                stopForeground(true);
+            }
+        }
+    }
 }

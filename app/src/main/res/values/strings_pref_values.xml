@@ -4,12 +4,13 @@
     <string name="pref_default_account">此处输入用户名</string>
     <string name="pref_title_password">密码</string>
     <string name="pref_title_server_name">服务器</string>
+    <string name="pref_default_msj_name">此处输入秘书舰称谓</string>
 
     <string name="pref_title_language">语言/显示形式</string>
     <string-array name="pref_choice_language_titles">
         <item>简体中文</item>
         <item>简体中文短</item>
-        <item>正體中文</item>
+        <item>繁體中文</item>
         <item>English</item>
         <item>日本語</item>
         <item>精简 Lite スリム化</item>
@@ -110,6 +111,8 @@
 
     <string name="pref_title_on">总开关</string>
     <string name="pref_auto_on">自动模式</string>
+    <string name="pref_title_notify_msj_name">设置秘书舰</string>
+    <string name="pref_title_notify_foreground">开启通知常驻</string>
     <string name="pref_title_notify_general">开启推送通知</string>
     <string name="pref_title_notify_travel">远征结束通知</string>
     <string name="pref_title_notify_repair">维修结束通知</string>

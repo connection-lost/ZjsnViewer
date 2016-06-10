@@ -277,6 +277,21 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/pref_auto_on" />
 
+                <TextView
+                    android:id="@+id/tv_web"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/background_color"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:padding="15dp"
+                    android:gravity="center|start"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/unavailable"
+                    android:textColor="@color/font_black"
+                    android:visibility="gone"/>
+
             </LinearLayout>
 
             <TextView

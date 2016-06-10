@@ -1,15 +1,18 @@
 package me.crafter.android.zjsnviewer;
 
+import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
+import android.preference.SwitchPreference;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -33,6 +36,22 @@ public class SettingsNotification extends PreferenceActivity {
         fakeHeader.setTitle(R.string.pref_header_notification);
         getPreferenceScreen().addPreference(fakeHeader);
         addPreferencesFromResource(R.xml.pref_part_notification);
+
+
+        SwitchPreference notification_foreground = (SwitchPreference) findPreference("notification_foreground");
+        Preference.OnPreferenceChangeListener listener = new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+
+                Intent intent = new Intent();
+                intent.setAction("OnOrOff");
+                sendBroadcast(intent);
+
+                return true;
+            }
+        };
+        bindPreferenceSummaryToValue(findPreference("notification_msj_name"));
+        notification_foreground.setOnPreferenceChangeListener(listener);
     }
 
     private void setupToolBar(){
@@ -50,7 +69,7 @@ public class SettingsNotification extends PreferenceActivity {
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
      */
-    private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
+    private Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
             String stringValue = value.toString();
@@ -76,15 +95,35 @@ public class SettingsNotification extends PreferenceActivity {
                         preference.setSummary(name);
                     }
                 }
-            }
-            else {
+            }else if(preference instanceof EditTextPreference){
+
+                if (stringValue.isEmpty()){
+
+                    if (preference.getKey().equalsIgnoreCase("notification_msj_name")){
+
+                        preference.setSummary(R.string.pref_default_msj_name);
+                    }else {
+
+                        preference.setSummary("");
+                    }
+                }else{
+
+                    preference.setSummary(stringValue);
+                }
+            }else {
                 preference.setSummary(stringValue);
             }
+
+
+            Intent intent = new Intent();
+            intent.setAction("OnOrOff");
+            sendBroadcast(intent);
+
             return true;
         }
     };
 
-    private static void bindPreferenceSummaryToValue(Preference preference) {
+    private void bindPreferenceSummaryToValue(Preference preference) {
         preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
         sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
                 PreferenceManager
