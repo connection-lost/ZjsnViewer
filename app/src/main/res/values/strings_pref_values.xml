@@ -89,7 +89,7 @@
         <item>11</item>
     </string-array>
 
-    <string name="pref_title_refresh">挂件刷新时间</string>
+    <string name="pref_title_refresh">数据刷新时间</string>
     <string-array name="pref_choice_refresh_titles">
         <item>5秒</item>
         <item>10秒</item>
@@ -112,7 +112,7 @@
     <string name="pref_title_on">总开关</string>
     <string name="pref_auto_on">自动模式</string>
     <string name="pref_title_notify_msj_name">设置秘书舰</string>
-    <string name="pref_title_notify_foreground">开启通知常驻</string>
+    <string name="pref_title_notify_foreground">常驻通知栏</string>
     <string name="pref_title_notify_general">开启推送通知</string>
     <string name="pref_title_notify_travel">远征结束通知</string>
     <string name="pref_title_notify_repair">维修结束通知</string>
