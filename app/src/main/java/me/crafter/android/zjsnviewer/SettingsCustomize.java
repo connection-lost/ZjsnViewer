@@ -1,5 +1,6 @@
 package me.crafter.android.zjsnviewer;
 
+import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -33,6 +34,7 @@ public class SettingsCustomize extends PreferenceActivity {
         fakeHeader.setTitle(R.string.pref_header_customize);
         getPreferenceScreen().addPreference(fakeHeader);
         addPreferencesFromResource(R.xml.pref_part_customize);
+
         bindPreferenceSummaryToValue(findPreference("textsize_major"));
         bindPreferenceSummaryToValue(findPreference("textsize_minor"));
         bindPreferenceSummaryToValue(findPreference("language"));
@@ -53,7 +55,7 @@ public class SettingsCustomize extends PreferenceActivity {
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
      */
-    private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
+    private Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
             String stringValue = value.toString();
@@ -83,11 +85,16 @@ public class SettingsCustomize extends PreferenceActivity {
             else {
                 preference.setSummary(stringValue);
             }
+
+            Intent intent = new Intent();
+            intent.setAction("OnOrOff");
+            sendBroadcast(intent);
+
             return true;
         }
     };
 
-    private static void bindPreferenceSummaryToValue(Preference preference) {
+    private void bindPreferenceSummaryToValue(Preference preference) {
         preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
         sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
                 PreferenceManager

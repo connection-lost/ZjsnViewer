@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,6 +23,7 @@ public class WebActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_web);
         ButterKnife.bind(this);
+
         toolbar.setTitle("web");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,11 +31,27 @@ public class WebActivity extends Activity{
                 finish();
             }
         });
+
         String url = getIntent().getStringExtra("URL");
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setSaveFormData(false);
-        webSettings.setJavaScriptEnabled(true);
-        webSettings.setSupportZoom(false);
+        final String js = getIntent().getStringExtra("JS");
+
+        webView.getSettings().setAllowFileAccess(true);
+        webView.getSettings().setDomStorageEnabled(true);
+        webView.getSettings().setDatabaseEnabled(true);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setSupportZoom(true);
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+        webView.getSettings().setDefaultTextEncodingName("UTF-8");
+
+        webView.setWebViewClient(new WebViewClient(){
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                webView.loadUrl(js);
+            }
+        });
 
         webView.loadUrl(url);
     }

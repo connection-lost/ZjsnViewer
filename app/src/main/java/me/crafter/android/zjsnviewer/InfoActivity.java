@@ -70,7 +70,8 @@ public class InfoActivity extends FragmentActivity {
     Switch sw_title_on;
     @BindView(R.id.sw_title_auto_run)
     Switch sw_title_auto_run;
-
+    @BindView(R.id.tv_web)
+    TextView tv_web;
     private Context context;
 
     private ArrayList<TextView> tabs;
@@ -103,6 +104,14 @@ public class InfoActivity extends FragmentActivity {
         Boolean auto = preferences.getBoolean("auto_run", true);
         sw_title_on.setChecked(on);
         sw_title_auto_run.setChecked(auto);
+
+        handler.postDelayed(runnable,FIRST_TIME);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        handler.removeCallbacks(runnable);
     }
 
     public void initData(){
@@ -112,12 +121,6 @@ public class InfoActivity extends FragmentActivity {
         String username = prefs.getString("username", "none");
         String password = prefs.getString("password", "none");
         if (username.contains("none") &&  password.contains("none")) Toast.makeText(context, R.string.username_hint, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        handler.removeCallbacks(runnable);
     }
 
     private void initView(){
@@ -198,7 +201,6 @@ public class InfoActivity extends FragmentActivity {
                 handler.postDelayed(runnable,RUN_TIME);
             }
         };
-        handler.postDelayed(runnable,FIRST_TIME);
 
         tv_setting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -230,6 +232,17 @@ public class InfoActivity extends FragmentActivity {
 
                     sw_title_auto_run.setChecked(!isChecked);
                 }
+            }
+        });
+
+        tv_web.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(InfoActivity.this, WebActivity.class);
+                intent.putExtra("URL","http://js.ntwikis.com/");
+                intent.putExtra("JS","http://js.ntwikis.com/jsp/apps/cancollezh/charactors/buildtime.jsp");
+                startActivity(intent);
             }
         });
     }
