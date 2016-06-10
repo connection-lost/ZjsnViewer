@@ -18,6 +18,7 @@ public class Storage {
     public static String str_tiduName = "提督の名前";
     public static String[] str_reportTitle = {"战舰少女码头报告","战舰少女码头报告","戰艦少女碼頭通知","Warship Girls Dock Report","提督注意書","战舰少女码头报告","喂！看这里！"};
     public static String[] str_msjreportTitle = {"报告","报","報告"," Report","の報告書","报","吼了一声：喂！看这里！"};
+    public static String[] str_msj_foreground_reportTitle = {"定时报告","报","定時報告"," Daily Report","の定时報告書","定时报告","打了个哈欠(～﹃～)~zZ"};
     public static String[] str_locked = {"该槽位已被锁定","槽位锁定","該槽位已被鎖定","Slot Locked","???","x","还不课金么？"};
     public static String[] str_idle = {"空闲中","空闲中","閒置中","Idle","未使用","-","闲着呢"};
     public static String[] str_hour = {"小时","时","小時","hr","时",":","时"};

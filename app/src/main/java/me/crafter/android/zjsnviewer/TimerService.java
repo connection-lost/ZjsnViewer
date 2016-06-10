@@ -53,7 +53,7 @@ public class TimerService extends Service {
             if (!msj_name.isEmpty()){
 
                 Storage.language = Integer.parseInt(prefs.getString("language", "0"));
-                title = msj_name + Storage.str_msjreportTitle[Storage.language];
+                title = msj_name + Storage.str_msj_foreground_reportTitle[Storage.language];
             }
             String text = Storage.str_thereIs[Storage.language] + DockInfo.countTravelIng() + Storage.str_teamsTravelling[Storage.language];
             String msg = "";
