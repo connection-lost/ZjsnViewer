@@ -9,6 +9,7 @@
     android:minHeight="?attr/actionBarSize"
     app:navigationContentDescription="@string/abc_action_bar_up_description"
     android:background="?attr/colorPrimary"
+    app:titleTextColor="@color/font_white"
     app:navigationIcon="?attr/homeAsUpIndicator"
     app:title="@string/title_actionbar_default"
     />

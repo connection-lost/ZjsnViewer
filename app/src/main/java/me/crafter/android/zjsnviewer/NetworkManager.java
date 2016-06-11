@@ -26,7 +26,8 @@ public class NetworkManager {
     public static String url_init_hm = "api/initGame&t=233&e=3deb25e23f5fdd11d792d63bd66ced7c";
     public static String url_passport_p7 = "http://login.alpha.p7game.com/index/passportLogin/";// +username/password
     //hm change the login in url as http://login.jianniang.com/index/passportLogin/
-    public static String url_passport_hm = "http://login.jianniang.com/index/passportLogin/";// +username/password
+    //hm change the login in url as http://login.jr.moefantasy.com/index/passportLogin/ in 6/4/2016
+    public static String url_passport_hm = "http://login.jr.moefantasy.com/index/passportLogin/";// +username/password
     public static String url_passport_hm_ios = "http://loginios.jianniang.com/index/passportLogin/";// +username/password
     public static String url_login = "index/login/";//+uid
     public static String[] url_server_p7 = {
@@ -44,27 +45,27 @@ public class NetworkManager {
     };
 
     public static String[] url_server_hm = {
-            "http://zj.alpha.jianniang.com/",
-            "http://s2.jianniang.com/",
-            "http://s3.jianniang.com/",
-            "http://s4.jianniang.com/",
-            "http://s5.jianniang.com/",
-            "http://s6.jianniang.com/",
-            "http://s7.jianniang.com/",
-            "http://s8.jianniang.com/",
-            "http://s9.jianniang.com/",
-            "http://s10.jianniang.com/",
-            "http://s11.jianniang.com/",
-            "http://s12.jianniang.com/"
+            "http://zj.alpha.jr.moefantasy.com/",
+            "http://s2.jr.moefantasy.com/",
+            "http://s3.jr.moefantasy.com/",
+            "http://s4.jr.moefantasy.com/",
+            "http://s5.jr.moefantasy.com/",
+            "http://s6.jr.moefantasy.com/",
+            "http://s7.jr.moefantasy.com/",
+            "http://s8.jr.moefantasy.com/",
+            "http://s9.jr.moefantasy.com/",
+            "http://s10.jr.moefantasy.com/",
+            "http://s11.jr.moefantasy.com/",
+            "http://s12.jr.moefantasy.com/"
     };
 
     public static String[] url_server_hm_ios = {
-        "http://s101.jianniang.com/",
-        "http://s102.jianniang.com/",
-        "http://s103.jianniang.com/",
-        "http://s104.jianniang.com/",
-        "http://s105.jianniang.com/",
-        "http://s106.jianniang.com/"
+        "http://s101.jr.moefantasy.com/",
+        "http://s102.jr.moefantasy.com/",
+        "http://s103.jr.moefantasy.com/",
+        "http://s104.jr.moefantasy.com/",
+        "http://s105.jr.moefantasy.com/",
+        "http://s106.jr.moefantasy.com/"
     };
     public static String getCurrentUnixTime() {
         long unixTime = System.currentTimeMillis() / 10L;

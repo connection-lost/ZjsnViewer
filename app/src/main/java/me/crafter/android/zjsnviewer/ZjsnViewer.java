@@ -1,7 +1,6 @@
 package me.crafter.android.zjsnviewer;
 
 import android.content.Context;
-import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -11,11 +10,13 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
+import android.preference.PreferenceScreen;
 import android.preference.RingtonePreference;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 
 @SuppressWarnings("deprecation")
 public class ZjsnViewer extends PreferenceActivity {
@@ -23,6 +24,7 @@ public class ZjsnViewer extends PreferenceActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+        setupToolBar();
         setupSimplePreferencesScreen();
         registerListener(getApplicationContext());
     }
@@ -30,7 +32,18 @@ public class ZjsnViewer extends PreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        startService(new Intent(this, TimerService.class));
+    }
+
+    private void setupToolBar(){
+        LinearLayout root = (LinearLayout)findViewById(android.R.id.list).getParent().getParent().getParent();
+        Toolbar bar = (Toolbar) LayoutInflater.from(this).inflate(R.layout.pref_shared_toolbar, root, false);
+        root.addView(bar, 0); // insert at top
+        bar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void setupSimplePreferencesScreen() {
@@ -41,6 +54,11 @@ public class ZjsnViewer extends PreferenceActivity {
         fakeHeader.setTitle(R.string.pref_header_main);
         getPreferenceScreen().addPreference(fakeHeader);
         addPreferencesFromResource(R.xml.pref_part_main_settings);
+
+        //hide "on" and "auto_run"
+        PreferenceScreen screen = getPreferenceScreen();
+        screen.removePreference(screen.findPreference("on"));
+        screen.removePreference(screen.findPreference("auto_run"));
 
         // Add 'other' preferences.
         fakeHeader = new PreferenceCategory(this);
