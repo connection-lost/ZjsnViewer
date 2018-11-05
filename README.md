@@ -1,7 +1,8 @@
 # ZjsnViewer
 by Tidu no JB
 
-由于个人时间原因，战舰少女Viewer在2016年5月底前不会有任何更新。
+### 写在前面
+本github repo为战舰少女Viewer最初起源。目前战舰少女Viewer已经不再更新，但是有其他非本人的后期更新修改版可以使用。
 
 ZjsnViewer, or Warship Girls Viewer, is a helper app designed for Warship Girls.
 http://zj.p7game.com/
