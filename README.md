@@ -1,3 +1,6 @@
+Travis CI: [![Travis CI](https://travis-ci.org/JohnnySun/ZjsnViewer.svg?branch=master)](https://travis-ci.org/JohnnySun/ZjsnViewer)
+原作者貌似不再支持，fork来此工程进行继续开发。
+---
 # ZjsnViewer
 by Tidu no JB
 

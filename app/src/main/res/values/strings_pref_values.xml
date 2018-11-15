@@ -4,12 +4,13 @@
     <string name="pref_default_account">此处输入用户名</string>
     <string name="pref_title_password">密码</string>
     <string name="pref_title_server_name">服务器</string>
+    <string name="pref_default_msj_name">此处输入秘书舰称谓</string>
 
     <string name="pref_title_language">语言/显示形式</string>
     <string-array name="pref_choice_language_titles">
         <item>简体中文</item>
         <item>简体中文短</item>
-        <item>正體中文</item>
+        <item>繁體中文</item>
         <item>English</item>
         <item>日本語</item>
         <item>精简 Lite スリム化</item>
@@ -26,30 +27,54 @@
     </string-array>
 
     <string-array name="pref_choice_server_name">
-        <item>[国] ZERO</item>
-        <item>[国] 胡德</item>
-        <item>[国] 萨拉托加</item>
-        <item>[国] 俾斯麦</item>
-        <item>[国] 声望</item>
-        <item>[国] 纳尔逊</item>
-        <item>[国] 空想</item>
-        <item>[国] 海伦娜</item>
-        <item>[国] 突击者</item>
-        <item>[国] 黎塞留</item>
-        <item>[国] 贝尔法斯特</item>
-        <item>[国] 追赶者</item>
-        <item>[台] 胡德</item>
-        <item>[台] 萨拉托加</item>
-        <item>[台] 俾斯麦</item>
-        <item>[台] 声望</item>
-        <item>[台] 纳尔逊</item>
-        <item>[台] 空想</item>
-        <item>[台] 海伦娜</item>
-        <item>[台] 突击者</item>
-        <item>[台] 黎赛留</item>
-        <item>[台] 贝尔法斯特</item>
+        <item>[战舰少女R] 胡德</item>
+        <item>[战舰少女R] 萨拉托加</item>
+        <item>[战舰少女R] 俾斯麦</item>
+        <item>[战舰少女R] 声望</item>
+        <item>[战舰少女R] 纳尔逊</item>
+        <item>[战舰少女R] 空想</item>
+        <item>[战舰少女R] 海伦娜</item>
+        <item>[战舰少女R] 突击者</item>
+        <item>[战舰少女R] 黎赛留</item>
+        <item>[战舰少女R] 贝尔法斯特</item>
+        <item>[战舰少女R] 埃塞克斯</item>
+        <item>[战舰少女R] 列克星敦</item>
+        <item>[战舰少女R] 欧根亲王</item>
+        <item>[战舰少女R] 提尔比茨</item>
+        <item>[战舰少女R] 大青花鱼</item>
+        <item>[战舰少女R] 阿拉斯加</item>
+        <item>[战舰少女R] 皇家方舟</item>
+        <item>[战舰少女] ZERO</item>
+        <item>[战舰少女] 胡德</item>
+        <item>[战舰少女] 萨拉托加</item>
+        <item>[战舰少女] 俾斯麦</item>
+        <item>[战舰少女] 声望</item>
+        <item>[战舰少女] 纳尔逊</item>
+        <item>[战舰少女] 空想</item>
+        <item>[战舰少女] 海伦娜</item>
+        <item>[战舰少女] 突击者</item>
+        <item>[战舰少女] 黎塞留</item>
+        <item>[战舰少女] 贝尔法斯特</item>
+        <item>[战舰少女] 追赶者</item>
     </string-array>
     <string-array name="pref_choice_server_values">
+        <item>101</item>
+        <item>102</item>
+        <item>103</item>
+        <item>104</item>
+        <item>105</item>
+        <item>106</item>
+        <item>107</item>
+        <item>108</item>
+        <item>109</item>
+        <item>110</item>
+        <item>111</item>
+        <item>201</item>
+        <item>202</item>
+        <item>203</item>
+        <item>204</item>
+        <item>205</item>
+        <item>206</item>
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -62,19 +87,9 @@
         <item>9</item>
         <item>10</item>
         <item>11</item>
-        <item>101</item>
-        <item>102</item>
-        <item>103</item>
-        <item>104</item>
-        <item>105</item>
-        <item>106</item>
-        <item>107</item>
-        <item>108</item>
-        <item>109</item>
-        <item>110</item>
     </string-array>
 
-    <string name="pref_title_refresh">挂件刷新时间</string>
+    <string name="pref_title_refresh">数据刷新时间</string>
     <string-array name="pref_choice_refresh_titles">
         <item>5秒</item>
         <item>10秒</item>
@@ -95,11 +110,16 @@
     </string-array>
 
     <string name="pref_title_on">总开关</string>
+    <string name="pref_auto_on">自动模式</string>
+    <string name="pref_title_notify_msj_name">设置秘书舰</string>
+    <string name="pref_title_notify_foreground">常驻通知栏</string>
     <string name="pref_title_notify_general">开启推送通知</string>
     <string name="pref_title_notify_travel">远征结束通知</string>
     <string name="pref_title_notify_repair">维修结束通知</string>
     <string name="pref_title_notify_build">建造结束通知</string>
     <string name="pref_title_notify_make">开发结束通知</string>
+    <string name="pref_title_notify_screen_light">通知时点亮屏幕</string>
+    <string name="pref_title_notify_vibration">通知时震动</string>
 
     <string name="pref_summary_notify_general">Turn On Notifications</string>
     <string name="pref_summary_notify_travel">Expedition Notifications</string>
@@ -108,10 +128,10 @@
     <string name="pref_summary_notify_make">Constriction Notifications (Equipment)</string>
 
     <string name="pref_title_textsize_minor">信息挂件字体大小</string>
-    <string name="pref_default_textsize_minor">48</string>
+    <string name="pref_default_textsize_minor">24</string>
 
     <string name="pref_title_textsize_major">主挂件字体大小</string>
-    <string name="pref_default_textsize_major">48</string>
+    <string name="pref_default_textsize_major">24</string>
 
     <string name="pref_title_black">黑科技开关</string>
     <string name="pref_summary_black">比较新奇的玩意，请谨慎使用</string>

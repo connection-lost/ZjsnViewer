@@ -7,7 +7,13 @@
     <color name="widget_minor_shadow">#070707</color>
     <color name="widget_major_shadow">#fafafa</color>
 
-
-
+    <color name="font_black">#000000</color>
+    <color name="background_white">#ffffff</color>
+    <color name="font_grey">#aaaaaa</color>
+    <color name="background_grey">#f5f5f5</color>
+    <color name="font_white">#f5f5f5</color>
+    <color name="background_blue">#28a6d8</color>
+    <color name="font_alpha">#77ffffff</color>
+    <color name="background_dark_blue">#2896d8</color>
 
 </resources>

@@ -22,7 +22,7 @@
     <ListPreference
         android:key="server"
         android:title="@string/pref_title_server_name"
-        android:defaultValue="0"
+        android:defaultValue="101"
         android:entries="@array/pref_choice_server_name"
         android:entryValues="@array/pref_choice_server_values"
         android:negativeButtonText="@null"

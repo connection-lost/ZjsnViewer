@@ -10,15 +10,23 @@
     <string name="travel_widget_name">ZjsnViewer - 远征</string>
     <string name="build_widget_name">ZjsnViewer - 建造</string>
     <string name="make_widget_name">ZjsnViewer - 开发</string>
+    <string name="repair_name">修理</string>
+    <string name="travel_name">远征</string>
+    <string name="build_name">建造</string>
+    <string name="make_name">开发</string>
     <string name="none">加载未完成</string>
     <string name="shipowner">加载未完成</string>
     <string name="loading">Loading...</string>
+
+    <string name="tidu_name">提督の名前</string>
+    <string name="max">Level: 150 (MAX)</string>
+    <string name="set_name">设置</string>
+    <string name="username_hint">请设置提督的账号密码</string>
 
     <string name="title_activity_settings_info">SettingsInfo</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_zjsn_viewer">ZjsnViewer</string>
-
 
 
     <string name="checking_update">检查更新中</string>

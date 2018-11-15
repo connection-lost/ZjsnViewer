@@ -8,9 +8,7 @@ import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.text.format.DateFormat;
 import android.util.Log;
-import android.widget.RemoteViews;
 
-import java.util.Calendar;
 import java.util.Date;
 
 public class Storage {
@@ -19,6 +17,8 @@ public class Storage {
 
     public static String str_tiduName = "提督の名前";
     public static String[] str_reportTitle = {"战舰少女码头报告","战舰少女码头报告","戰艦少女碼頭通知","Warship Girls Dock Report","提督注意書","战舰少女码头报告","喂！看这里！"};
+    public static String[] str_msjreportTitle = {"报告","报","報告"," Report","の報告書","报","吼了一声：喂！看这里！"};
+    public static String[] str_msj_foreground_reportTitle = {"定时报告","报","定時報告"," Daily Report","の定时報告書","定时报告","打了个哈欠(～﹃～)~zZ"};
     public static String[] str_locked = {"该槽位已被锁定","槽位锁定","該槽位已被鎖定","Slot Locked","???","x","还不课金么？"};
     public static String[] str_idle = {"空闲中","空闲中","閒置中","Idle","未使用","-","闲着呢"};
     public static String[] str_hour = {"小时","时","小時","hr","时",":","时"};
@@ -47,6 +47,7 @@ public class Storage {
     public static String[] str_notOn = {"未开启","未开启","未啟動","Disabled","起動しない","x","我在睡觉"};
     public static String[] str_gameRunning = {"游戏运行中","游戏运行中","遊戲運行中","Game is running","起動しない","-","游戏在运行"};
 
+    public static final String NOTIFICATION_GROUP_KEY = "zjsn_group";
 
     public static String getZjsnPackageName(Context context){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
@@ -56,7 +57,7 @@ public class Storage {
         } else if (serverId < 100){
             return "com.muka.shipwar";
         } else {
-            return "org.huanmeng.Zhanjian2_alipay";
+            return "com.huanmeng.zhanjian2";
         }
     }
 
@@ -68,10 +69,17 @@ public class Storage {
         return PendingIntent.getActivity(context, 0, intent, 0);
     }
 
+    public static PendingIntent getInfoIntent(Context context){
+        Intent intent = new Intent(context, InfoActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent pendIntent = PendingIntent.getActivity(context, 0, intent, 0);
+        return pendIntent;
+    }
+
     public static float getTextSizeMajor(Context context){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String size = prefs.getString("textsize_major", "48");
-        float ret = 48;
+        String size = prefs.getString("textsize_major", "24");
+        float ret = 24;
         try {
             ret = Float.parseFloat(size);
         } catch (Exception ex) {}
@@ -81,8 +89,8 @@ public class Storage {
 
     public static float getTextSizeMinor(Context context){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String size = prefs.getString("textsize_minor", "48");
-        float ret = 48;
+        String size = prefs.getString("textsize_minor", "24");
+        float ret = 24;
         try {
             ret = Float.parseFloat(size);
         } catch (Exception ex) {}

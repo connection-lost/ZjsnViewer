@@ -26,7 +26,9 @@ public class NetworkManager {
     public static String url_init_hm = "api/initGame&t=233&e=3deb25e23f5fdd11d792d63bd66ced7c";
     public static String url_passport_p7 = "http://login.alpha.p7game.com/index/passportLogin/";// +username/password
     //hm change the login in url as http://login.jianniang.com/index/passportLogin/
-    public static String url_passport_hm = "http://login.jianniang.com/index/passportLogin/";// +username/password
+    //hm change the login in url as http://login.jr.moefantasy.com/index/passportLogin/ in 6/4/2016
+    public static String url_passport_hm = "http://login.jr.moefantasy.com/index/passportLogin/";// +username/password
+    public static String url_passport_hm_ios = "http://loginios.jianniang.com/index/passportLogin/";// +username/password
     public static String url_login = "index/login/";//+uid
     public static String[] url_server_p7 = {
             "http://zj.alpha.p7game.com/",
@@ -43,19 +45,28 @@ public class NetworkManager {
     };
 
     public static String[] url_server_hm = {
-            "http://zj.alpha.jianniang.com/",
-            "http://s2.jianniang.com/",
-            "http://s3.jianniang.com/",
-            "http://s4.jianniang.com/",
-            "http://s5.jianniang.com/",
-            "http://s6.jianniang.com/",
-            "http://s7.jianniang.com/",
-            "http://s8.jianniang.com/",
-            "http://s9.jianniang.com/",
-            "http://s10.jianniang.com/",
-            "http://s11.jianniang.com/"
+            "http://zj.alpha.jr.moefantasy.com/",
+            "http://s2.jr.moefantasy.com/",
+            "http://s3.jr.moefantasy.com/",
+            "http://s4.jr.moefantasy.com/",
+            "http://s5.jr.moefantasy.com/",
+            "http://s6.jr.moefantasy.com/",
+            "http://s7.jr.moefantasy.com/",
+            "http://s8.jr.moefantasy.com/",
+            "http://s9.jr.moefantasy.com/",
+            "http://s10.jr.moefantasy.com/",
+            "http://s11.jr.moefantasy.com/",
+            "http://s12.jr.moefantasy.com/"
     };
 
+    public static String[] url_server_hm_ios = {
+        "http://s101.jr.moefantasy.com/",
+        "http://s102.jr.moefantasy.com/",
+        "http://s103.jr.moefantasy.com/",
+        "http://s104.jr.moefantasy.com/",
+        "http://s105.jr.moefantasy.com/",
+        "http://s106.jr.moefantasy.com/"
+    };
     public static String getCurrentUnixTime() {
         long unixTime = System.currentTimeMillis() / 10L;
         return String.valueOf(unixTime);
@@ -70,10 +81,15 @@ public class NetworkManager {
         String server = prefs.getString("server", "-1");
         if (server.equals("-1")) return;
         int serverId = Integer.parseInt(server);
+
         if (serverId < 100){
             server = url_server_p7[serverId];
-        } else {
+        }
+        else if (serverId < 200) {
             server = url_server_hm[serverId-100];
+        }
+        else {
+            server = url_server_hm_ios[serverId-201];
         }
 
         // Black: Alt Server
@@ -90,16 +106,13 @@ public class NetworkManager {
             return;
         }
 
-        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        List<ActivityManager.RunningAppProcessInfo> procInfos = activityManager.getRunningAppProcesses();
-        for (int i = 0; i < procInfos.size(); i++){
-            String processName = procInfos.get(i).processName;
-            if (processName.startsWith("com.muka.shipwar") || processName.startsWith("org.huanmeng.Zhanjian2")){
-                DockInfo.updateInterval = 15;
-                Storage.str_tiduName = Storage.str_gameRunning[Storage.language];
-                return;
-            }
+
+        if (ZjsnState.getZjsnState() == 0 && prefs.getBoolean("auto_run", true)){
+            DockInfo.updateInterval = 15;
+            Storage.str_tiduName = Storage.str_gameRunning[Storage.language];
+            return;
         }
+
         String error = "";
 
         try {
@@ -107,8 +120,10 @@ public class NetworkManager {
             URL url;
             if (serverId < 100){
                 url = new URL(url_passport_p7 +username+"/"+password);
-            } else {
+            }else if (serverId < 200){
                 url = new URL(url_passport_hm +username+"/"+password);
+            }else {
+                url = new URL(url_passport_hm_ios +username+"/"+password);
             }
             if (altserver){
                 url = new URL(prefs.getString("alt_url_login", "") +username+"/"+password);
